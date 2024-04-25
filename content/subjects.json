@@ -1,0 +1,946 @@
+{
+    "nodes":[
+        {
+            "id":"GEPCOMM",
+            "name":"Purposive Communications"
+        },
+
+
+
+        {
+            "id":"FNDMATH",
+            "name":"Foundation Course in Mathematics",
+            "tags":[
+                "general"
+            ]
+        },
+        {
+            "id":"BASCHEM",
+            "name":"Basic Chemistry"
+        },
+        {
+            "id":"BASPHYS",
+            "name":"Basic Physics"
+        },
+        {
+            "id":"FNDSTAT",
+            "name":"Foundation Course in Statistics",
+            "tags":[
+                "general"
+            ]
+        },
+        {
+            "id":"LBYMF1A",
+            "name":"Engineering Measurement Laboratory"
+        },
+        {
+            "id":"LBYME1A",
+            "name":"Engineering Drawing"
+        },
+
+
+        {
+            "id":"CALENG1",
+            "name":"Differential Calculus",
+            "tags":[
+                "general"
+            ]
+        },
+        {
+            "id":"LBYME1B",
+            "name":"Engineering Computer Aided Drafting"
+        },
+        {
+            "id":"LBYEC2A",
+            "name":"Computer Fundamentals and Programming 1"
+        },
+        {
+            "id":"LBYMF1B",
+            "name":"Machine Tools, Processes and Practice 1 Laboratory",
+            "tags":[
+                "workshop"
+            ]
+        },
+
+
+        {
+            "id":"CALENG2",
+            "name":"Integral Calculus",
+            "tags":[
+                "general"
+            ]
+        },
+        {
+            "id":"ENGCHEM",
+            "name":"General Chemistry 1"
+        },
+        {
+            "id":"LBYCH1A",
+            "name":"General Chemistry 1 Laboratory"
+        },
+        {
+            "id":"MFMCPR1",
+            "name":"Machine Tools, Processes and Practice 2"
+        },
+        {
+            "id":"LBYMF1C",
+            "name":"Machine Tools, Processes and Practice 2 Laboratory",
+            "tags":[
+                "workshop"
+            ]
+        },
+        {
+            "id":"LBYMF1D",
+            "name":"Computer Programming for MEM"
+        },
+
+
+        {
+            "id":"MFCAENG",
+            "name":"Computer-Aided Engineering"
+        },
+        {
+            "id":"LBYMF2B",
+            "name":"Computer-Aided Engineering Laboratory"
+        },
+        {
+            "id":"ENGDATA",
+            "name":"Engineering Data Analysis"
+        },
+        {
+            "id":"MFMNGMT",
+            "name":"Engineering Management for MEM"
+        },
+        {
+            "id":"CALENG3",
+            "name":"Differential Equations"
+        },
+        {
+            "id":"ENGPHYS",
+            "name":"Engineering Physics 1"
+        },
+        {
+            "id":"LBYPH1A",
+            "name":"Engineering Physics 1 Laboratory"
+        },
+        {
+            "id":"MFMCPR2",
+            "name":"Manufacturing Processes and Practice 3"
+        },
+        {
+            "id":"LBYMF2A",
+            "name":"Manufacturing Processes and Practice 3 Laboratory",
+            "tags":[
+                "workshop"
+            ]
+        },
+
+
+        {
+            "id":"ENGMEC1",
+            "name":"Statics Of Rigid Bodies"
+        },
+        {
+            "id":"BASELCI",
+            "name":"Electrical Engineering Principles"
+        },
+        {
+            "id":"LBYEC2L",
+            "name":"Electrical Engineering Principles Lab for MEM"
+        },
+        {
+            "id":"MFTHSCI",
+            "name":"Thermal Science for MEM Students"
+        },
+        {
+            "id":"MFMTENG",
+            "name":"Materials Engineering"
+        },
+        {
+            "id":"LBYMF2D",
+            "name":"Materials Engineering Laboratory"
+        },
+        {
+            "id":"MFADMAT",
+            "name":"Advanced Mathematics for MEM"
+        },
+        {
+            "id":"LBYEC3B",
+            "name":"Intelligent Systems for Engineering"
+        },
+
+
+        {
+            "id":"ECNOMIC",
+            "name":"Engineering Economics"
+        },
+        {
+            "id":"ENGMEC2",
+            "name":"Dynamics of Rigid Bodies"
+        },
+        {
+            "id":"MFANLOG",
+            "name":"Analog Electronics Design"
+        },
+        {
+            "id":"LBYMF2C",
+            "name":"Analog Design for MEM Laboratory"
+        },
+        {
+            "id":"MFAIMFG",
+            "name":"Computational Intelligence in Manufacturing Systems"
+        },
+        {
+            "id":"LBYMF3B",
+            "name":"Computational Intelligence in Manufacturing Systems Laboratory"
+        },
+        {
+            "id":"MFFNWLD",
+            "name":"Foundry and Welding Processes"
+        },
+        {
+            "id":"LBYMF2E",
+            "name":"Foundry and Welding Processes Laboratory"
+        },
+        {
+            "id":"MRVIBEN",
+            "name":"Vibration Engineering"
+        },
+
+
+        {
+            "id":"ENGMEC3",
+            "name":"Mechanics of Deformable Bodies"
+        },
+        {
+            "id":"MFDIGTL",
+            "name":"Digital Electronics Design"
+        },
+        {
+            "id":"LBYMF2F",
+            "name":"Digital Electronics Design Laboratory"
+        },
+        {
+            "id":"THSCSTN1",
+            "name":"Capstone Project for MEM Students 1"
+        },
+        {
+            "id":"MFKNMAT",
+            "name":"Kinematics"
+        },
+        {
+            "id":"LBYMF3A",
+            "name":"Kinematics Laboratory"
+        },
+        {
+            "id":"MFERGOP",
+            "name":"Ergonomics in Manufacturing Engineering"
+        },
+        {
+            "id":"LBYMF3G",
+            "name":"Ergonomics in Manufacturing Engineering Laboratory"
+        },
+
+
+        {
+            "id":"ENGTREP",
+            "name":"Technopreneurship"
+        },
+        {
+            "id":"MFBAOHS",
+            "name":"Basic Occupational Health and Safe"
+        },
+        {
+            "id":"MFINDLX",
+            "name":"Industrial Electronics for MEM"
+        },
+        {
+            "id":"LBYMF3E",
+            "name":"Industrial Electronics Laboratory"
+        },
+        {
+            "id":"MFCAMFG",
+            "name":"Computer - Aided Manufacture"
+        },
+        {
+            "id":"LBYMF3H",
+            "name":"Computer - Aided Manufacture Laboratory"
+        },
+        {
+            "id":"MFMCDS1",
+            "name":"Design of Machine Elements 1"
+        },
+        {
+            "id":"LBYMF3C",
+            "name":"Microprocessor-based Design for Manufacturing Applications 1 Laboratory"
+        },
+        {
+            "id":"MFETHIC",
+            "name":"Engineering Ethics for MEM"
+        },
+
+
+        {
+            "id":"THSCSTN2",
+            "name":"Capstone Project for MEM Students 2"
+        },
+        {
+            "id":"MFPROMA",
+            "name":"Engineering Production Management for MEM"
+        },
+        {
+            "id":"MFMTRES",
+            "name":"Methods of Research for MEM"
+        },
+        {
+            "id":"MFPRDES",
+            "name":"Product Design for MEM Students"
+        },
+        {
+            "id":"LBYMF3D",
+            "name":"Product Design for MEM Students Laboratory"
+        },
+        {
+            "id":"MFMCDS2",
+            "name":"Design of Machine Elements 2"
+        },
+        {
+            "id":"LBYMF3F",
+            "name":"Design of Machine Elements 2 Laboratory"
+        },
+        {
+            "id":"MFELEC1",
+            "name":"MEM Elective 1"
+        },
+        {
+            "id":"MFCNTRL",
+            "name":"Controls Engineering Fundamentals"
+        },
+        {
+            "id":"LBYMF3I",
+            "name":"Controls Engineering Fundamentals Laboratory"
+        },
+
+
+        {
+            "id":"THSMFE1",
+             "name":"MEM Thesis 1"
+        },
+        {
+            "id":"MFRBTIC",
+            "name":"Applied Robotics for MEM"
+        },
+        {
+            "id":"LBYMF4A",
+            "name":"Applied Robotics Laboratory"
+        },
+        {
+            "id":"MFTLDES",
+            "name":"Design of Jigs and Fixtures"
+        },
+        {
+            "id":"MFCIMSY",
+            "name":"Systems Theory for Computer Integrated Manufacturing"
+        },
+        {
+            "id":"LBYMF4B",
+            "name":"Computer Integrated Manufacturing  with Engineering Production Management Laboratory for MEM"
+        },
+        {
+            "id":"LBYMF4C",
+            "name":"Finite Element Modelling Laboratory"
+        },
+        {
+            "id":"MFGSEMS",
+            "name":"Field Trip and Seminar"
+        },
+        {
+            "id":"MFELEC2",
+            "name":"MEM Elective 2"
+        },
+        {
+            "id":"LBYMF4D",
+            "name":"Intelligent Manufacturing Systems Laboratory"
+        },
+
+
+        {
+            "id":"PRCGEM1",
+            "name":"Engineering Practicum for MEM 1"
+        },
+
+
+        {
+            "id":"PRCGEM2",
+            "name":"Engineering Practicum for MEM 2"
+        },
+
+
+        {
+            "id":"MFLNMFG",
+            "name":"Lean and Sustainable Manufacturing"
+        },
+        {
+            "id":"THSMFE2",
+            "name":"MEM Thesis 2"
+        },
+        {
+            "id":"MRFLUME",
+            "name":"Fluid Mechanics for MRE Students"
+        },
+        {
+            "id":"MRPRODS",
+            "name":"Modelling Production Systems for MRE Students"
+        },
+        {
+            "id":"MFELEC3",
+            "name":"MEM Elective 3"
+        }
+
+
+
+
+    ],
+    "links":[
+        {
+            "source":"FNDMATH",
+            "target":"CALENG1",
+            "type":"hard"
+        },
+
+        {
+            "source":"LBYME1A",
+            "target":"LBYME1B",
+            "type":"hard"
+        },
+        {
+            "source":"LBYMF1A",
+            "target":"LBYMF1B",
+            "type":"soft"
+        },
+
+
+        {
+            "source":"CALENG1",
+            "target":"CALENG2",
+            "type":"hard"
+        },
+        {
+            "source":"BASCHEM",
+            "target":"ENGCHEM",
+            "type":"hard"
+        },
+        {
+            "source":"ENGCHEM",
+            "target":"LBYCH1A",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF1B",
+            "target":"MFMCPR1",
+            "type":"hard"
+        },
+        {
+            "source":"MFMCPR1",
+            "target":"LBYMF1C",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF1B",
+            "target":"LBYMF1C",
+            "type":"soft"
+        },
+        {
+            "source":"LBYEC2A",
+            "target":"LBYMF1D",
+            "type":"hard"
+        },
+
+
+        {
+            "source":"LBYME1B",
+            "target":"LBYMF2B",
+            "type":"soft"
+        },
+        {
+            "source":"CALENG2",
+            "target":"CALENG3",
+            "type":"hard"
+        },
+        {
+            "source":"FNDSTAT",
+            "target":"ENGDATA",
+            "type":"hard"
+        },
+        {
+            "source":"CALENG2",
+            "target":"ENGDATA",
+            "type":"soft"
+        },
+        {
+            "source":"CALENG1",
+            "target":"MFMNGMT",
+            "type":"soft"
+        },
+        {
+            "source":"CALENG1",
+            "target":"ENGPHYS",
+            "type":"soft"
+        },
+        {
+            "source":"BASPHYS",
+            "target":"ENGPHYS",
+            "type":"hard"
+        },
+        {
+            "source":"ENGPHYS",
+            "target":"LBYPH1A",
+            "type":"co"
+        },
+        {
+            "source":"MFMCPR1",
+            "target":"MFMCPR2",
+            "type":"hard"
+        },
+        {
+            "source":"MFMCPR2",
+            "target":"LBYMF2A",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF1C",
+            "target":"LBYMF2A",
+            "type":"soft"
+        },
+
+
+        {
+            "source":"ENGPHYS",
+            "target":"ENGMEC1",
+            "type":"hard"
+        },
+        {
+            "source":"CALENG2",
+            "target":"ENGMEC1",
+            "type":"soft"
+        },
+        {
+            "source":"ENGPHYS",
+            "target":"BASELCI",
+            "type":"hard"
+        },
+        {
+            "source":"BASELCI",
+            "target":"LBYEC2L",
+            "type":"co"
+        },
+        {
+            "source":"ENGPHYS",
+            "target":"MFTHSCI",
+            "type":"hard"
+        },
+        {
+            "source":"CALENG1",
+            "target":"MFTHSCI",
+            "type":"soft"
+        },
+        {
+            "source":"ENGCHEM",
+            "target":"MFMTENG",
+            "type":"soft"
+        },
+        {
+            "source":"MFMTENG",
+            "target":"LBYMF2D",
+            "type":"co"
+        },
+        {
+            "source":"CALENG2",
+            "target":"MFADMAT",
+            "type":"soft"
+        },
+        {
+            "source":"LBYEC2A",
+            "target":"LBYEC3B",
+            "type":"hard"
+        },
+        {
+            "source":"ENGDATA",
+            "target":"LBYEC3B",
+            "type":"soft"
+        },
+
+
+        {
+            "source":"CALENG1",
+            "target":"ECNOMIC",
+            "type":"soft"
+        },
+        {
+            "source":"ENGMEC1",
+            "target":"ENGMEC2",
+            "type":"soft"
+        },
+        {
+            "source":"BASELCI",
+            "target":"MFANLOG",
+            "type":"hard"
+        },
+        {
+            "source":"LBYEC2L",
+            "target":"LBYMF2C",
+            "type":"hard"
+        },
+        {
+            "source":"MFANLOG",
+            "target":"LBYMF2C",
+            "type":"soft"
+        },
+        {
+            "source":"LBYEC3B",
+            "target":"MFAIMFG",
+            "type":"soft"
+        },
+        {
+            "source":"MFAIMFG",
+            "target":"LBYMF3B",
+            "type":"co"
+        },
+        {
+            "source":"MFMCPR1",
+            "target":"MFFNWLD",
+            "type":"soft"
+        },
+        {
+            "source":"MFMTENG",
+            "target":"MFFNWLD",
+            "type":"soft"
+        },
+        {
+            "source":"MFFNWLD",
+            "target":"LBYMF2E",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF2A",
+            "target":"LBYMF2E",
+            "type":"soft"
+        },
+        {
+            "source":"CALENG3",
+            "target":"MRVIBEN",
+            "type":"soft"
+        },
+
+
+        {
+            "source":"ENGMEC2",
+            "target":"ENGMEC3",
+            "type":"soft"
+        },
+        {
+            "source":"MFANLOG",
+            "target":"MFDIGTL",
+            "type":"soft"
+        },
+        {
+            "source":"MFDIGTL",
+            "target":"LBYMF2F",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF2C",
+            "target":"LBYMF2F",
+            "type":"co"
+        },
+        {
+            "source":"GEPCOMM",
+            "target":"THSCSTN1",
+            "type":"hard"
+        },
+        {
+            "source":"MFCAENG",
+            "target":"THSCSTN1",
+            "type":"soft"
+        },
+        {
+            "source":"ENGMEC2",
+            "target":"MFKNMAT",
+            "type":"soft"
+        },
+        {
+            "source":"MFKNMAT",
+            "target":"LBYMF3A",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF2B",
+            "target":"LBYMF3A",
+            "type":"soft"
+        },
+        {
+            "source":"MFMCPR2",
+            "target":"MFERGOP",
+            "type":"soft"
+        },
+        {
+            "source":"MFERGOP",
+            "target":"LBYMF3G",
+            "type":"co"
+        },
+
+
+        {
+            "source":"ECNOMIC",
+            "target":"ENGTREP",
+            "type":"soft"
+        },
+        {
+            "source":"MFERGOP",
+            "target":"MFBAOHS",
+            "type":"soft"
+        },
+        {
+            "source":"MFDIGTL",
+            "target":"MFINDLX",
+            "type":"soft"
+        },
+        {
+            "source":"MFINDLX",
+            "target":"LBYMF3E",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF2F",
+            "target":"LBYMF3E",
+            "type":"soft"
+        },
+        {
+            "source":"MFMCPR2",
+            "target":"MFCAMFG",
+            "type":"soft"
+        },
+        {
+            "source":"MFCAMFG",
+            "target":"LBYMF3H",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF2A",
+            "target":"LBYMF3H",
+            "type":"soft"
+        },
+        {
+            "source":"ENGMEC3",
+            "target":"MFMCDS1",
+            "type":"soft"
+        },
+        {
+            "source":"MFDIGTL",
+            "target":"LBYMF3C",
+            "type":"soft"
+        },
+        {
+            "source":"LBYMF2F",
+            "target":"LBYMF3C",
+            "type":"soft"
+        },
+
+
+        {
+            "source":"THSCSTN1",
+            "target":"THSCSTN2",
+            "type":"hard"
+        },
+        {
+            "source":"MFMNGMT",
+            "target":"MFPROMA",
+            "type":"soft"
+        },
+        {
+            "source":"GEPCOMM",
+            "target":"MFMTRES",
+            "type":"hard"
+        },
+        {
+            "source":"MFMCDS1",
+            "target":"MFPRDES",
+            "type":"soft"
+        },
+        {
+            "source":"LBYMF3A",
+            "target":"LBYMF3D",
+            "type":"soft"
+        },
+        {
+            "source":"MFPRDES",
+            "target":"LBYMF3D",
+            "type":"co"
+        },
+        {
+            "source":"MFMCDS1",
+            "target":"MFMCDS2",
+            "type":"hard"
+        },
+        {
+            "source":"MFMCDS2",
+            "target":"LBYMF3F",
+            "type":"co"
+        },
+        {
+            "source":"MFDIGTL",
+            "target":"MFELEC1",
+            "type":"soft"
+        },
+        {
+            "source":"CALENG3",
+            "target":"MFCNTRL",
+            "type":"soft"
+        },
+        {
+            "source":"MFDIGTL",
+            "target":"MFCNTRL",
+            "type":"soft"
+        },
+        {
+            "source":"MFCNTRL",
+            "target":"LBYMF3I",
+            "type":"co"
+        },
+        {
+            "source":"LBYMF3C",
+            "target":"LBYMF3I",
+            "type":"soft"
+        },
+
+
+        {
+            "source":"MFMTRES",
+            "target":"THSMFE1",
+            "type":"soft"
+        },
+        {
+            "source":"MFADMAT",
+            "target":"MFRBTIC",
+            "type":"soft"
+        },
+        {
+            "source":"MFCAENG",
+            "target":"MFRBTIC",
+            "type":"soft"
+        },
+        {
+            "source":"MFRBTIC",
+            "target":"LBYMF4A",
+            "type":"co"
+        },
+        {
+            "source":"MFFNWLD",
+            "target":"MFTLDES",
+            "type":""
+        },
+        {
+            "source":"MFCAENG",
+            "target":"MFCIMSY",
+            "type":"soft"
+        },
+        {
+            "source":"MFPROMA",
+            "target":"LBYMF4B",
+            "type":"co"
+        },
+        {
+            "source":"MFCIMSY",
+            "target":"LBYMF4B",
+            "type":"co"
+        },
+        {
+            "source":"ENGMEC3",
+            "target":"LBYMF4C",
+            "type":"soft"
+        },
+        {
+            "source":"MFADMAT",
+            "target":"LBYMF4C",
+            "type":"soft"
+        },
+        {
+            "source":"LBYMF3A",
+            "target":"LBYMF4C",
+            "type":"soft"
+        },
+        {
+            "source":"MFELEC1",
+            "target":"MFELEC2",
+            "type":"hard"
+        },
+        {
+            "source":"LBYMF3C",
+            "target":"LBYMF4D",
+            "type":"hard"
+        },
+
+
+        {
+            "source":"MFRBTIC",
+            "target":"PRCGEM1",
+            "type":"hard"
+        },
+        {
+            "source":"MFCIMSY",
+            "target":"PRCGEM1",
+            "type":"hard"
+        },
+        {
+            "source":"MFPROMA",
+            "target":"PRCGEM1",
+            "type":"hard"
+        },
+        {
+            "source":"THSCSTN2",
+            "target":"PRCGEM1",
+            "type":"hard"
+        },
+
+
+        {
+            "source":"PRCGEM1",
+            "target":"PRCGEM2",
+            "type":"hard"
+        },
+
+
+        {
+            "source":"ENGCHEM",
+            "target":"MFLNMFG",
+            "type":"hard"
+        },
+        {
+            "source":"MFPROMA",
+            "target":"MFLNMFG",
+            "type":"soft"
+        },
+        {
+            "source":"THSMFE1",
+            "target":"THSMFE2",
+            "type":"hard"
+        },
+        {
+            "source":"MFTHSCI",
+            "target":"MRFLUME",
+            "type":"soft"
+        },
+        {
+            "source":"MFPROMA",
+            "target":"MRPRODS",
+            "type":"soft"
+        },
+        {
+            "source":"MFELEC2",
+            "target":"MFELEC3",
+            "type":"hard"
+        }
+    ]
+
+
+}

@@ -1,0 +1,169 @@
+---
+title: Formula Cheatsheet
+date: "2024-02-14"
+category: Long Quiz 1
+author:  Yivan Andrei Padsoyan
+---
+
+<div role="alert" className="alert my-5">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+  <span>In this document, $f$ and $g$ are functions. $n$ and $C$ are constants.</span>
+</div>
+
+<div role="alert" className="alert alert-warning my-5">
+  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+  <span>When solving, DO NOT FORGET the $+C$.</span>
+</div>
+
+<State initialState={{ mode: "regular" }}>
+
+
+
+
+
+
+<Observe>
+  {({ setState, ...state }) => 
+<div role="tablist" className="tabs tabs-boxed my-5 ">
+
+  <a role="tab" 
+  className={`tab ${state.mode=='regular'?'tab-active':''}`} 
+  onClick={()=>setState(s => ({ mode:"regular" }))}>Regular</a>
+
+  <a role="tab" className={`tab ${state.mode=='color'?'tab-active':''}`} onClick={()=>
+    setState(s => ({ mode:"color" }))
+    }>Color-coded</a>
+</div>
+  }
+</Observe>
+
+## Indefinite integrals
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular':
+        return <BlockMath math="\begin{align*}
+        &\int 0 \space dx=C \\
+&\int dx=x+C \\
+&\int n f \space dx=n\int f \space dx \\
+&\int (f\pm g) \space dx=\int f \space dx\pm\int g \space dx\\
+&\int x^n\space dx=\begin{cases}
+\frac{x^{n+1}}{n+1}+C &n\neq-1 \\
+\ln|x|+C&n=-1
+\end{cases} \\
+&\int f'(u)\space du=\int f'(g)g'\space dx=f(g) &\text{where }du=g'\space dx
+\end{align*}" 
+    />;
+    
+      case 'color':
+        return  <BlockMath math="\begin{align*}
+&\int 0 \space dx=C \\
+&\int dx=x+C \\
+&\int {\color{fuchsia}{n}} {\color{orange}{f}} \space dx={\color{fuchsia}{n}}\int {\color{orange}{f}} \space dx \\
+&\int ({\color{orange}{f}}\pm {\color{orange}{g}}) \space dx=\int {\color{orange}{f}} \space dx\pm\int {\color{orange}{g}} \space dx\\
+&\int {\color{aqua}{x}}^{\color{fuchsia}{n}}\space dx=\begin{cases}
+\frac{{\color{aqua}{x}}^{{\color{fuchsia}{n}}+1}}{{\color{fuchsia}{n}}+1}+C &{\color{fuchsia}{n}}\neq-1 \\
+\ln|{\color{aqua}{x}}|+C&{\color{fuchsia}{n}}=-1
+\end{cases} \\
+&\int f'(u)\space du=\int f'(g)g'\space dx=f(g) &\text{where }du=g'\space dx
+\end{align*}" 
+    />
+    }
+
+  }
+
+
+  }
+</Observe>
+
+
+### Trigonometry
+
+<div className="flex flex-col md:flex-row ">
+
+<div>
+<BlockMath math="\int \sin u \space du=-\cos u+C " />
+</div>
+
+<div>
+
+<BlockMath math="\int \csc u \space du=\ln{|\csc u-\cot u|}+C" />
+</div>
+
+</div>
+
+$$
+\begin{align*}
+&\int \sin u \space du=-\cos u+C &\int& \csc u \space du=\ln{|\csc u-\cot u|}+C\\
+&\int \cos u \space du=\sin u+C &\int& \sec u \space du=\ln{|\sec u+\tan u|}+C\\
+&\int \tan u \space du=\begin{cases}-\ln{|\cos u|}+C\\\ln{|\sec u|}+C\end{cases} &\int& \cot u \space du=\begin{cases}-\ln{|\csc u|}+C\\\ln{|\sin u|}+C\end{cases}\\
+\\
+&\int \cos u \space du=\sin u+C &\int& -\csc u \cot u \space du=\csc u+C\\
+&\int -\sin u \space du=\cos u+C&\int& \sec u \tan u \space du=\sec u+C\\
+&\int \sec^{2} u \space du=\tan u+C&\int &-\csc^{2} u \space du=\cot u+C
+\end{align*}
+$$
+
+### Inverse trigonometry
+$$
+\begin{align*}
+&\int \frac{du}{\sqrt{n^{2}-u^{2}}}=\sin^{-1}\frac{u}{n}+C&-\\
+&-&\int& \frac{du}{u\sqrt{u^{2}-n^{2}}}=\frac{1}{n}\sec^{-1}\frac{u}{n}+C\\
+&\int \frac{du}{n^{2}+u^{2}}=\frac{1}{n}\tan^{-1}\frac{u}{n}+C&-
+\end{align*}
+$$
+
+### Hyperbolic
+$$
+\begin{align*}
+&\int \sinh u \space du= \cosh u+C\\
+&\int \cosh u \space du=\sinh u+C
+\end{align*}
+$$
+
+### Exponential
+$$
+\begin{align*}
+&\int n^u\space du=\frac{n^u}{\ln n}+C\\
+&\int e^u\space du=e^u+C
+\end{align*}
+$$
+
+## Definite integrals
+$a$ and $b$ are the lower and upper bounds, respectively.
+$$
+\begin{align*}
+&\int_a^bf\ dx=F\bigg|_a^b=F(b)-F(a)\\
+&\int_a^bf\ dx=-\int_b^af\ dx\\
+&\int_a^af\ dx=0\\
+&\int_a^b nf\ dx=n\int_a^b f\ dx\\
+&\int_a^b(f\pm g)\ dx=\int_a^bf\ dx \pm \int_a^b g\ dx\\
+&\int_a^b f\ dx=\int_a^d f\ dx+\int_d^b f\ dx\\
+\end{align*}
+$$
+
+
+## Algebraic techniques
+$$
+\begin{align*}
+&\text{Substitution}\\
+&\int\frac{2x-9}{\sqrt{x^{2}-9x+1}}\space dx\\
+=&\int\frac{du}{u^{-\frac{1}{2}}}&&\begin{array}{}\text{let }u=x^{2}-9x+1\\du=2x-9\space dx\end{array}\\
+=&\frac{u^{\frac{1}{2}}}{\frac{1}{2}}+C\\
+=&2\sqrt{u}+C\\
+=&2\sqrt{x^{2}-9x+1}+C\\
+\\
+&\text{Completing the square} && \text{for radicals only}\\
+&\int\frac{dx}{\sqrt{8x-x^{2}}}\\
+=&\int\frac{dx}{\sqrt{-(x^{2}-8x)}}&&\text{rearranging}\\
+=&\int\frac{dx}{\sqrt{-(x^{2}-8x+16–16)}}&&\left(\frac{b}{2}\right)^2=+16\text{, then $-16$ to balance out}\\
+=&\int\frac{dx}{\sqrt{-(x^{2}-8x+16)+16}}&&\text{moving out the $-16$}\\
+=&\int\frac{dx}{\sqrt{16-(x-4)^{2}}}&&\text{simplify \& rearrange}\\
+=&\int \frac{du}{\sqrt{n^{2}-u^{2}}}&&\begin{array}{}\text{let }u=x-4\\du=dx\\n=4\end{array}\\
+=&\sin^{-1}\frac{u}{n}+C\\
+=&\sin^{-1}\frac{x-4}{4}+C
+\end{align*}
+$$
+
+</State>

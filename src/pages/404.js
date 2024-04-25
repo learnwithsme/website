@@ -1,46 +1,25 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import Navbar from "../components/navbar"
 
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <Navbar>
+      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://unsplash.com/photos/TnEe6BdBC2M/download?w=640)', }}>
+      <div className="hero-overlay bg-gradient-to-b from-transparent via-transparent via-30% to-base-100"></div>
+      <div className="hero-content text-center text-neutral-content flex-col">
+        
+        <h1 className="mb-5 text-2xl font-bold font-[Poppins] text-base-content">Sorry, this page isn't available.</h1>
+
+        <Link to="/"><button className="btn">Go back to main page</button></Link>
+        
+
+
+      </div>
+
+      </div>
+    </Navbar>
   )
 }
 

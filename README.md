@@ -1,49 +1,14 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+  <svg xmlns="http://www.w3.org/2000/svg" className="block m-auto" width="200" height="200" viewBox="0 0 2048 2048"><defs>
+                <style>
+                  .cls-1 {fill: #d6d851;} .cls-1, .cls-2 {fill-rule: evenodd;} .cls-2 {fill:#5d8ab4;}
+                </style>
+              </defs>
+                <path class="cls-1" d="M752.442,1268.87s-194.065-148.93-225.583-192.15-57.943-66.6-37.6-116.967,85.677-87.771,238.116-121.141,308.372-62.188,363.442-87.722S1185,701,1185,701s-134.99-75.391-206.974-104.669-142.034-58.482-142.034-58.482,179.038,24.589,229.758,37.6S1254,619,1254,619s19-26.082,20.63-97.86S1253.74,400,1253.74,400s-300.479,25.623-405.216,41.773-325.7,72.269-430.279,116.963S133.093,688.619,130,867.853,426.6,1151.91,426.6,1151.91s126.931,50.15,162.921,62.66S752.442,1268.87,752.442,1268.87Z" />
+                <path class="cls-2" d="M815.1,1649s-101.953-158.71-66.839-250.64S852.7,1285.58,852.7,1285.58s333.548-114.85,355.088-125.32,157.05-67.86,183.8-121.14,21.29-78.3,0-137.849S1253.74,750.89,1253.74,750.89L1185,701s23.18-14.835,39.5-33.656S1254,619,1254,619s284.2,99.539,346.47,123.535,278.19,119.075,304.95,221.4,18.15,172.33-66.84,246.46-302.47,203.66-597.37,309.12S815.1,1649,815.1,1649Z" />
+              </svg>
 </p>
 <h1 align="center">
-  Gatsby Minimal Starter
+  SME DLSU Academic Hub
 </h1>
 
-## 🚀 Quick start
-
-1.  **Create a Gatsby site.**
-
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
-
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)

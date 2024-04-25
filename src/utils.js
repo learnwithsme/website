@@ -1,0 +1,68 @@
+import React from "react";
+
+/** 
+ * Check if an object is empty
+ * 
+ * fastest option in https://stackoverflow.com/a/59787784
+ */
+export const objectIsEmpty = (object) => { for (let k in object) return false; return true; }
+
+/**
+ *  Wrap an element conditionally
+ * 
+ *  https://stackoverflow.com/a/56870316/
+ * 
+ * @param {{
+ *  condition: boolean
+ *  wrapper: (wrappedChildren: React.JSX.Element)=>React.JSX.Element
+ *  children: React.JSX.Element
+ * }} 
+ * @returns A wrapped or unwrapped element, depending on `condition`
+ */
+export const ConditionalWrapper = ({ condition, wrapper, children }) =>
+    condition ? wrapper(children) : children;
+
+
+// =======================================
+// Copied from https://github.com/alexkrolick/mdx-observable/blob/master/src/index.js
+
+const StoreContext = React.createContext({ setState: () => { } });
+
+// provides {...state, setState} as context as well as render prop
+// if the children prop is a function
+class State extends React.Component {
+    static defaultProps = {
+        initialState: {}
+    };
+
+    state = {
+        ...this.props.initialState,
+        setState: update => this.setState(update)
+    };
+
+    render() {
+        return (
+            <StoreContext.Provider value={this.state}>
+                <React.Fragment>
+                    {typeof this.props.children === "function"
+                        ? this.props.children(this.state)
+                        : this.props.children}
+                </React.Fragment>
+            </StoreContext.Provider>
+        );
+    }
+}
+
+class Observe extends React.Component {
+    render() {
+        const { children } = this.props;
+        return (
+            <StoreContext.Consumer>{store => children(store)}</StoreContext.Consumer>
+        );
+    }
+}
+
+export { State, Observe };
+
+// end copy
+// ====================================
