@@ -1,8 +1,15 @@
+import remarkGfm from "remark-gfm"
+
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+
+// https://www.gatsbyjs.com/docs/how-to/custom-configuration/es-modules/#migrating-from-commonjs-to-es-modules
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-module.exports = {
+export default {
   siteMetadata: {
     title: `SME DLSU`,
   },
@@ -53,6 +60,12 @@ module.exports = {
             options: {}
           },
         ],
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            remarkGfm,
+          ]
+        }
 
       }
 

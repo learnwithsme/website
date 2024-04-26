@@ -136,7 +136,12 @@ export default function Layout({
 
           </div>
 
-          <h2 className="">More information</h2>
+
+          {
+            //show "More Information" header dependign of if it has content or not
+            data.mdx.excerpt.length > 0 ? <h2 className="">More information</h2> : <></>
+          }
+
           {children}
         </Content>
 
@@ -214,11 +219,13 @@ export const Head = ({
 
   return <>
     <title>{subjectId} - SME Academic Hub</title>
-    
+
 
     <meta name='og:title' content={`${subjectId} - ${subjectNode.name}`} />
     <meta name='og:type' content="article" />
     <meta name='og:site_name' content="SME DLSU Academic Hub" />
+    <meta name="og:description" content={data.mdx.excerpt} /> 
+    <meta name="description" content={data.mdx.excerpt} /> 
 
   </>;
 }
@@ -230,7 +237,7 @@ const shortcodes = { Link } // Provide common components here
 
 
 export const query = graphql`
-  query($subject: String!) {
+  query($subject: String!, $id: String!) {
     allMdx(
       filter: {
         fields: {
@@ -258,6 +265,10 @@ export const query = graphql`
       nodes {
         name
       }
+    }
+    # get excerpt of this subject's index.mdx 
+    mdx(id: {eq: $id}){
+      excerpt
     }
   }
 `

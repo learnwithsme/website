@@ -14,4 +14,5 @@ jobs:
         uses: enriikke/gatsby-gh-pages-action@v2.2.1
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: deploy
+          deploy-branch: main
+          deploy-repo: learnwithsme/learnwithsme.github.io
