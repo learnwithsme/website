@@ -15,4 +15,4 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: main
-          deploy-repo: learnwithsme/learnwithsme.github.io
+          deploy-repo: learnwithsme.github.io
