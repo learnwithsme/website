@@ -60,7 +60,7 @@ export default function Layout({
 
       <Navbar
         leading={
-          <Link to="../">
+          <Link to="../#list">
             <button className="btn btn-ghost"><span class="material-symbols-outlined">
               arrow_back
             </span><span className="hidden md:inline">Back to courses</span></button>

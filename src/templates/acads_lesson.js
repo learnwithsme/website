@@ -26,6 +26,7 @@ const components = { InlineMath, BlockMath, State, Observe };
   *       parent: {relativePath: string}, 
   *       tableOfContents, 
   *       fields: {
+  *         slug: string
   *         timeToRead: {text: string}
   *       }
   *       excerpt: string
@@ -71,14 +72,18 @@ export default function Layout({ data, children }) {
             <br />
 
             <div className="dropdown dropdown-bottom mr-2">
-              <div tabIndex={0} role="button" className="btn btn-circle btn-ghost btn-xs text-info ">
-                <span class="material-symbols-outlined">
-                  info
-                </span>
+              <div role="button" className="btn btn-circle btn-ghost btn-xs text-info ">
+                <span class="material-symbols-outlined">info</span>
               </div>
-              <div tabIndex={0} className="card compact dropdown-content z-[1] shadow bg-base-200 rounded-box w-72">
-                <div tabIndex={0} className="card-body font-sans text-md font-normal">
-                  Checker: {listFormat.format(data.mdx.frontmatter.checker ?? ['-'])}<br/>Word count: {data.mdx.fields.timeToRead.words}
+              <div className="card compact dropdown-content z-[1] shadow bg-base-200 rounded-box w-72">
+                <div className="card-body font-sans text-md font-normal">
+                  Checked by: {listFormat.format(data.mdx.frontmatter.checker ?? ['-'])}<br />
+                  Word count: {data.mdx.fields.timeToRead.words}<br />
+                  <a href={
+                    // create GitHub repo link
+                    // `data.mdx.fields.slug` has a trailing slash, we need to remove that
+                    `https://github.com/learnwithsme/website/tree/main/content${data.mdx.fields.slug.substring(0, data.mdx.fields.slug.length - 1)}.mdx`
+                    } target="_blank" rel="noreferrer">View source code</a>
                 </div>
               </div>
             </div>
@@ -90,7 +95,7 @@ export default function Layout({ data, children }) {
               · {data.mdx.fields.timeToRead.text}
             </span>
 
-            
+
 
           </h1>
           <div className="divider"></div>
@@ -115,13 +120,14 @@ export const Head = ({
   return <>
     <title> {data.mdx.frontmatter.title} - {id} - SME Academic Hub</title>
 
-    <meta name='og:title' content={data.mdx.frontmatter.title} />
-    <meta name='og:type' content="article" />
-    <meta name='og:site_name' content="SME DLSU Academic Hub" />
+    <meta property='og:title' content={data.mdx.frontmatter.title} />
+    <meta property='og:type' content="article" />
+    <meta property='og:site_name' content="SME DLSU Academic Hub" />
     <meta name='author' content={data.mdx.frontmatter.author} />
     <meta name='date' content={data.mdx.frontmatter.datePublished} />
-    <meta name="og:description" content={data.mdx.excerpt} />
+    <meta property="og:description" content={data.mdx.excerpt} />
     <meta name="description" content={data.mdx.excerpt} />
+
   </>;
 }
 
@@ -140,6 +146,7 @@ export const query = graphql`
       }
       tableOfContents
       fields {
+        slug
         timeToRead {
           text
           words

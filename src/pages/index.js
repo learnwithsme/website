@@ -1,7 +1,5 @@
 import * as React from "react";
-import { createRoot } from 'react-dom/client';
-import { SizeMe } from 'react-sizeme'
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import loadable from '@loadable/component'
 
 import Navbar from "../components/navbar";
@@ -17,9 +15,6 @@ const subjects = structuredClone(_subjects); //deep copy
 export default function IndexPage({
   data
 }) {
-
-  const [view, setView] = React.useState("list");
-
 
   /** Subjects that are in the `/content/acads` folder 
    * @type {string[]}
@@ -63,7 +58,7 @@ export default function IndexPage({
         </div>
 
         <Content className="p-4 xl:p-0">
-          <h2 className="text-3xl font-[Poppins] font-medium">Explore our Academic Database</h2>
+          <h2 className="text-3xl font-[Poppins] font-medium"  id="list">Explore our Academic Database</h2>
           The SME Academic Database is streamlined for ease and convenience and is aligned with the syllabus for different subjects. The database also contains a repository of review materials for your own benefit and supplementary lessons to aid your understanding in some concepts in class.
         </Content>
 
@@ -192,9 +187,7 @@ function FlowchartDialog({
               </div>
               <div>
                 Unlocks: {utils.objectIsEmpty(flowchartUnlocks) ? <span className="italic"> none</span> :
-                  <span onClick={() => {
-
-                  }}>
+                  <span>
                     {flowchartUnlocks.map((value, index, array) => <SubjectChip
                       id={value.target.id}
                       title={subjectsMap[value.target.id]}
@@ -253,13 +246,14 @@ function FlowchartView({
   const [highlightLinks, setHighlightLinks] = React.useState(new Set());
   const [hoverNode, setHoverNode] = React.useState(null);
 
-  const [highlightNeighbors, setHighlightNeighbors] = React.useState([]);
+  //const [highlightNeighbors, setHighlightNeighbors] = React.useState([]);
 
   const updateHighlight = () => {
     setHighlightNodes(highlightNodes);
     setHighlightLinks(highlightLinks);
   };
 
+  /*
   const handleLinkHover = link => {
     highlightNodes.clear();
     highlightLinks.clear();
@@ -272,7 +266,7 @@ function FlowchartView({
 
     updateHighlight();
   };
-
+  */
 
 
   return (
@@ -284,7 +278,7 @@ function FlowchartView({
 
       nodeCanvasObject={(node, ctx, globalScale) => {
 
-        const neighborisPrev = subjects.links.find((value, index, obj) => value.source === node.id && value.target === hoverNode?.id)
+        //const neighborisPrev = subjects.links.find((value, index, obj) => value.source === node.id && value.target === hoverNode?.id)
 
         const label = node.id;
         const fontSize = 15 / globalScale;
