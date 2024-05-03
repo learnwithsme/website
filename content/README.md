@@ -31,7 +31,7 @@ title: TITLE
 datePublished: YYYY-MM-DD
 dateUpdated: 
 category: CATEGORY
-author: YYYY-MM-DD
+author: 
   - AUTHOR 1
   - AUTHOR 2
 checker: 
@@ -65,7 +65,7 @@ These are the supported formatting options for use on the `.mdx` files.
 | <pre>1. list 1 <br/>2. list 2<br/>3. list 3</pre> | <ol><li>list 1</li><li>list 2</li><li>list 3</li></ol> |
 | <pre>\| A \| B \| C \|<br/>\| -- \| -- \| -- \|<br/>\| 1 \| 2 \| 3 \|<br/>\| 4 \| 5 \| 6 \| </pre> | <table><tr><th>A</th><th>B</th><th>C</th></tr><tr><td>1</td><td>2</td><td>3</td></tr><tr><td>4</td><td>5</td><td>6</td></tr></table> |
 | \`text\` | `text` |
-| Area of circle is $ \frac{bh}{2} $. <br/><br/>Integral of sine: <br/> $$ \int \sin u \space du=-\cos u+C $$ | Area of circle is  $` \pi r^2 `$.<br/><br/>  Integral of sine: <br/> $$\int \sin u \space du=-\cos u+C$$| Uses LaTeX syntax.<br/> List of supported functions [here.](https://katex.org/docs/supported.html) <br/> Test your syntax [here.](https://katex.org/#demo) |q
+| Area of circle is $ \frac{bh}{2} $. <br/><br/>Integral of sine: <br/> $$ \int \sin u \space du=-\cos u+C $$ | Area of circle is  $` \pi r^2 `$.<br/><br/>  Integral of sine: <br/> $$\int \sin u \space du=-\cos u+C$$| Uses LaTeX syntax.<br/> List of supported functions [here.](https://katex.org/docs/supported.html) <br/> Test your syntax [here.](https://katex.org/#demo) <br/> When adding this, make sure to surround/pad it with new lines (*hindi magkakadikit-dikit*) |q
 | `---` | <hr/> |
 | <pre>\`video:https://www.youtube.com/watch?v=dQw4w9WgXcQ\`</pre> | *actual video here* | The actual video will be embedded. Supports YouTube, Vimeo, Twitch.
 | <pre>\<!-- comment --></pre> | | Comments will not be displayed.
