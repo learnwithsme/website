@@ -133,12 +133,12 @@ const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className="btn btn
       {node.status!=null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
     
       
-      
-      {node.id}<span className="text-sm">{node.name}</span></h2>
+      <span className="text-2xl font-semibold font-[Poppins]">{node.id}</span>
+      <span className="text-sm font-[Poppins]">{node.name}</span></h2>
 
     <div className="card-actions justify-end">
       {
-        node.tags?.map((value, index, array) => <div className="badge badge-outline">{value}</div>)
+        node.tags?.map((value, index, array) => <div className="badge badge-outline badge-sm">{value}</div>)
       }
     </div>
   </div>

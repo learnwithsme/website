@@ -176,7 +176,10 @@
         },
         {
             "id":"LBYEC3B",
-            "name":"Intelligent Systems for Engineering"
+            "name":"Intelligent Systems for Engineering",
+            "tags":[
+                "with old resources"
+            ]
         },
 
 
