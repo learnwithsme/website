@@ -38,14 +38,19 @@ export default function Layout({
   data.allMdx.nodes.sort((a, b) => a.frontmatter.category?.localeCompare(b.frontmatter.category));
 
   /**  The list of categories and their resources
-   * @type {Object.<string, {title: string, link: string}[]>} 
+   * @type {Object.<string, {
+   *  title: string, 
+   *  link: string,
+   *  status: string?
+   * }[]>} 
    */
   let categories = new Map();
   for (let node of data.allMdx.nodes) {
     let category = node.frontmatter.category;
     let toAdd = {
       title: node.frontmatter.title,
-      link: node.fields.slug
+      link: node.fields.slug,
+      status: node.frontmatter.status
     }
     if (category in categories) {
       categories[category].push(toAdd);
@@ -153,12 +158,12 @@ export default function Layout({
 
 /**
  * 
- * @param {{lessons: {title: string, link: string}[], title: string}} 
+ * @param {{lessons: {title: string, link: string, status: string?}[], title: string}} 
  * @returns 
  */
 function CategoryCard({
   title,
-  lessons
+  lessons,
 }) {
   return <div className="card card-compact w-96 bg-base-200 shadow-xl not-prose">
     <div className="card-body">
@@ -166,7 +171,15 @@ function CategoryCard({
       <ul className="menu w-full  p-0">
         {lessons.map((value, index, array) =>
           <li>
-            <Link to={value.link}>{value.title}</Link>
+            <Link to={value.link}>
+              { //status
+                value.status != null ?
+                  <div className="badge badge-neutral">{value.status.toUpperCase()}</div>
+                  : <></>
+              }
+
+              {value.title}
+            </Link>
           </li>
 
         )}
@@ -224,8 +237,8 @@ export const Head = ({
     <meta name='og:title' content={`${subjectId} - ${subjectNode.name}`} />
     <meta name='og:type' content="article" />
     <meta name='og:site_name' content="SME DLSU Academic Hub" />
-    <meta name="og:description" content={data.mdx.excerpt} /> 
-    <meta name="description" content={data.mdx.excerpt} /> 
+    <meta name="og:description" content={data.mdx.excerpt} />
+    <meta name="description" content={data.mdx.excerpt} />
 
   </>;
 }
@@ -252,6 +265,7 @@ export const query = graphql`
         frontmatter {
           title
           category
+          status
         }
         fields {
           slug

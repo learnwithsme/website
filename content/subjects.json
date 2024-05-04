@@ -9,14 +9,14 @@
 
         {
             "id":"FNDMATH",
-            "name":"Foundation Course in Mathematics",
-            "tags":[
-                "general"
-            ]
+            "name":"Foundation Course in Mathematics"
         },
         {
             "id":"BASCHEM",
-            "name":"Basic Chemistry"
+            "name":"Basic Chemistry",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"BASPHYS",
@@ -26,7 +26,7 @@
             "id":"FNDSTAT",
             "name":"Foundation Course in Statistics",
             "tags":[
-                "general"
+                "with old resources"
             ]
         },
         {
@@ -35,15 +35,19 @@
         },
         {
             "id":"LBYME1A",
-            "name":"Engineering Drawing"
+            "name":"Engineering Drawing",
+            "tags":[
+                "with old resources"
+            ]
         },
 
 
         {
             "id":"CALENG1",
             "name":"Differential Calculus",
+            "status":"updated",
             "tags":[
-                "general"
+                "with old resources"
             ]
         },
         {
@@ -65,10 +69,7 @@
 
         {
             "id":"CALENG2",
-            "name":"Integral Calculus",
-            "tags":[
-                "general"
-            ]
+            "name":"Integral Calculus"
         },
         {
             "id":"ENGCHEM",
@@ -113,11 +114,17 @@
         },
         {
             "id":"CALENG3",
-            "name":"Differential Equations"
+            "name":"Differential Equations",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"ENGPHYS",
-            "name":"Engineering Physics 1"
+            "name":"Engineering Physics 1",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYPH1A",
@@ -176,7 +183,8 @@
         },
         {
             "id":"ENGMEC2",
-            "name":"Dynamics of Rigid Bodies"
+            "name":"Dynamics of Rigid Bodies",
+            "status":"new"
         },
         {
             "id":"MFANLOG",

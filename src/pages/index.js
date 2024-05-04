@@ -128,7 +128,13 @@ const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className="btn btn
   padding: 0
 }}>
   <div className="card-body">
-    <h2 className="card-title">{node.id}<span className="text-sm">{node.name}</span></h2>
+    <h2 className="card-title">
+
+      {node.status!=null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
+    
+      
+      
+      {node.id}<span className="text-sm">{node.name}</span></h2>
 
     <div className="card-actions justify-end">
       {
