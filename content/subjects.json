@@ -149,7 +149,10 @@
         },
         {
             "id":"BASELCI",
-            "name":"Electrical Engineering Principles"
+            "name":"Electrical Engineering Principles",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYEC2L",
@@ -179,7 +182,10 @@
 
         {
             "id":"ECNOMIC",
-            "name":"Engineering Economics"
+            "name":"Engineering Economics",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"ENGMEC2",
