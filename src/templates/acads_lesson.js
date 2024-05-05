@@ -71,13 +71,13 @@ export default function Layout({ data, children }) {
             <span className=" md:text-6xl ">{data.mdx.frontmatter.title}</span>
             <br />
 
-            <div className="dropdown dropdown-bottom mr-2">
+            {/* <div className="dropdown dropdown-bottom mr-2">
               <div role="button" className="btn btn-circle btn-ghost btn-xs text-info ">
                 <span class="material-symbols-outlined">info</span>
               </div>
               <div className="card compact dropdown-content z-[1] shadow bg-base-200 rounded-box w-72">
                 <div className="card-body font-sans text-md font-normal">
-                  Checked by: {listFormat.format(data.mdx.frontmatter.checker ?? ['-'])}<br />
+                  
                   Word count: {data.mdx.fields.timeToRead.words}<br />
                   <a href={
                     // create GitHub repo link
@@ -86,16 +86,20 @@ export default function Layout({ data, children }) {
                     } target="_blank" rel="noreferrer">View source code</a>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <span className="text-sm md:text-lg font-mono inline-block align-middle ">
+            <span className="text-sm md:text-lg font-mono inline-block ">
               {listFormat.format(data.mdx.frontmatter.author)} · {data.mdx.frontmatter.datePublished}
               {data.mdx.frontmatter.dateUpdated != null ? <> (updated {data.mdx.frontmatter.dateUpdated}) </> : <> </>}
 
               · {data.mdx.fields.timeToRead.text}
+
+              <br />
+              <span className="text-xs md:text-sm">
+                Checked by: {listFormat.format(data.mdx.frontmatter.checker ?? ['-'])}<br />
+              </span>
+
             </span>
-
-
 
           </h1>
           <div className="divider"></div>

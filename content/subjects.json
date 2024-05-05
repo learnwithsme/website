@@ -141,7 +141,7 @@
             "id":"LBYMF2A",
             "name":"Manufacturing Processes and Practice 3 Laboratory",
             "tags":[
-                "workshop"
+                "with old resources"
             ]
         },
 
@@ -252,7 +252,10 @@
         },
         {
             "id":"MFKNMAT",
-            "name":"Kinematics"
+            "name":"Kinematics",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYMF3A",
@@ -294,7 +297,10 @@
         },
         {
             "id":"MFMCDS1",
-            "name":"Design of Machine Elements 1"
+            "name":"Design of Machine Elements 1",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYMF3C",
