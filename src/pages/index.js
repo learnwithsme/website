@@ -123,10 +123,7 @@ function ListView({
 }
 
 
-const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className="btn btn-neutral card-compact w-96 shadow-xl rounded-lg " style={{
-  height: "fit-content",
-  padding: 0
-}}>
+const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0 ${node.status!=null ? "ring-4  ring-yellow-400" :""}`}>
   <div className="card-body">
     <h2 className="card-title">
 

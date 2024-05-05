@@ -31,7 +31,10 @@
         },
         {
             "id":"LBYMF1A",
-            "name":"Engineering Measurement Laboratory"
+            "name":"Engineering Measurement Laboratory",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYME1A",
@@ -172,7 +175,10 @@
         },
         {
             "id":"MFADMAT",
-            "name":"Advanced Mathematics for MEM"
+            "name":"Advanced Mathematics for MEM",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYEC3B",
@@ -205,7 +211,10 @@
         },
         {
             "id":"MFAIMFG",
-            "name":"Computational Intelligence in Manufacturing Systems"
+            "name":"Computational Intelligence in Manufacturing Systems",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYMF3B",
