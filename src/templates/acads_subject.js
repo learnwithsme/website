@@ -41,7 +41,8 @@ export default function Layout({
    * @type {Object.<string, {
    *  title: string, 
    *  link: string,
-   *  status: string?
+   *  status: string?,
+   *  interactive: boolean?
    * }[]>} 
    */
   let categories = new Map();
@@ -50,7 +51,8 @@ export default function Layout({
     let toAdd = {
       title: node.frontmatter.title,
       link: node.fields.slug,
-      status: node.frontmatter.status
+      status: node.frontmatter.status,
+      interactive: node.frontmatter.interactive
     }
     if (category in categories) {
       categories[category].push(toAdd);
@@ -58,6 +60,8 @@ export default function Layout({
       categories[category] = [toAdd]
     }
   }
+
+  console.log(data)
 
   return (
     <MDXProvider components={shortcodes}>
@@ -158,7 +162,7 @@ export default function Layout({
 
 /**
  * 
- * @param {{lessons: {title: string, link: string, status: string?}[], title: string}} 
+ * @param {{lessons: {title: string, link: string, status: string?, interactive: boolean?}[], title: string}} 
  * @returns 
  */
 function CategoryCard({
@@ -171,14 +175,22 @@ function CategoryCard({
       <ul className="menu w-full  p-0">
         {lessons.map((value, index, array) =>
           <li>
-            <Link to={value.link}>
+            <Link to={value.link} className="flex flex-row">
               { //status
                 value.status != null ?
                   <div className="badge badge-neutral">{value.status.toUpperCase()}</div>
                   : <></>
               }
+              <span className="grow">{value.title}</span>
 
-              {value.title}
+              {
+                value.interactive === true ?
+                  <span className="tooltip tooltip-bottom" data-tip="This lesson is interactive.">
+                    <span className="material-symbols-outlined" >touch_app</span>
+                  </span>
+                  : <></>
+              }
+
             </Link>
           </li>
 
@@ -266,6 +278,7 @@ export const query = graphql`
           title
           category
           status
+          interactive
         }
         fields {
           slug

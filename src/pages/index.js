@@ -11,7 +11,9 @@ import _subjects from "/content/subjects.json"
 const subjects = structuredClone(_subjects); //deep copy
 
 
-
+/**
+ * Main page
+ */
 export default function IndexPage({
   data
 }) {
@@ -33,22 +35,16 @@ export default function IndexPage({
             placeholder="Search course"
             className="input input-bordered w-full max-w-xs" />
     */ }
-    enableNavbar={false}>
+        enableNavbar={false}>
 
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}>
           <div className="hero-overlay bg-gradient-to-b from-transparent to-base-100"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <svg xmlns="http://www.w3.org/2000/svg" className="block m-auto" width="200" height="200" viewBox="0 0 2048 2048"><defs>
-                <style>
-                  {`.cls-1 {fill: #d6d851;} .cls-1, .cls-2 {fill-rule: evenodd;} .cls-2 {fill:#5d8ab4;}`}
-                </style>
-              </defs>
-                <path class="cls-1" d="M752.442,1268.87s-194.065-148.93-225.583-192.15-57.943-66.6-37.6-116.967,85.677-87.771,238.116-121.141,308.372-62.188,363.442-87.722S1185,701,1185,701s-134.99-75.391-206.974-104.669-142.034-58.482-142.034-58.482,179.038,24.589,229.758,37.6S1254,619,1254,619s19-26.082,20.63-97.86S1253.74,400,1253.74,400s-300.479,25.623-405.216,41.773-325.7,72.269-430.279,116.963S133.093,688.619,130,867.853,426.6,1151.91,426.6,1151.91s126.931,50.15,162.921,62.66S752.442,1268.87,752.442,1268.87Z" />
-                <path class="cls-2" d="M815.1,1649s-101.953-158.71-66.839-250.64S852.7,1285.58,852.7,1285.58s333.548-114.85,355.088-125.32,157.05-67.86,183.8-121.14,21.29-78.3,0-137.849S1253.74,750.89,1253.74,750.89L1185,701s23.18-14.835,39.5-33.656S1254,619,1254,619s284.2,99.539,346.47,123.535,278.19,119.075,304.95,221.4,18.15,172.33-66.84,246.46-302.47,203.66-597.37,309.12S815.1,1649,815.1,1649Z" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="block m-auto" width="200" height="200" viewBox="0 0 2048 2048">
+                <path fill="#d6d851" fillRule="evenodd" d="M752.442,1268.87s-194.065-148.93-225.583-192.15-57.943-66.6-37.6-116.967,85.677-87.771,238.116-121.141,308.372-62.188,363.442-87.722S1185,701,1185,701s-134.99-75.391-206.974-104.669-142.034-58.482-142.034-58.482,179.038,24.589,229.758,37.6S1254,619,1254,619s19-26.082,20.63-97.86S1253.74,400,1253.74,400s-300.479,25.623-405.216,41.773-325.7,72.269-430.279,116.963S133.093,688.619,130,867.853,426.6,1151.91,426.6,1151.91s126.931,50.15,162.921,62.66S752.442,1268.87,752.442,1268.87Z" />
+                <path fill="#5d8ab4" fillRule="evenodd" d="M815.1,1649s-101.953-158.71-66.839-250.64S852.7,1285.58,852.7,1285.58s333.548-114.85,355.088-125.32,157.05-67.86,183.8-121.14,21.29-78.3,0-137.849S1253.74,750.89,1253.74,750.89L1185,701s23.18-14.835,39.5-33.656S1254,619,1254,619s284.2,99.539,346.47,123.535,278.19,119.075,304.95,221.4,18.15,172.33-66.84,246.46-302.47,203.66-597.37,309.12S815.1,1649,815.1,1649Z" />
               </svg>
-
-
 
               <h1 className="mb-5 text-5xl font-bold font-[Poppins] text-base-content">SME DLSU Academic Hub</h1>
               <p className="mb-5 text-base-content ">Learn more and explore a world full of knowledge and ideas!</p>
@@ -58,7 +54,7 @@ export default function IndexPage({
         </div>
 
         <Content className="p-4 xl:p-0">
-          <h2 className="text-3xl font-[Poppins] font-medium"  id="list">Explore our Academic Database</h2>
+          <h2 className="text-3xl font-[Poppins] font-medium" id="list">Explore our Academic Database</h2>
           The SME Academic Database is streamlined for ease and convenience and is aligned with the syllabus for different subjects. The database also contains a repository of review materials for your own benefit and supplementary lessons to aid your understanding in some concepts in class.
         </Content>
 
@@ -113,9 +109,11 @@ function ListView({
       <div className="flex flex-row flex-wrap my-7 gap-7 place-content-center ">
 
         {
-          subjects.nodes.filter((value, index, array) => subjectsThatExist.includes(value.id)).map((value, index, array) => <ListCard
-            node={value}
-          />)
+          subjects.nodes
+            .filter((value, index, array) => subjectsThatExist.includes(value.id))
+            .map((value, index, array) => <ListCard
+              node={value}
+            />)
         }
       </div>
     </Content>
@@ -123,13 +121,13 @@ function ListView({
 }
 
 
-const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0 ${node.status!=null ? "ring-4  ring-yellow-400" :""}`}>
+const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0 ${node.status != null ? "ring-4  ring-yellow-400" : ""}`}>
   <div className="card-body">
     <h2 className="card-title">
 
-      {node.status!=null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
-    
-      
+      {node.status != null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
+
+
       <span className="text-2xl font-semibold font-[Poppins]">{node.id}</span>
       <span className="text-sm font-[Poppins]">{node.name}</span></h2>
 
@@ -213,7 +211,7 @@ function FlowchartDialog({
       <div className="absolute bottom-3 left-3 z-10 form-control">
         <label className="label cursor-pointer">
           <span className="label-text text-xs">Change on hover</span>
-          <input type="checkbox" className="ml-3 toggle toggle-sm" checked={flowchartChangeOnHover} onClick={() => setFlowchartChangeOnHover(!flowchartChangeOnHover)} />
+          <input type="checkbox" className="ml-3 toggle toggle-sm" checked={flowchartChangeOnHover} onChange={() => setFlowchartChangeOnHover(!flowchartChangeOnHover)} />
         </label>
       </div>
 
@@ -233,8 +231,11 @@ function FlowchartDialog({
   </dialog>
 }
 
-
-const ForceGraph2D = loadable(() => import('/src/components/reactForceGraph'));
+//https://github.com/vasturiano/react-force-graph/issues/155
+// https://loadable-components.com/docs/api-loadable-component/
+const ForceGraph2D = loadable(() => import('/src/components/reactForceGraph'), {
+  resolveComponent: (components) => components.ForceGraph2D,
+});
 
 function FlowchartView({
   subjectsThatExist,
@@ -270,12 +271,11 @@ function FlowchartView({
     updateHighlight();
   };
   */
-
-
   return (
+
     <ForceGraph2D
       graphData={subjects}
-      backgroundColor="1c2f4f"
+      backgroundColor="#1c2f4f"
       // width={width}
       // height={height}
 
@@ -319,6 +319,7 @@ function FlowchartView({
       d3VelocityDecay={0.3}
       //enableNodeDrag={false}
       //dagMode="radialin"
+
       onNodeHover={(node) => {
         highlightNodes.clear();
         highlightLinks.clear();
@@ -361,10 +362,6 @@ function FlowchartView({
     const subjectEdgeSource = subjects.links.filter((value, index, array) => value.source.id === subjectId);
     /** The subject ids wherein this subject is a target */
     const subjectEdgeTarget = subjects.links.filter((value, index, array) => value.target.id === subjectId);
-
-
-    console.log(subjectEdgeSource);
-    console.log(subjectEdgeTarget);
 
     setFlowchartRequires(subjectEdgeTarget);
     setFlowchartUnlocks(subjectEdgeSource);

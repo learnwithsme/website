@@ -167,7 +167,10 @@
         },
         {
             "id":"MFMTENG",
-            "name":"Materials Engineering"
+            "name":"Materials Engineering",
+            "tags":[
+                "with old resources"
+            ]
         },
         {
             "id":"LBYMF2D",

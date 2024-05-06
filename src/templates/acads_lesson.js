@@ -36,8 +36,6 @@ const components = { InlineMath, BlockMath, State, Observe };
   */
 export default function Layout({ data, children }) {
 
-  console.log(data);
-
   const path = useLocation().pathname
 
   const id = path.split('/')[1];
@@ -67,37 +65,59 @@ export default function Layout({ data, children }) {
         <Content className='prose p-4 xl:p-0'>
           <h1 className="">
             <span className="text-xs md:text-sm font-mono uppercase ">{data.mdx.frontmatter.category}</span>
-            <br />
-            <span className=" md:text-6xl ">{data.mdx.frontmatter.title}</span>
+
             <br />
 
-            {/* <div className="dropdown dropdown-bottom mr-2">
-              <div role="button" className="btn btn-circle btn-ghost btn-xs text-info ">
-                <span class="material-symbols-outlined">info</span>
-              </div>
-              <div className="card compact dropdown-content z-[1] shadow bg-base-200 rounded-box w-72">
-                <div className="card-body font-sans text-md font-normal">
-                  
-                  Word count: {data.mdx.fields.timeToRead.words}<br />
-                  <a href={
-                    // create GitHub repo link
-                    // `data.mdx.fields.slug` has a trailing slash, we need to remove that
-                    `https://github.com/learnwithsme/website/tree/main/content${data.mdx.fields.slug.substring(0, data.mdx.fields.slug.length - 1)}.mdx`
-                    } target="_blank" rel="noreferrer">View source code</a>
+            <span className="md:text-6xl flex flex-row flex-nowrap">
+
+              {/* TITLE OF THE LESSON */}
+              <span className="grow">{data.mdx.frontmatter.title}</span>
+
+              {/* more options right menu */}
+              <span className="grow-0">
+
+                <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-sm">
+                    <span className="material-symbols-outlined">more_vert</span>
+                  </div>
+                  <ul tabIndex={0} className="dropdown-content z-[1] menu p-1 menu-sm shadow bg-base-200 rounded-box w-52">
+                    <li><a href={
+                      // create GitHub repo link
+                      // `data.mdx.fields.slug` has a trailing slash, we need to remove that
+                      `https://github.com/learnwithsme/website/tree/main/content${data.mdx.fields.slug.substring(0, data.mdx.fields.slug.length - 1)}.mdx`
+                    } target="_blank" rel="noreferrer">View source code ↗</a></li>
+                  </ul>
                 </div>
-              </div>
-            </div> */}
 
-            <span className="text-sm md:text-lg font-mono inline-block ">
-              {listFormat.format(data.mdx.frontmatter.author)} · {data.mdx.frontmatter.datePublished}
-              {data.mdx.frontmatter.dateUpdated != null ? <> (updated {data.mdx.frontmatter.dateUpdated}) </> : <> </>}
-
-              · {data.mdx.fields.timeToRead.text}
-
-              <br />
-              <span className="text-xs md:text-sm">
-                Checked by: {listFormat.format(data.mdx.frontmatter.checker ?? ['-'])}<br />
               </span>
+
+            </span>
+
+            <br />
+
+            <span className="text-sm md:text-lg font-mono">
+
+              <span className="flex flex-row flex-wrap">
+
+                <span className="after:content-['·'] after:px-2">
+                  {listFormat.format(data.mdx.frontmatter.author)}
+                </span>
+                <span className="after:content-['·'] after:px-2">
+                  {data.mdx.frontmatter.datePublished}
+                  {data.mdx.frontmatter.dateUpdated != null ? ` (updated ${data.mdx.frontmatter.dateUpdated})` : <></>}
+                </span>
+                <span className="tooltip tooltip-bottom" data-tip={`${data.mdx.fields.timeToRead.words} words`}>
+                  {data.mdx.fields.timeToRead.text}
+                </span>
+              </span>
+              
+              {
+                data.mdx.frontmatter.checker != null ?
+                  <span className="text-xs md:text-sm">
+                    Checked by: {listFormat.format(data.mdx.frontmatter.checker ?? ['-'])}
+                  </span>
+                  : <></>
+              }
 
             </span>
 
