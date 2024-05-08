@@ -22,6 +22,29 @@ export const objectIsEmpty = (object) => { for (let k in object) return false; r
 export const ConditionalWrapper = ({ condition, wrapper, children }) =>
     condition ? wrapper(children) : children;
 
+/**  https://stackoverflow.com/a/61511955
+ */
+export const waitForElm = (selector) => {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+        });
+
+        // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+};
+
 
 // =======================================
 // Copied from https://github.com/alexkrolick/mdx-observable/blob/master/src/index.js
