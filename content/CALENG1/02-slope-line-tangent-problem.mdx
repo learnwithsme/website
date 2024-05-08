@@ -1,0 +1,79 @@
+---
+title:  Slope of a line & the tangent line
+datePublished: 2024-05-08
+dateUpdated: 
+category: "02: The Derivative (4-step rule)"
+author: 
+  - Yivan Andrei Padsoyan
+checker: 
+status: new
+interactive: true
+---
+import "/src/styles/math.css";
+import { Mafs, Coordinates } from "mafs"
+
+The slope of a line passing through the points $ (x_1, y_1) $ and $ (x_2, y_2) $ is:
+
+$$ 
+m =\frac{y_2-y_1}{x_2-x_1}
+$$
+
+This can also be called the **average rate of change** from $ \left(x, f(x)\right) $ to $ (x+\Delta x, f(x+\Delta x)) $. 
+
+<div role="alert" className="alert">
+  <span class="material-symbols-outlined">info</span>
+  <span>$\Delta x$ is the "change" from $x_1$ to $x_2$. Some sources write it as $h$.</span>
+</div>
+
+
+Using this in the formula:
+
+$$
+m=\frac{y_2-y_1}{x_2-x_1}=\frac{f(x+\Delta x)-f(x)}{x+\Delta x \space \space - x}
+$$
+
+Simplifying:
+
+$$
+=\frac{f(x+\Delta x)-f(x)}{\Delta x}
+$$
+
+As $\Delta x$ gets smaller and smaller (closer to 0), the line passing through the two points starts becoming a line tangent to the original function. So, to get the **slope of the tangent line**:
+
+$$
+=\lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
+$$
+
+This formula is the **instantaneous rate of change**.
+
+### See all of this in action
+An interactive visualizer of this is shown below. Slide the $h$ slider to change the value of $ \Delta x$. You can also change the $ f(x) $, and the initial $x$ (labeled $a$ in this). As $h$ goes to 0, the tangent line starts to form.
+
+<iframe scrolling="no" title="Limit Definition of Derivative" src="https://www.geogebra.org/material/iframe/id/ft9tnfj2/width/1440/height/634/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="100%" height="450px"> </iframe>
+
+_"Limit Definition of Derivative" by Justin Almeida  (CC BY SA) [(Link to main page.)](https://www.geogebra.org/m/ft9tnfj2)_
+
+---
+
+## TL;DR
+
+The slope of the tangent line of a function is 
+
+$$
+\lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
+$$
+
+---
+
+## Examples
+
+
+Get the slope of the tangent line of $ \color{green}{f(}x\color{green})=\color{orange}{x^2+1} $ at $(\color{yellow}0,\color{fuchsia}1)$.
+$$
+\begin{align*}m&=\lim_{\Delta x \to 0}\frac{\color{green}{f(}x+\Delta x\color{green})-\color{fuchsia}{f(x)}}{\Delta x}\\&= \lim_{\Delta x \to 0}\frac{\color{orange}{(x+\Delta x)^2+1}-\color{fuchsia}1}{\Delta x} \\ &=\lim_{\Delta x \to 0}\frac{(\color{yellow}0+\Delta x)^2}{\Delta x} \\ &=\lim_{\Delta x \to 0}\Delta x \\ m&=0 \end{align*}
+$$
+
+Get the slope of the tangent line of $ \color{green}{f(}x\color{green})=\color{orange}{x^2-9} $ at $(\color{yellow}2,\color{fuchsia}{-5})$.
+$$
+\begin{align*}m&=\lim_{\Delta x \to 0}\frac{\color{green}{f(}x+\Delta x\color{green})-\color{fuchsia}{f(x)}}{\Delta x}\\&= \lim_{\Delta x \to 0}\frac{\color{orange}{(x+\Delta x)^2-9}-\color{fuchsia}{(-5)}}{\Delta x} \\&= \lim_{\Delta x \to 0}\frac{(\color{yellow}2+\Delta x)^2-4}{\Delta x} \\ &= \lim_{\Delta x \to 0}\frac{(\Delta x)^2+4\Delta x+4-4}{\Delta x} \\ &= \lim_{\Delta x \to 0}\frac{\Delta x (\Delta x+4)}{\Delta x} \\ &=\lim_{\Delta x \to 0}(\Delta x+4) \\ m&=4 \end{align*}
+$$

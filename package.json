@@ -31,7 +31,7 @@
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.1",
     "katex": "^0.13.24",
-    "mafs": "^0.18.3",
+    "mafs": "^0.18.5",
     "postcss": "^8.4.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

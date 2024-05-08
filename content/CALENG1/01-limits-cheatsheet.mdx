@@ -1,0 +1,223 @@
+---
+title:  Limits Cheatsheet
+datePublished: 2024-04-30
+dateUpdated: 
+category: "01: Functions, Continuity and Limits"
+author: 
+  - Yivan Andrei Padsoyan
+checker: 
+status: new
+interactive: true
+---
+import "/src/styles/math.css";
+
+<State initialState={{ mode: "regular" }}>
+
+<Observe>
+{({ setState, ...state }) => <>
+
+<div role="tablist" className="tabs tabs-boxed my-5 ">
+
+  <a role="tab" 
+  className={`tab ${state.mode=='regular'?'tab-active':''}`} 
+  onClick={()=>setState(s => ({ mode:"regular" }))}>Regular</a>
+
+  <a role="tab" className={`tab ${state.mode=='color'?'tab-active':''}`} onClick={()=>
+    setState(s => ({ mode:"color" }))
+    }>Color-coded</a>
+</div>
+
+<div role="alert" className="alert my-5">
+  <span className="material-symbols-outlined">info</span>
+  <span>In this document, {state.mode=='color'?<InlineMath math="\color{orange}{f}"/> : <InlineMath math="f" />} and {state.mode=='color'?<InlineMath math="\color{orange}{g}"/> : <InlineMath math="g" />} are functions of <InlineMath math="x" />. {state.mode=='color'?<InlineMath math="\color{fuchsia}{n}"/> : <InlineMath math="n" />} and {state.mode=='color'?<InlineMath math="\color{fuchsia}{c}"/> : <InlineMath math="c" />} are constants.</span>
+</div>
+
+</>
+}
+</Observe>
+
+---
+
+## Theorems
+
+<div className="grid grid-flow-row md:grid-rows-4 md:grid-flow-col gap-y-3 md:gap-0">
+
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\lim_{x\to a}n=n" />
+        <BlockMath math="\lim_{x\to a}(nf)=n\lim_{x\to a}f" />
+        <BlockMath math="\lim_{x\to a}(f\pm g)=\lim_{x\to a}f+\lim_{x\to a}g" />
+        <BlockMath math="\lim_{x\to a}\left(\frac{f}{g}\right)=\frac{\underset{x\to a}{\lim}f}{\underset{x\to a}{\lim}g}" />
+
+        <BlockMath math="\lim_{x\to a}(fg)=\lim_{x\to a} f\lim_{x\to a}g" />
+        <BlockMath math="\lim_{x\to a}(f^n)=\left(\lim_{x\to a}f\right)^n" />
+        <BlockMath math="\lim_{x\to a}\sqrt[n]{f}=\sqrt[n]{\lim_{x\to a}f}" />
+        <BlockMath math="\lim_{x\to a}(\log_n f)=\log_n\left(\lim_{x\to a}f\right)" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="
+        \lim_{x\to a}{\color{fuchsia}{n}}=\color{fuchsia}{n}" />
+        <BlockMath math="\lim_{x\to a}({\color{fuchsia}{n}}{\color{orange}{f}})={\color{fuchsia}{n}}\lim_{x\to a}{\color{orange}{f}}" />
+        <BlockMath math="\lim_{x\to a}({\color{orange}{f}}\pm {\color{orange}{g}})=\lim_{x\to a}{\color{orange}{f}}+\lim_{x\to a}{\color{orange}{g}}" />
+        <BlockMath math="\lim_{x\to a}\left(\frac{\color{orange}{f}}{\color{orange}{g}}\right)=\frac{\underset{x\to a}{\lim}{\color{orange}{f}}}{\underset{x\to a}{\lim}{\color{orange}{g}}}" />
+
+        <BlockMath math="\lim_{x\to a}({\color{orange}{fg}})=\lim_{x\to a} {\color{orange}{f}}\lim_{x\to a}{\color{orange}{g}}" />
+        <BlockMath math="\lim_{x\to a}({\color{orange}{f}}^{\color{fuchsia}{n}})=\left(\lim_{x\to a}{\color{orange}{f}}\right)^{\color{fuchsia}{n}}" />
+        <BlockMath math="\lim_{x\to a}\sqrt[{\color{fuchsia}{n}}]{\color{orange}{f}}=\sqrt[{\color{fuchsia}{n}}]{\lim_{x\to a}{\color{orange}{f}}}" />
+        <BlockMath math="\lim_{x\to a}(\log_{\color{fuchsia}{n}} {\color{orange}{f}})=\log_{\color{fuchsia}{n}}\left(\lim_{x\to a}{\color{orange}{f}}\right)" />
+      </>;
+
+    }
+  }}
+</Observe>
+
+</div>
+
+## One-sided limits
+Use algebraic techniques to solve these.
+
+<div className="grid grid-flow-row md:grid-flow-col gap-y-3 md:gap-0">
+
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular': return <>
+        <div>
+          <b>Right-hand limit</b>
+          <BlockMath math="\lim_{x\to a^+}{f}" />
+          as <InlineMath math="x"/> approaches from the right
+        </div>
+        <div>
+          <b>Left-hand limit</b>
+          <BlockMath math="\lim_{x\to a^-}{f}" />
+          as <InlineMath math="x"/> approaches from the left
+        </div>
+        <div>
+          <b>Existence of a limit</b>
+          <BlockMath math="\lim_{x\to a}{f}=L" />
+          if and only if <InlineMath math="\lim_{x\to a^+}{f}=L"/><br/>and <InlineMath math="\lim_{x\to a^-}{f}=L"/>
+        </div>
+
+      </>;
+
+      case 'color': return <>
+        <div>
+          <b>Right-hand limit</b>
+          <BlockMath math="\lim_{x\to a^+}{\color{orange}{f}}" />
+          as <InlineMath math="x"/> approaches from the right
+        </div>
+        <div>
+          <b>Left-hand limit</b>
+          <BlockMath math="\lim_{x\to a^-}{\color{orange}{f}}" />
+          as <InlineMath math="x"/> approaches from the left
+        </div>
+        <div>
+          <b>Existence of a limit</b>
+          <BlockMath math="\lim_{x\to a}{\color{orange}{f}}=L" />
+          if and only if <InlineMath math="\lim_{x\to a^+}{\color{orange}{f}}=L"/><br/>and <InlineMath math="\lim_{x\to a^-}{\color{orange}{f}}=L"/>
+        </div>
+
+      </>;
+
+
+    }
+  }}
+</Observe>
+
+</div>
+
+## Infinite limits
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\lim_{x\to 0^+}\frac{1}{x^n}=+\infty" />
+        <BlockMath math="\lim_{x\to 0^-}\frac{1}{x^n}=\begin{cases}+\infty&&\text{if $n$ is even}\\ -\infty&&\text{if $n$ is odd}\end{cases}
+        " />
+        
+        If <InlineMath math="\lim_{x\to a}f=\pm\infty" /> and <InlineMath math="\lim_{x\to a}g=\pm c" />:
+
+        <BlockMath math="\lim_{x\to a}(f\pm g)=\begin{cases}+\infty+c=+\infty \\ +\infty-c=+\infty \\ -\infty+c=-\infty \\ -\infty-c=-\infty\end{cases}" />
+        <BlockMath math="\lim_{x\to a}(fg)=\begin{cases}(+\infty)(+c)=+\infty \\ (+\infty)(-c)=-\infty \\ (-\infty)(+c)=-\infty \\ (-\infty)(-c)=+\infty\end{cases}" />
+
+        If <InlineMath math="\lim_{x\to a}f=0" /> and <InlineMath math="\lim_{x\to a}g=\pm c" />:
+
+        <BlockMath math="\lim_{x\to a}\frac{g}{f}=\begin{cases}\frac{+c}{0^+}=+\infty \\ \frac{+c}{0^-}=-\infty \\ \frac{-c}{0^+}=-\infty \\ \frac{-c}{0^-}=+\infty\end{cases}" />
+
+      </>;
+
+      case 'color': return <>
+        
+        <BlockMath math="\lim_{x\to 0^+}\frac{1}{x^{\color{fuchsia}{n}}}=+\infty" />
+        <BlockMath math="\lim_{x\to 0^-}\frac{1}{x^{\color{fuchsia}{n}}}=\begin{cases}+\infty&&\text{if ${\color{fuchsia}{n}}$ is even}\\ -\infty&&\text{if ${\color{fuchsia}{n}}$ is odd}\end{cases}
+        " />
+        
+        If <InlineMath math="\lim_{x\to a}{\color{orange}{f}}=\pm\infty" /> and <InlineMath math="\lim_{x\to a}{\color{orange}{g}}=\pm {\color{fuchsia}{c}}" />:
+
+        <BlockMath math="\lim_{x\to a}({\color{orange}{f}}\pm {\color{orange}{g}})=\begin{cases}+\infty+{\color{fuchsia}{c}}=+\infty \\ +\infty-{\color{fuchsia}{c}}=+\infty \\ -\infty+{\color{fuchsia}{c}}=-\infty \\ -\infty-{\color{fuchsia}{c}}=-\infty\end{cases}" />
+        <BlockMath math="\lim_{x\to a}({\color{orange}{fg}})=\begin{cases}(+\infty)(+{\color{fuchsia}{c}})=+\infty \\ (+\infty)(-{\color{fuchsia}{c}})=-\infty \\ (-\infty)(+{\color{fuchsia}{c}})=-\infty \\ (-\infty)(-{\color{fuchsia}{c}})=+\infty\end{cases}" />
+
+        If <InlineMath math="\lim_{x\to a}{\color{orange}{f}}=0" /> and <InlineMath math="\lim_{x\to a}{\color{orange}{g}}=\pm {\color{fuchsia}{c}}" />:
+
+        <BlockMath math="\lim_{x\to a}\frac{\color{orange}{g}}{\color{orange}{f}}=\begin{cases}\frac{+{\color{fuchsia}{c}}}{0^+}=+\infty \\ \frac{+{\color{fuchsia}{c}}}{0^-}=-\infty \\ \frac{-{\color{fuchsia}{c}}}{0^+}=-\infty \\ \frac{-{\color{fuchsia}{c}}}{0^-}=+\infty\end{cases}" />
+      </>
+
+    }
+  }}
+</Observe>
+
+
+## Limits at infinity
+
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+
+      case 'regular': return <>
+        <BlockMath math="\lim_{x\to +\infty}\frac{1}{x^n}=0" />
+        <BlockMath math="\lim_{x\to -\infty}\frac{1}{x^n}=0" />
+
+      </>;
+      case 'color': return <>
+        <BlockMath math="\lim_{x\to +\infty}\frac{1}{x^{\color{fuchsia}{n}}}=0" />
+        <BlockMath math="\lim_{x\to -\infty}\frac{1}{x^{\color{fuchsia}{n}}}=0" />
+
+      </>;
+
+    }
+  }}
+</Observe>
+
+## Squeeze theorem / Trigonometry
+
+
+<div className="grid grid-flow-row md:grid-rows-2 md:grid-flow-col gap-y-3 md:gap-y-3">
+
+$$
+\lim_{x\to 0}\frac{\sin x}{x}=1
+$$
+$$
+\lim_{x\to 0}\frac{1-\cos x}{x}=0
+$$
+
+$$
+\lim_{x\to \infty}\frac{\sin x}{x}=0
+$$
+$$
+\lim_{x\to \infty}\frac{\cos x}{x}=0
+$$
+</div>
+
+---
+
+
+</State>
