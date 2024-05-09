@@ -2,6 +2,10 @@ import * as React from "react"
 import logoWords from "/src/images/logo-words.png"
 
 import { Link } from 'gatsby'
+import { LogoSmall } from "./logo";
+
+import _ids from "/content/ids.json"
+const ids = structuredClone(_ids); //deep copy
 
 function Navbar({
     children, leading, trailing, enableDivider = true, className, enableNavbar = true,
@@ -9,19 +13,19 @@ function Navbar({
 
     // ID validator
     const [submittedId, setSubmittedId] = React.useState(
-        typeof window !== 'undefined' 
-        ? window.sessionStorage.getItem("submittedId") 
-        : null
+        typeof window !== 'undefined'
+            ? window.sessionStorage.getItem("id")
+            : null
     );
     React.useEffect(() => {
-        window.sessionStorage.setItem('submittedId', submittedId);
+        window.sessionStorage.setItem('id', submittedId);
     }, [submittedId]);
 
 
     // if ID not set, 
     if (submittedId == null
-        || isNaN(submittedId)
-        || parseInt(submittedId) >= 12499999) {
+        || typeof submittedId !== 'string'
+        || !ids.includes(submittedId)) {
 
         return <FormId
             setSubmittedId={setSubmittedId}
@@ -51,15 +55,23 @@ function Navbar({
                         </div>
                         <div className="flex-1">
                             {/* show this only on big screens */}
-                            <Link className="btn btn-ghost text-xl hidden md:flex font-[Poppins]" to="/">SME Academic Hub</Link>
+                            <Link className="btn btn-ghost text-xl hidden md:flex font-[Poppins]" to="/">
+                                <LogoSmall
+                                    width="30" height="30" />
+                                Learn With SME
+                            </Link>
 
 
                             {enableDivider ? <div className="divider divider-horizontal mx-0 hidden  md:flex" /> : <></>}
 
                             {leading}
 
-                            {/* LEFT BACK BUTTON:  show this only on small screens (phones)*/}
-                            <Link className="btn btn-ghost grow md:hidden text-xl sm:justify-self-start  font-[Poppins]" to="/">SME Academic Hub</Link>
+                            {/* MOBILE FULL TITLE:  show this only on small screens (phones)*/}
+                            <Link className="btn btn-ghost grow md:hidden text-xl sm:justify-self-start  font-[Poppins]" to="/">
+                                <LogoSmall
+                                    width="30" height="30" />
+                                Learn With SME
+                            </Link>
                         </div>
                         <div className="flex-none">
                             {trailing}
@@ -161,70 +173,6 @@ function Footer() {
     </footer>;
 }
 
-function FormId2({
-    setSubmittedId
-}) {
-
-    return <div>
-
-        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}>
-            <div className="hero-overlay  bg-gradient-to-b from-transparent to-base-100"></div>
-
-            <div className="hero-content flex-col">
-
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-
-                    <div className="card-body">
-
-                        <h3 className="font-bold text-lg">Input your ID number to access SME DLSU Academic Hub!</h3>
-                        <p className="">
-
-                        </p>
-                        <p className="text-xs py-2">
-                            Privacy policy
-                        </p>
-
-
-                        <iframe 
-                        id="formIdIframe" 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLScEHz7mib-hTKiJv5SGyxoIzDq1Zm6YFNMeUUsqGfYr8FYtIQ/viewform?embedded=true" 
-                        width="640" 
-                        height="403" 
-                        frameborder="0" 
-                        marginheight="0" 
-                        marginwidth="0" 
-                        onLoad={() => {
-
-                            if (document.activeElement.id === "formIdIframe"){
-                                console.log("active element load")
-
-                            }
-
-                            console.log("load")
-                        }} 
-                        
-                        
-                        
-                        >Loading…</iframe>
-
-                        <div className="flex flex-row justify-center pt-6 text-xs opacity-55">
-                            Powered by&nbsp;
-                            <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_light_clr_74x24px.svg" alt="Google" height="16px" width="49px" className=" text-white" />&nbsp;
-                            <span className="">Forms</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <Footer />
-
-    </div>;
-}
-
-
 function FormId({
     setSubmittedId
 }) {
@@ -240,13 +188,12 @@ function FormId({
 
                     <div className="card-body">
 
-                        <h3 className="font-bold text-lg">Input your ID number to access SME DLSU Academic Hub!</h3>
-                        <p className="">
-
-                        </p>
+                        <h3 className="font-bold text-lg">Enter your username to access SME DLSU Academic Hub!</h3>
+                        
+                        {/*
                         <p className="text-xs py-2">
-                            Privacy policy 
-                        </p>
+                            Privacy policy
+                        </p> */}
 
 
                         <form id="formId" action="https://docs.google.com/forms/d/e/1FAIpQLScEHz7mib-hTKiJv5SGyxoIzDq1Zm6YFNMeUUsqGfYr8FYtIQ/formResponse" method="post" target="_blank" onSubmit={(e) => {
@@ -254,26 +201,23 @@ function FormId({
 
                             let idInput = document.getElementById("formIdInput");
 
-                            if (idInput.value == ""
-                                || isNaN(idInput.value)
-                                || parseInt(idInput.value) >= 12499999
-                                || parseInt(idInput.value) <= 11000000) {
+                            if (!ids.includes(window.btoa(idInput.value))) {
                                 return false;
-                            } else {
-
-                                document.getElementById("formId").submit();
-
-                                setSubmittedId(parseInt(idInput.value));
-
-                                return true;
                             }
+
+                            document.getElementById("formId").submit();
+
+                            setSubmittedId(window.btoa(idInput.value));
+
+                            return true;
+
 
                         }} className="flex flex-col gap-y-2">
                             {/*                             
                             <input id="formIdEmail" type="email" placeholder="Input your email address" className="input input-bordered grow" name="emailAddress" /> 
                             */}
 
-                            <input id="formIdInput" type="text" placeholder="Input your ID number" className="input input-bordered grow" name="entry.1269739242" />
+                            <input id="formIdInput" type="text" placeholder="Input your username" className="input input-bordered grow" name="entry.1269739242" />
 
                             <input type="submit" className="btn grow-0" value="Submit" />
                         </form>

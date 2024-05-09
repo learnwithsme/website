@@ -55,9 +55,10 @@ export default function Layout({ data, children }) {
         leading={
           <>
             <Link to="../">
-              <button className="btn btn-ghost"><span className="material-symbols-outlined">
-                arrow_back
-              </span><span className="hidden md:inline">Back to {id}</span></button>
+              <button className="btn btn-ghost ">
+                <span className="material-symbols-outlined">arrow_back</span>
+                <span className="hidden md:inline">Back to {id}</span>
+              </button>
             </Link>
           </>}
       >
@@ -110,7 +111,7 @@ export default function Layout({ data, children }) {
                   {data.mdx.fields.timeToRead.text}
                 </span>
               </span>
-              
+
               {
                 data.mdx.frontmatter.checker != null ?
                   <span className="text-xs md:text-sm">

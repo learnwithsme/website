@@ -27,6 +27,8 @@ export default function Layout({
   */
   const subjectsThatExist = data.allDirectory.nodes.map((value) => value.name);
 
+  console.log(data.allDirectory.nodes)
+
   /** The node of this subject */
   const subjectNode = subjects.nodes.find((value, index, array) => value.id === subjectId);
   /** The subject ids wherein this subject is a source */
@@ -70,9 +72,10 @@ export default function Layout({
       <Navbar
         leading={
           <Link to="../#list">
-            <button className="btn btn-ghost"><span className="material-symbols-outlined">
+            <button className="btn btn-ghost" ><span className="material-symbols-outlined">
               arrow_back
-            </span><span className="hidden md:inline">Back to courses</span></button>
+            </span><span className="hidden md:inline">Back to courses</span>
+            </button>
           </Link>}
       >
         <Content className='prose  p-4 xl:p-0'>
@@ -204,7 +207,7 @@ export function SubjectChip({
   id,
   type,
   title,
-  hasLink = true
+  hasLink,
 }) {
   let badgeState = "";
   switch (type) {
@@ -287,7 +290,7 @@ export const query = graphql`
     }
     # get the folder names in /content/acads
     allDirectory(
-      filter: {dir: {regex: "/\\\/content\\\/acads/"}}
+      filter: {dir: {regex: "/\\\/content/"}}
     ) {
       nodes {
         name

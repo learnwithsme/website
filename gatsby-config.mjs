@@ -77,7 +77,9 @@ export default {
     {
       resolve: `gatsby-plugin-minify`,
       options: {
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
+        minifyJS: true,
+        minifyCSS: true,
       }
     },
     /*
