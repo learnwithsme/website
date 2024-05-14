@@ -1,0 +1,118 @@
+---
+title:  Derivatives Formula Cheatsheet
+datePublished: 2024-05-14
+dateUpdated: 
+category: "03-04: Differentiation Formulas"
+author: 
+  - Yivan Andrei Padsoyan
+checker: 
+status: new
+---
+
+<State initialState={{ mode: "regular" }}>
+
+<Observe>
+{({ setState, ...state }) => <>
+ {
+// <div role="tablist" className="tabs tabs-boxed my-5 ">
+
+//   <a role="tab" 
+//   className={`tab ${state.mode=='regular'?'tab-active':''}`} 
+//   onClick={()=>setState(s => ({ mode:"regular" }))}>Regular</a>
+
+//   <a role="tab" className={`tab ${state.mode=='color'?'tab-active':''}`} onClick={()=>
+//     setState(s => ({ mode:"color" }))
+//     }>Color-coded</a>
+// </div>
+}
+
+<div role="alert" className="alert my-5">
+  <span className="material-symbols-outlined">info</span>
+  <span>In this document, {state.mode=='color'?<InlineMath math="\color{orange}{f}"/> : <InlineMath math="f" />} and {state.mode=='color'?<InlineMath math="\color{orange}{g}"/> : <InlineMath math="g" />} are functions of <InlineMath math="x" />. {state.mode=='color'?<InlineMath math="\color{fuchsia}{n}"/> : <InlineMath math="n" />} and {state.mode=='color'?<InlineMath math="\color{fuchsia}{c}"/> : <InlineMath math="c" />} are constants.</span>
+</div>
+
+</>
+}
+</Observe>
+
+
+---
+
+## Definition
+
+$$
+f'(x)=\frac{dy}{dx}=y’=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}
+$$
+
+## Rules
+
+$$
+\begin{align*}
+\text{Constant rule} && \text{Sum \& difference rule} \\
+\frac{d}{dx}(n)=0 && \frac{d}{dx}(f \pm g)=f' \pm g'\\
+\text{Power rule} && \text{Product rule}\\
+\frac{d}{dx}(x^n)=nx^{n-1} && \frac{d}{dx}(fg)=f'g+fg' \\
+\text{Constant multiple rule} && \text{Quotient rule} \\
+\frac{d}{dx}(nf)=nf' && \frac{d}{dx}\left( \frac{f}{g} \right)=\frac{f'g-fg'}{g^2} \\
+\text{Chain rule} && \text{General power rule} \\
+\frac{d}{dx}(f(g))=f'(g)g' && \frac{d}{dx}(f^n)=nf^{n-1}f'
+\end{align*}
+$$
+
+<br/>
+<br/>
+<div className="divider">↓ QUIZ 2 TOPICS STARTS BELOW ↓</div>
+
+## Trigonometry
+
+$$
+\begin{align*}
+\frac{d}{dx} (\sin f)&=\cos(f)f' && \frac{d}{dx}(\csc f)=-\csc(f)\cot(f)f' \\
+\frac{d}{dx}(\cos f)&=-\sin(f)f' && \frac{d}{dx}(\sec f)=\sec(f)\tan(f)f' \\
+\frac{d}{dx}(\tan f)&=\sec^2(f)f' && \frac{d}{dx}(\cot f)=-\csc^2(f)f'
+\end{align*}
+$$
+
+## Inverse trigonometry
+
+$$
+\begin{align*}
+\frac{d}{dx}(\sin^{-1} f)&=\frac{f'}{\sqrt{1-f^2}} && \frac{d}{dx}(\csc^{-1} f)=\frac{-f'}{|f|\sqrt{f^2-1}} \\
+\frac{d}{dx}(\cos^{-1} f)&=\frac{-f'}{\sqrt{1-f^2}} && \frac{d}{dx}(\sec^{-1} f)=\frac{f'}{|f|\sqrt{f^2-1}} \\
+\frac{d}{dx}(\tan^{-1} f)&=\frac{f'}{1+f^2} && \frac{d}{dx}(\cot^{-1} f)=\frac{-f'}{1+f^2}
+\end{align*}
+$$
+
+
+## Logarithmic
+$$
+\begin{align*}
+\frac{d}{dx}(\log_nf)&=\frac{\log_n(e)f'}{f}=\frac{f'}{\ln(n)f} \\
+\frac{d}{dx}(\ln f)&=\frac{f'}{f}
+\end{align*}
+$$
+
+## Inverse function *(for this, $g$ is inverse of $f$)*
+$$
+g'=\frac{1}{f'(g)}
+$$
+
+## Exponential function
+$$
+\begin{align*}
+\frac{d}{dx}(n^f)&=n^f \ln(n)f' \\
+\frac{d}{dx}(e^f)&=e^ff' \\
+\frac{d}{dx}(f^g)&=f^g \left( \frac{gf'}{f}+g' \ln(f) \right)
+\end{align*}
+$$
+
+## Hyperbolic function
+$$
+\begin{align*}
+\frac{d}{dx}(\sinh f)&=\cosh(f)f' \\
+\frac{d}{dx}(\cosh f)&=\sinh(f)f'
+\end{align*}
+$$
+
+
+</State>

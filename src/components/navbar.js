@@ -132,7 +132,7 @@ export default Navbar
  * The site footer
  */
 function Footer() {
-    return <footer className="bg-gradient-to-b from-base-100 via-slate-700 via-30% to-slate-700 mt-10 pt-[12rem] px-5 md:px-10 pb-10 xl:p-20 text-slate-50 flex flex-wrap flex-row">
+    return <footer className="bg-gradient-to-b from-base-100 via-slate-700 via-30% to-slate-700 mt-10 pt-[12rem] px-5 md:px-10 pb-10 xl:p-20 text-slate-50 flex flex-wrap flex-row items-center">
         <div className="grow">
             <div className="flex flex-row py-2 items-center">
                 <img src={logoWords} className="max-w-48 mr-2" alt="SME logo" />
@@ -188,7 +188,7 @@ function FormId({
 
                     <div className="card-body">
 
-                        <h3 className="font-bold text-lg">Enter your username to access SME DLSU Academic Hub!</h3>
+                        <h3 className="font-bold text-lg">Enter your username to access Learn With SME!</h3>
                         
                         {/*
                         <p className="text-xs py-2">

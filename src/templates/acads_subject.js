@@ -246,7 +246,7 @@ export const Head = ({
   const subjectNode = subjects.nodes.find((value, index, array) => value.id === subjectId);
 
   return <>
-    <title>{subjectId} - SME Academic Hub</title>
+    <title>{subjectId} - Learn With SME</title>
 
 
     <meta name='og:title' content={`${subjectId} - ${subjectNode.name}`} />

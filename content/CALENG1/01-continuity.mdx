@@ -1,0 +1,37 @@
+---
+title:  Continuity
+datePublished: 2024-05-10
+dateUpdated: 
+category: "01: Functions, Continuity and Limits"
+author: 
+  - Yivan Andrei Padsoyan
+checker: 
+status: new
+---
+
+| Continuous | if
+| --- | --- |   
+| on open interval $(a,b)$ | if continuous at each point of the interval
+| everywhere | if continuous on $(-\infty, +\infty)$
+| at a point $a$ | if $f(a)$ is defined,<br/>$\lim_{x\to a} f(x)$ exists, and<br/>$\lim_{x\to a}f(x)=f(a)$
+| all polynomial functions | continuous
+| rational expressions | equate denominator to $0$ then solve for $x$ 
+
+## Types of discontinuity
+
+| Type | Image | Description
+| --- | --- | ---
+| Missing point / Removable | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Discontinuity_removable.eps.png/320px-Discontinuity_removable.eps.png" className="m-0" /> | $f(a)$ undefined<br/>$\lim_{x\to a}f(x) \neq f(a)$ |
+| Infinite | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Asintota2.svg/185px-Asintota2.svg.png" className="m-0" /> | $f(a)$ undefined<br/>$\lim_{x\to a^+}f(x) = \pm \infty$ and/or $\lim_{x\to a^-}f(x) = \pm \infty$ |
+| Finite / Jump | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Discontinuity_jump.eps.png/258px-Discontinuity_jump.eps.png" className="m-0" /> | $f(a)$ defined<br/>$\lim_{x\to a^+}f(x) \neq \lim_{x\to a^-}f(x) $ |
+
+## How to classify
+
+1. Identify value of $x$
+   * Equating denominator to $0$
+   * Identifying break in unit-step function
+   * Remove values not included in the array of domains
+2. Evaluate $\lim$ of each $x$ value
+   * Check infinite limit, left-hand & right-hand limit
+   * Evaluate indeterminate form
+3. Classify

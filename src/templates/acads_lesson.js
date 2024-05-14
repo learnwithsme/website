@@ -24,7 +24,6 @@ const components = { InlineMath, BlockMath, State, Observe };
   *         checker: string[],
   *       }, 
   *       parent: {relativePath: string}, 
-  *       tableOfContents, 
   *       fields: {
   *         slug: string
   *         timeToRead: {text: string}
@@ -143,7 +142,7 @@ export const Head = ({
   const id = path.split('/')[1];
 
   return <>
-    <title> {data.mdx.frontmatter.title} - {id} - SME Academic Hub</title>
+    <title> {data.mdx.frontmatter.title} - {id} - Learn With SME</title>
 
     <meta property='og:title' content={data.mdx.frontmatter.title} />
     <meta property='og:type' content="article" />
@@ -169,7 +168,6 @@ export const query = graphql`
         author
         checker
       }
-      tableOfContents
       fields {
         slug
         timeToRead {
