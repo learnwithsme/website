@@ -7,28 +7,29 @@ author:
   - Yivan Andrei Padsoyan
 checker: 
 status: new
+interactive: true
 ---
 
 <State initialState={{ mode: "regular" }}>
 
 <Observe>
 {({ setState, ...state }) => <>
- {
-// <div role="tablist" className="tabs tabs-boxed my-5 ">
+ 
+<div role="tablist" className="tabs tabs-boxed my-5 ">
 
-//   <a role="tab" 
-//   className={`tab ${state.mode=='regular'?'tab-active':''}`} 
-//   onClick={()=>setState(s => ({ mode:"regular" }))}>Regular</a>
+  <a role="tab" 
+  className={`tab ${state.mode=='regular'?'tab-active':''}`} 
+  onClick={()=>setState(s => ({ mode:"regular" }))}>Regular</a>
 
-//   <a role="tab" className={`tab ${state.mode=='color'?'tab-active':''}`} onClick={()=>
-//     setState(s => ({ mode:"color" }))
-//     }>Color-coded</a>
-// </div>
-}
+  <a role="tab" className={`tab ${state.mode=='color'?'tab-active':''}`} onClick={()=>
+    setState(s => ({ mode:"color" }))
+    }>Color-coded</a>
+</div>
+
 
 <div role="alert" className="alert my-5">
   <span className="material-symbols-outlined">info</span>
-  <span>In this document, {state.mode=='color'?<InlineMath math="\color{orange}{f}"/> : <InlineMath math="f" />} and {state.mode=='color'?<InlineMath math="\color{orange}{g}"/> : <InlineMath math="g" />} are functions of <InlineMath math="x" />. {state.mode=='color'?<InlineMath math="\color{fuchsia}{n}"/> : <InlineMath math="n" />} and {state.mode=='color'?<InlineMath math="\color{fuchsia}{c}"/> : <InlineMath math="c" />} are constants.</span>
+  <span>In this document, {state.mode=='color'?<InlineMath math="\color{orange}{f}"/> : <InlineMath math="f" />} and {state.mode=='color'?<InlineMath math="\color{lime}{g}"/> : <InlineMath math="g" />} are functions of <InlineMath math="x" />. {state.mode=='color'?<InlineMath math="\color{fuchsia}{n}"/> : <InlineMath math="n" />} is a constant.</span>
 </div>
 
 </>
@@ -40,79 +41,246 @@ status: new
 
 ## Definition
 
-$$
-f'(x)=\frac{dy}{dx}=y’=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}
-$$
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+
+      case 'regular': return <>
+        <BlockMath math="f'(x)=\frac{dy}{dx}=y’=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=D_x(y)" />
+
+      </>;
+      case 'color': return <>
+        <BlockMath math="{\color{orange}{f'(}}x{\color{orange}{)}}=\frac{dy}{dx}=y’=\lim_{h\to 0}\frac{{\color{orange}{f(}}x+h{\color{orange}{)}}-{\color{orange}{f(}}x{\color{orange}{)}}}{h}=D_x(y)" />
+
+      </>;
+
+    }
+  }}
+</Observe>
+
 
 ## Rules
 
-$$
-\begin{align*}
-\text{Constant rule} && \text{Sum \& difference rule} \\
-\frac{d}{dx}(n)=0 && \frac{d}{dx}(f \pm g)=f' \pm g'\\
-\text{Power rule} && \text{Product rule}\\
-\frac{d}{dx}(x^n)=nx^{n-1} && \frac{d}{dx}(fg)=f'g+fg' \\
-\text{Constant multiple rule} && \text{Quotient rule} \\
-\frac{d}{dx}(nf)=nf' && \frac{d}{dx}\left( \frac{f}{g} \right)=\frac{f'g-fg'}{g^2} \\
-\text{Chain rule} && \text{General power rule} \\
-\frac{d}{dx}(f(g))=f'(g)g' && \frac{d}{dx}(f^n)=nf^{n-1}f'
-\end{align*}
-$$
+<div className="grid grid-flow-row md:grid-rows-4 md:grid-flow-col gap-y-3 md:gap-0 text-center">
 
-<br/>
-<br/>
-<div className="divider">↓ QUIZ 2 TOPICS STARTS BELOW ↓</div>
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+
+      case 'regular': return <>
+        <div>Constant rule<br/>
+          <BlockMath math="\frac{d}{dx}(n)=0" />
+        </div>
+        <div>Power rule<br/>
+          <BlockMath math="\frac{d}{dx}(x^n)=nx^{n-1}" />
+        </div>
+        <div>Constant multiple rule<br/>
+          <BlockMath math="\frac{d}{dx}(nf)=nf'" />
+        </div>
+        <div>Chain rule<br/>
+          <BlockMath math="\frac{d}{dx}(f(g))=f'(g)g'" />
+        </div>
+
+        <div>Sum & difference rule<br/>
+          <BlockMath math="\frac{d}{dx}(f \pm g)=f' \pm g'" />
+        </div>
+        <div>Product rule<br/>
+          <BlockMath math="\frac{d}{dx}(fg)=f'g+fg'" />
+        </div>
+        <div>Quotient rule<br/>
+          <BlockMath math="\frac{d}{dx}\left( \frac{f}{g} \right)=\frac{f'g-fg'}{g^2}" />
+        </div>
+        <div>General power rule<br/>
+          <BlockMath math="\frac{d}{dx}\left(f^n\right)=nf^{n-1}f'" />
+        </div>
+        
+
+      </>;
+      case 'color': return <>
+        <div>Constant rule<br/>
+          <BlockMath math="\frac{d}{dx}({\color{fuchsia}{n}})=0" />
+        </div>
+        <div>Power rule<br/>
+          <BlockMath math="\frac{d}{dx}(x^{\color{fuchsia}{n}})={\color{fuchsia}{n}}x^{{\color{fuchsia}{n}}-1}" />
+        </div>
+        <div>Constant multiple rule<br/>
+          <BlockMath math="\frac{d}{dx}({\color{fuchsia}{n}}{\color{orange}{f}})={\color{fuchsia}{n}}{\color{orange}{f'}}" />
+        </div>
+        <div>Chain rule<br/>
+          <BlockMath math="\frac{d}{dx}\left({\color{orange}{f(}}{\color{lime}{g}}{\color{orange}{)}}\right)={\color{orange}{f'(}}{\color{lime}{g}}{\color{orange}{)}}{\color{lime}{g'}}" />
+        </div>
+
+        <div>Sum & difference rule<br/>
+          <BlockMath math="\frac{d}{dx}({\color{orange}{f}} \pm {\color{lime}{g}})={\color{orange}{f'}} \pm {\color{lime}{g'}}" />
+        </div>
+        <div>Product rule<br/>
+          <BlockMath math="\frac{d}{dx}({\color{orange}{f}}{\color{lime}{g}})={\color{orange}{f'}}{\color{lime}{g}}+{\color{orange}{f}}{\color{lime}{g'}}" />
+        </div>
+        <div>Quotient rule<br/>
+          <BlockMath math="\frac{d}{dx}\left( \frac{\color{orange}{f}}{\color{lime}{g}} \right)=\frac{{\color{orange}{f'}}{\color{lime}{g}}-{\color{orange}{f}}{\color{lime}{g'}}}{{\color{lime}{g}}^2}" />
+        </div>
+        <div>General power rule<br/>
+          <BlockMath math="\frac{d}{dx}\left({\color{orange}{f}}^{\color{fuchsia}{n}}\right)={\color{fuchsia}{n}}{\color{orange}{f}}^{{\color{fuchsia}{n}}-1}{\color{orange}{f'}}" />
+        </div>
+
+      </>;
+
+    }
+  }}
+</Observe>
+
+</div>
+
 
 ## Trigonometry
 
-$$
-\begin{align*}
-\frac{d}{dx} (\sin f)&=\cos(f)f' && \frac{d}{dx}(\csc f)=-\csc(f)\cot(f)f' \\
-\frac{d}{dx}(\cos f)&=-\sin(f)f' && \frac{d}{dx}(\sec f)=\sec(f)\tan(f)f' \\
-\frac{d}{dx}(\tan f)&=\sec^2(f)f' && \frac{d}{dx}(\cot f)=-\csc^2(f)f'
-\end{align*}
-$$
+
+<div className="grid grid-flow-row md:grid-rows-3 md:grid-flow-col gap-y-3 md:gap-0">
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\frac{d}{dx} (\sin f)=\cos(f)f'" />
+        <BlockMath math="\frac{d}{dx}(\cos f)=-\sin(f)f'" />
+        <BlockMath math="\frac{d}{dx}(\tan f)=\sec^2(f)f'" />
+
+        <BlockMath math="\frac{d}{dx}(\csc f)=-\csc(f)\cot(f)f'" />
+        <BlockMath math="\frac{d}{dx}(\sec f)=\sec(f)\tan(f)f'" />
+        <BlockMath math="\frac{d}{dx}(\cot f)=-\csc^2(f)f'" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="\frac{d}{dx}(\sin {\color{orange}{f}})=\cos({\color{orange}{f}}){\color{orange}{f'}}" />
+        <BlockMath math="\frac{d}{dx}(\cos {\color{orange}{f}})=-\sin({\color{orange}{f}}){\color{orange}{f'}}" />
+        <BlockMath math="\frac{d}{dx}(\tan {\color{orange}{f}})=\sec^2({\color{orange}{f}}){\color{orange}{f'}}" />
+
+        <BlockMath math="\frac{d}{dx}(\csc {\color{orange}{f}})=-\csc({\color{orange}{f}})\cot({\color{orange}{f}}){\color{orange}{f'}}" />
+        <BlockMath math="\frac{d}{dx}(\sec {\color{orange}{f}})=\sec({\color{orange}{f}})\tan({\color{orange}{f}}){\color{orange}{f'}}" />
+        <BlockMath math="\frac{d}{dx}(\cot {\color{orange}{f}})=-\csc^2({\color{orange}{f}}){\color{orange}{f'}}" />
+      </>;
+
+    }
+  }}
+</Observe>
+
+</div>
+
 
 ## Inverse trigonometry
 
-$$
-\begin{align*}
-\frac{d}{dx}(\sin^{-1} f)&=\frac{f'}{\sqrt{1-f^2}} && \frac{d}{dx}(\csc^{-1} f)=\frac{-f'}{|f|\sqrt{f^2-1}} \\
-\frac{d}{dx}(\cos^{-1} f)&=\frac{-f'}{\sqrt{1-f^2}} && \frac{d}{dx}(\sec^{-1} f)=\frac{f'}{|f|\sqrt{f^2-1}} \\
-\frac{d}{dx}(\tan^{-1} f)&=\frac{f'}{1+f^2} && \frac{d}{dx}(\cot^{-1} f)=\frac{-f'}{1+f^2}
-\end{align*}
-$$
+<div className="grid grid-flow-row md:grid-rows-3 md:grid-flow-col gap-y-3 md:gap-0">
 
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\frac{d}{dx}(\sin^{-1} f)=\frac{f'}{\sqrt{1-f^2}}" />
+        <BlockMath math="\frac{d}{dx}(\cos^{-1} f)=\frac{-f'}{\sqrt{1-f^2}} " />
+        <BlockMath math="\frac{d}{dx}(\tan^{-1} f)=\frac{f'}{1+f^2}" />
+
+        <BlockMath math="\frac{d}{dx}(\csc^{-1} f)=\frac{-f'}{|f|\sqrt{f^2-1}}" />
+        <BlockMath math="\frac{d}{dx}(\sec^{-1} f)=\frac{f'}{|f|\sqrt{f^2-1}}" />
+        <BlockMath math="\frac{d}{dx}(\cot^{-1} f)=\frac{-f'}{1+f^2}" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="\frac{d}{dx}(\sin^{-1} {\color{orange}{f}})=\frac{\color{orange}{f'}}{\sqrt{1-{\color{orange}{f}}^2}}" />
+        <BlockMath math="\frac{d}{dx}(\cos^{-1} {\color{orange}{f}})=\frac{-{\color{orange}{f'}}}{\sqrt{1-{\color{orange}{f}}^2}} " />
+        <BlockMath math="\frac{d}{dx}(\tan^{-1} {\color{orange}{f}})=\frac{\color{orange}{f'}}{1+{\color{orange}{f}}^2}" />
+
+        <BlockMath math="\frac{d}{dx}(\csc^{-1} {\color{orange}{f}})=\frac{-{\color{orange}{f'}}}{|{\color{orange}{f}}|\sqrt{{\color{orange}{f}}^2-1}}" />
+        <BlockMath math="\frac{d}{dx}(\sec^{-1} {\color{orange}{f}})=\frac{\color{orange}{f'}}{|{\color{orange}{f}}|\sqrt{{\color{orange}{f}}^2-1}}" />
+        <BlockMath math="\frac{d}{dx}(\cot^{-1} {\color{orange}{f}})=\frac{-{\color{orange}{f'}}}{1+{\color{orange}{f}}^2}" />
+      </>;
+
+    }
+  }}
+</Observe>
+
+</div>
+      
 
 ## Logarithmic
-$$
-\begin{align*}
-\frac{d}{dx}(\log_nf)&=\frac{\log_n(e)f'}{f}=\frac{f'}{\ln(n)f} \\
-\frac{d}{dx}(\ln f)&=\frac{f'}{f}
-\end{align*}
-$$
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\frac{d}{dx}(\log_nf)=\frac{\log_n(e)f'}{f}=\frac{f'}{\ln(n)f}" />
+        <BlockMath math="\frac{d}{dx}(\ln f)=\frac{f'}{f}" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="\frac{d}{dx}(\log_{\color{fuchsia}{n}}{\color{orange}{f}})=\frac{\log_{\color{fuchsia}{n}}(e){\color{orange}{f'}}}{\color{orange}{f}}=\frac{\color{orange}{f'}}{\ln({\color{fuchsia}{n}}){\color{orange}{f}}}" />
+        <BlockMath math="\frac{d}{dx}(\ln {\color{orange}{f}})=\frac{\color{orange}{f'}}{\color{orange}{f}}" />
+      </>;
+
+    }
+  }}
+</Observe>
+
 
 ## Inverse function *(for this, $g$ is inverse of $f$)*
-$$
-g'=\frac{1}{f'(g)}
-$$
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="g'=\frac{1}{f'(g)}" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="{\color{lime}{g'}}=\frac{1}{{\color{orange}{f'}}({\color{lime}{g}})}" />
+      </>;
+
+    }
+  }}
+</Observe>
 
 ## Exponential function
-$$
-\begin{align*}
-\frac{d}{dx}(n^f)&=n^f \ln(n)f' \\
-\frac{d}{dx}(e^f)&=e^ff' \\
-\frac{d}{dx}(f^g)&=f^g \left( \frac{gf'}{f}+g' \ln(f) \right)
-\end{align*}
-$$
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\frac{d}{dx}(n^f)=n^f \ln(n)f'" />
+        <BlockMath math="\frac{d}{dx}(e^f)=e^ff'" />
+        <BlockMath math="\frac{d}{dx}(f^g)=f^g \left( \frac{gf'}{f}+g' \ln(f) \right)" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="\frac{d}{dx}({\color{fuchsia}{n}}^{\color{orange}{f}})={\color{fuchsia}{n}}^{\color{orange}{f}} \ln({\color{fuchsia}{n}}){\color{orange}{f'}}" />
+        <BlockMath math="\frac{d}{dx}(e^{\color{orange}{f}})=e^{\color{orange}{f}}{\color{orange}{f'}}" className="tooltip"/>
+        <BlockMath math="\frac{d}{dx}({\color{orange}{f}}^{\color{lime}{g}})={\color{orange}{f}}^{\color{lime}{g}} \left( \frac{{\color{lime}{g}}{\color{orange}{f'}}}{\color{orange}{f}}+{\color{lime}{g'}} \ln({\color{orange}{f}}) \right)" />
+      </>;
+
+    }
+  }}
+</Observe>
+
 
 ## Hyperbolic function
-$$
-\begin{align*}
-\frac{d}{dx}(\sinh f)&=\cosh(f)f' \\
-\frac{d}{dx}(\cosh f)&=\sinh(f)f'
-\end{align*}
-$$
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      
+      case 'regular': return <>
+        <BlockMath math="\frac{d}{dx}(\sinh f)=\cosh(f)f'" />
+        <BlockMath math="\frac{d}{dx}(\cosh f)=\sinh(f)f'" />
+      </>;
+
+      case 'color': return <>
+        <BlockMath math="\frac{d}{dx}(\sinh {\color{orange}{f}})=\cosh({\color{orange}{f}}){\color{orange}{f'}}" />
+        <BlockMath math="\frac{d}{dx}(\cosh {\color{orange}{f}})=\sinh({\color{orange}{f}}){\color{orange}{f'}}" />
+      </>;
+
+    }
+  }}
+</Observe>
 
 
 </State>

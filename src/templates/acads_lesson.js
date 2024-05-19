@@ -2,12 +2,12 @@ import React from "react"
 import { useLocation } from '@reach/router';
 
 import { MDXProvider } from "@mdx-js/react";
-import { InlineMath, BlockMath } from 'react-katex';
 import { Link, graphql } from 'gatsby'
 
 import { State, Observe } from '/src/utils';
 import { Content } from "../components/content";
 import Navbar from "../components/navbar";
+import {InlineMath, BlockMath} from "../components/reactKatex"
 
 const components = { InlineMath, BlockMath, State, Observe };
 

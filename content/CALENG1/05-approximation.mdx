@@ -1,0 +1,71 @@
+---
+title:  Approximations
+datePublished: 2024-05-15
+dateUpdated: 
+category: "05: Differentials of Single Variables, and Its Applications"
+author: 
+  - Yivan Andrei Padsoyan
+checker: 
+status: new
+interactive: false
+---
+
+## Theory
+
+$$
+\begin{align*}
+\Delta y &\approx dy \\
+y_2 - y_1 &\approx f' dx \\
+y_2 &\approx y_1 + f' dx \\
+\\
+L(x)&= f(a)+f'(a)\cdot(x-a)
+\end{align*}
+$$
+
+## Examples
+
+Approximate $\sqrt{\color{orange}{37}}$.
+
+| Step | | |
+|---|---| --- |
+| 1 | Make a function from the given (and get its derivative) | $f(x)=\sqrt{x}$, wherein $x=\color{orange}{37}$<br/>$\color{lime}{f'=\frac1{2\sqrt{x}}}$
+| 2 | Think of the closest number such that we know the value when put into the function | $\color{fuchsia}{a=36}$ <br/>since we know $f(36)=\sqrt{36}=6$ and it's close to the given $\color{orange}{37}$
+| 3 | Get $\color{lime}{f'(\color{fuchsia}a)}$ | $\color{lime}{f'(}\color{fuchsia}{36}\color{lime}{)=\frac{1}{2\sqrt{\color{fuchsia}{36}}}}=\color{aqua}{\frac1{12}}$
+| 4 | Use the approximation formula $L(x)= f(\color{fuchsia}a)+\color{lime}{f'(\color{fuchsia}a)}\cdot(x-\color{fuchsia}a)$ | $L(x)= f(\color{fuchsia}{36})+\color{lime}{f'(\color{fuchsia}{36})}\cdot(x-\color{fuchsia}{36})$<br/>$L(x)= 6+\color{aqua}{\frac1{12}}\cdot(x-36)$
+| 5 | Solve using $x$ | $L(\color{orange}{37})= 6+\frac1{12}\cdot(\color{orange}{37}-36)$<br/>$=6+\frac1{12}$<br/>=$\frac{73}{12}$
+
+Approximate $\arctan(\color{orange}{1.5})$.
+
+| Step | | |
+| --- | --- | --- |
+| 1 | Make a function | $f(x)=\arctan(x)$, wherein $x=\color{orange}{1.5}$<br/>$\color{lime}{f'=\frac1{1+x^2}}$
+| 2 | Think of closest number | $\color{fuchsia}{a=1}$<br/>since we know $f(1)=\arctan(1)=\frac\pi4$
+| 3 | Get $\color{lime}{f'(\color{fuchsia}a)}$ | $\color{lime}{f'(\color{fuchsia}{1})=\frac1{1+\color{fuchsia}{1}^2}}=\color{aqua}{\frac12}$
+| 4 | Use formula | $L(x)= f(\color{fuchsia}{1})+\color{lime}{f'(\color{fuchsia}{1})}\cdot(x-\color{fuchsia}{1})$<br/>$L(x)= \frac\pi4+\color{aqua}{\frac12}\cdot(x-1)$
+| 5 | Solve using $x$ | $L(\color{orange}{1.5})= \frac\pi4+\frac12\cdot(\color{orange}{1.5}-1)$<br/>$= \frac\pi4+\frac12\cdot(0.5)$<br/>$=\frac{\pi+1}4$
+
+Approximate $y=(2x-1)^4$ when $x=\color{orange}{0.98}$.
+
+| Step | | |
+| --- | --- | --- |
+| 1 | Make a function | $f(x)=(2x-1)^4$, wherein $x=\color{orange}{0.98}$<br/>$f'=4(2x-1)^3\cdot2=8(2x-1)^3$
+| 2 | Think of closest number | $a = \color{fuchsia}{1}$<br/>since we can easily solve for $f(1)$: $(2(1)-1)^4=1$
+| 3 | Get $f'(a)$ | $f'(\color{fuchsia}{1})=8\left(2(\color{fuchsia}{1})-1\right)^3=8$
+| 4 | Use formula | $L(x)= f(\color{fuchsia}{1})+f'(\color{fuchsia}{1})\cdot(x-\color{fuchsia}{1})$<br/>$L(x)= 1+8\cdot(x-1)$
+| 5 | Solve using $x$ | $L(\color{orange}{0.98})= 1+8\cdot(\color{orange}{0.98}-1)$<br/>$= 1+8(-0.02)$<br/>$=1-0.16$<br/>$=0.84$
+
+Approximate $\sqrt[5]{\color{orange}{31.6}}$. 
+*This problem is not possible without calculators, unless you can solve $(32)^{-\frac45}$.* 
+
+| Step | | |
+| --- | --- | --- |
+| 1 | Make a function | $f(x)=\sqrt[5]{x}$, wherein $x=\color{orange}{31.6}$<br/>$f'=\left(x^\frac15\right)'=\frac15 x^{-\frac45}$
+| 2 | Think of closest number | $a = \color{fuchsia}{32}$<br/>since we know that $f(a)=\sqrt[5]{32}=2$
+| 3 | Get $f'(a)$ | $f'(\color{fuchsia}{32})=\frac15 (\color{fuchsia}{32})^{-\frac45}$
+| 4 | Use formula | $L(x)= f(\color{fuchsia}{32})+f'(\color{fuchsia}{32})\cdot(x-\color{fuchsia}{32})$<br/>$L(x)= 2+\frac15 (32)^{-\frac45}\cdot(x-32)$
+| 5 | Solve using $x$ | $L(\color{orange}{31.6})= 2+\frac15 (32)^{-\frac45}\cdot({\color{orange}{31.6}}-32)$<br/>$= 1.995$ 
+
+## Tips on finding the closest number
+* Memorize the special angles and their trigonometric function outputs (30˚, 45˚, 60˚, and 90˚). Note that for the inverse trigonometric functions, use radians.
+* Memorize the perfect squares (2², 3², 4², 5², ...). This is useful for square roots, since the radicand will always be between these values.
+* Memorize the powers of 2 (2, 4, 8, 16, 32, 64, ...). This is useful for radicals greater than 2.

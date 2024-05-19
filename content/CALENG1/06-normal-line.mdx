@@ -1,0 +1,83 @@
+---
+title:  Normal line
+datePublished: 2024-05-17
+dateUpdated: 
+category: "06: Slopes and Rates of Change"
+author: 
+  - Yivan Andrei Padsoyan
+checker: 
+status: new
+interactive: true
+---
+
+The normal line is the line perpendicular to the tangent line at the point of tangency.
+
+
+<div className="grid grid-flow-row md:grid-rows-2 md:grid-flow-col gap-y-3 md:gap-0 text-center">
+  <div>
+    Slope of tangent line
+    <BlockMath math="m_{\text{TL}}=f'" />
+  </div>
+  <div>
+    Slope of normal line
+    <BlockMath math="m_{\text{NL}}=\frac{-1}{m_{\text{TL}}}=\frac{-1}{f'}" />
+  </div>
+  <div>
+    Equation of tangent line
+    <BlockMath math="y-y_1=m_{\text{TL}}(x-x_1)" />
+  </div>
+  <div>
+    Equation of normal line
+    <BlockMath math="y-y_1=\frac{-1}{m_{\text{TL}}}(x-x_1)"/>
+  </div>
+
+</div>
+
+
+## Visualizer
+
+Below is an interactive visualizer for the tangent line and the normal line.
+<iframe  title="Tangent and Normal Line Equations" src="https://www.geogebra.org/material/iframe/id/wE6pvtZp/width/829/height/495/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="100%" height="495px"> </iframe>
+
+_"Tangent and Normal Line Equations" by Ken Schwartz (CC BY SA) [(Link to main page.)](https://www.geogebra.org/m/uT7arAr5)_
+
+## Examples
+
+Find the equation of the line perpendicular to the function $y=x^3+7x^2+5x-2$ at $\color{fuchsia}{x=0}$.
+
+| Step | | |
+| --- | --- | ---
+| 1 | Get $y'$. | $y'=3x^2+14x+5$
+| 2 | Get $y'$ at $\color{fuchsia}{x=0}$. This is the $\color{lime}{m_\text{TL}}$. | $\color{lime}{m_\text{TL}}=3(\color{fuchsia}0)^2+14(\color{fuchsia}0)+5$<br/>$=\color{lime}5$
+| 3 | Get $\color{orange}y$ at $\color{fuchsia}{x=0}$ | $\color{orange}y=(\color{fuchsia}0)^3+7(\color{fuchsia}0)^2+5(\color{fuchsia}0)-2$<br/>$=\color{orange}{-2}$
+| 4 | Get the equation of the perpendicular line at $(\color{fuchsia}0,\color{orange}{-2})$. Use the formula. | $y-\color{orange}{y_1}=\frac{-1}{\color{lime}{m_\text{TL}}}(x-\color{fuchsia}{x_1})$<br/>$y-\color{orange}{(-2)}=\frac{-1}{\color{lime}5}(x-\color{fuchsia}0)$<br/>$5y+10=-x$
+| 5 | (Optional) Transform to standard form. | $x+5y+10=0$
+
+Find the tangent to $\color{orange}{x^2+y^2=5}$ and parallel to $\color{fuchsia}{2x-y-4=0}$.
+| Step | | |
+| --- | --- | ---
+| 1 | Derive $\color{orange}{x^2+y^2=5}$ with respect to $x$, and get $\color{lime}{y'}$. | $2x+2yy'=0$<br/>$2yy'=-2x$<br/>$y'=\frac{-2x}{2y}$<br/>$\color{lime}{y'=\frac{-x}{y}}$
+| 2 | Recall in FNDMATH that two equations of a line are parellel if their constant part is the only thing different. <br/>So, we make a new equation but with an unknown constant. | $\color{fuchsia}{2x-y-4=0}$<br/>$\color{aqua}{2x-y-c=0}$
+| 3 | Convert $\color{fuchsia}{2x-y-4=0}$ to the slope-intercept form ($y=mx+b$) to get its slope. | $y = 2x-4$ <br/>The slope is $2$.
+| 4 | The slope of the tangent line (a.k.a. $\color{lime}{y'}$) and the slope of its parallel line must be the same. | $\color{lime}{\frac{-x}{y}}=2$
+| 5 | We have now 3 equations and 3 unknowns. | $\begin{cases}\color{orange}{x^2+y^2=5}\\\color{aqua}{2x-y-c=0}\\\frac{-x}{y}=2\end{cases}$
+| 6 | Solve for $\color{tomato}c$ however you like, then substitute it back to the $\color{tomato}c$ equation. | $\color{tomato}{c=\pm 5}$<br/>$\color{aqua}{2x-y-\color{tomato}{(5)}=0}$<br/>$\color{aqua}{2x-y-\color{tomato}{(-5)}=0}$
+| 7 | Final answer: we have 2 equations. | $2x-y-5=0$<br/>$2x-y+5=0$
+
+
+<div className="collapse collapse-arrow  bg-base-200">
+<input type="checkbox" /> 
+<div className="collapse-title font-medium">
+    Solving for $\color{tomato}c$ in step 6 (click to expand)
+</div>
+<div className="collapse-content"> 
+
+| Step | | |
+| --- | --- | --- 
+| 0 | Given. | $\begin{cases}x^2+y^2=5&&\textcircled{1}\\2x-y-c=0&&\textcircled{2}\\\frac{-x}{y}=2&&\textcircled{3}\end{cases}$
+| 1 | Solve for $x$ in $\textcircled{3}$, and substitute it to $\textcircled{2}$. | Solving $x$ in $\textcircled{3}$: $x=-2y$ <br/>Substituting to $\textcircled{2}$:<BlockMath math="\begin{align*} 2(-2y)-y-c&=0\\-5y&=c \\y&=\frac{c}{-5}&\textcircled{4}\end{align*}" />
+| 2 | Solve for $y$ in $\textcircled{3}$, and substitute it to $\textcircled{2}$. | Solving $y$ in $\textcircled{3}$: $y=\frac{-x}{2}$ <br/>Substituting to $\textcircled{2}$:<BlockMath math="\begin{align*} 2x-\frac{-x}{2}-c&=0 \\ \frac{4x+x}{2}&=c \\ \frac{5x}{2}&=c \\ x&=\frac{2c}{c} && \textcircled{5}\end{align*}" />
+| 3 | Substitute $\textcircled{4}$ and $\textcircled{5}$ to $\textcircled{1}$ | <BlockMath math="\begin{align*} \left(\frac{2c}{5}\right)^2+\left(\frac{c}{-5}\right)^2 &= 5 \\ \frac{4c^2}{25}+\frac{c^2}{25}&=5 \\ \frac{5c^2}{25}&=5 \\ \frac{c^2}{5}&=5 \\ c^2&=25 \\ \color{tomato}c&\color{tomato}{=\pm 5}  \end{align*}" />
+
+</div>
+</div>
