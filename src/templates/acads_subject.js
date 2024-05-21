@@ -5,6 +5,7 @@ import { Link, graphql } from 'gatsby'
 import { MDXProvider } from "@mdx-js/react"
 
 import { Content } from "../components/content";
+import { FormContact } from "../components/formContact";
 
 import * as utils from "../utils"
 
@@ -26,8 +27,6 @@ export default function Layout({
    * @type {string[]}
   */
   const subjectsThatExist = data.allDirectory.nodes.map((value) => value.name);
-
-  console.log(data.allDirectory.nodes)
 
   /** The node of this subject */
   const subjectNode = subjects.nodes.find((value, index, array) => value.id === subjectId);
@@ -63,11 +62,38 @@ export default function Layout({
     }
   }
 
-  console.log(data)
-
   return (
     <MDXProvider components={shortcodes}>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+      
+      <dialog id="formContactDialog" className="modal">
+          <div className="modal-box">
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 material-symbols-outlined">close</button>
+            </form>
+            <h3 className="font-bold text-lg">Contact us about "{subjectId}"</h3>
+
+            <FormContact
+              id="formContact"
+              onSubmit={(a) => {
+                a.preventDefault();
+
+                const form = document.getElementById("formContact");
+
+                //submit then reset
+                form.submit();
+                form.reset();
+
+                document.getElementById("formContactDialog").close();
+
+
+              }}
+            />
+          </div>
+
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
 
       <Navbar
         leading={
@@ -80,10 +106,30 @@ export default function Layout({
       >
         <Content className='prose  p-4 xl:p-0'>
           <div className="flex flex-col">
-            <h1 className="flex flex-col md:flex-row justify-items-stretch mb-0">
-              <div className="text-6xl md:text-8xl ">{subjectId}</div>
-              <div className="md:pl-7 text-2xl  md:self-center justify-self-start">{subjectNode.name}</div>
-            </h1>
+            <div className="flex flex-row">
+
+              <h1 className="grow flex flex-col md:flex-row justify-items-stretch mb-0">
+                <div className="text-6xl md:text-8xl ">{subjectId}</div>
+                <div className="md:pl-7 text-2xl  md:self-center justify-self-start">{subjectNode.name}</div>
+              </h1>
+
+              
+              <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-sm">
+                    <span className="material-symbols-outlined">more_vert</span>
+                  </div>
+                  <ul tabIndex={0} className="dropdown-content z-[1] menu p-1 menu-sm shadow bg-base-200 rounded-box w-52">
+                    <li><a onClick={() => {
+                      document.getElementById('formContactDialog').showModal()
+                    }}>Contact us about this page...</a></li>
+                  </ul>
+                </div>
+
+            </div>
+
+
+
+
             <div className="text-sm md:text-lg font-mono flex flex-col md:flex-row">
               <div>
                 Requires:

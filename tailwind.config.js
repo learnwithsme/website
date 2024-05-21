@@ -18,9 +18,10 @@ module.exports = {
       {
         dark: {
           ...require("daisyui/src/theming/themes")["aqua"],
+          "neutral": "hsl(210, 46%, 58%)",
           "base-100": "hsl(213, 59%, 20%)",
           "base-200": "hsl(213, 59%, 15%)",
-          "base-300": "hsl(213, 59%, 10%)",
+          "base-300": "hsl(213, 59%, 10%)"
         },
       },
       "emerald"

@@ -7,6 +7,7 @@ import { Content } from "../components/content";
 import * as utils from "../utils"
 import { SubjectChip } from "../templates/acads_subject"
 import { LogoSmall } from "../components/logo";
+import { FormContact } from "../components/formContact";
 
 import _subjects from "/content/subjects.json"
 const subjects = structuredClone(_subjects); //deep copy
@@ -44,21 +45,23 @@ export default function IndexPage({
             <div className="max-w-md">
 
 
-              <LogoSmall 
-              className="block m-auto" 
-              width="200"
-              height="200"
+              <LogoSmall
+                className="block m-auto"
+                width="200"
+                height="200"
               />
 
-              <h1 className="mb-5 text-5xl font-bold font-[Poppins] text-base-content">Learn With SME</h1>
+              <h1 className="mb-5 text-6xl font-bold  font-['Futura_Std',ui-sans-serif,sans-serif] text-base-content">Learn With SME</h1>
               <p className="mb-5 text-base-content ">Learn more and explore a world full of knowledge and ideas!</p>
 
             </div>
           </div>
         </div>
 
+        <h2 className="text-3xl font-[Poppins] font-medium  bg-gradient-to-b from-base-100 to-transparent text-center pt-10" id="list">Explore our Academic Database</h2>
+
         <Content className="p-4 xl:p-0">
-          <h2 className="text-3xl font-[Poppins] font-medium" id="list">Explore our Academic Database</h2>
+
           The SME Academic Database is streamlined for ease and convenience and is aligned with the syllabus for different subjects. The database also contains a repository of review materials for your own benefit and supplementary lessons to aid your understanding in some concepts in class.
         </Content>
 
@@ -76,6 +79,18 @@ export default function IndexPage({
             subjectsThatExist={subjectsThatExist} />
         </div>
 
+
+
+        <h2 className="text-3xl font-[Poppins] font-medium text-center">Contact us</h2>
+
+        <Content className="p-4 xl:p-0">
+          The communications form below is where you can give feedback about this site. Additionally, you can also request additional resources (books, review materials, PowerPoints).
+
+          <FormContact />
+
+        </Content>
+
+
       </Navbar>
 
 
@@ -87,7 +102,6 @@ export default function IndexPage({
 
 export const Head = () => <>
   <title>SME DLSU Academic Hub</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&?family=Poppins" />
 
   <meta name='og:title' content='SME DLSU Academic Hub' />
   <meta name='og:type' content='website' />

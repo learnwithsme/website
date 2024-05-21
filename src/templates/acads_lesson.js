@@ -7,7 +7,8 @@ import { Link, graphql } from 'gatsby'
 import { State, Observe } from '/src/utils';
 import { Content } from "../components/content";
 import Navbar from "../components/navbar";
-import {InlineMath, BlockMath} from "../components/reactKatex"
+import { InlineMath, BlockMath } from "../components/reactKatex"
+import { FormContact } from "../components/formContact";
 
 const components = { InlineMath, BlockMath, State, Observe };
 
@@ -45,10 +46,38 @@ export default function Layout({ data, children }) {
   return (
     <MDXProvider components={components}>
 
-
-
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+
+      <dialog id="formContactDialog" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 material-symbols-outlined">close</button>
+          </form>
+          <h3 className="font-bold text-lg">Contact us about "{data.mdx.frontmatter.title}"</h3>
+
+          <FormContact
+            id="formContact"
+            onSubmit={(a) => {
+              a.preventDefault();
+
+              const form = document.getElementById("formContact");
+
+              //submit then reset
+              form.submit();
+              form.reset();
+
+              document.getElementById("formContactDialog").close();
+
+
+            }}
+          />
+        </div>
+
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
 
       <Navbar
         leading={
@@ -81,11 +110,17 @@ export default function Layout({ data, children }) {
                     <span className="material-symbols-outlined">more_vert</span>
                   </div>
                   <ul tabIndex={0} className="dropdown-content z-[1] menu p-1 menu-sm shadow bg-base-200 rounded-box w-52">
+                    {/*                     
                     <li><a href={
                       // create GitHub repo link
                       // `data.mdx.fields.slug` has a trailing slash, we need to remove that
                       `https://github.com/learnwithsme/website/tree/main/content${data.mdx.fields.slug.substring(0, data.mdx.fields.slug.length - 1)}.mdx`
-                    } target="_blank" rel="noreferrer">View source code ↗</a></li>
+                    } target="_blank" rel="noreferrer">View source code ↗</a></li> 
+                    */}
+
+                    <li><a onClick={() => {
+                      document.getElementById('formContactDialog').showModal()
+                    }}>Contact us about this page...</a></li>
                   </ul>
                 </div>
 
