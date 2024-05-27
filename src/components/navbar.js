@@ -8,7 +8,12 @@ import _ids from "/content/ids.json"
 const ids = structuredClone(_ids); //deep copy
 
 function Navbar({
-    children, leading, trailing, enableDivider = true, className, enableNavbar = true,
+    children, 
+    leading, 
+    trailing, 
+    enableDivider = true, 
+    className = '', 
+    enableNavbar = true,
 }) {
 
     // ID validator

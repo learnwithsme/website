@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { Link, StaticQueryDocument, graphql } from "gatsby";
 import loadable from '@loadable/component'
 
 import Navbar from "../components/navbar";
@@ -9,19 +9,21 @@ import { SubjectChip } from "../templates/acads_subject"
 import { LogoSmall } from "../components/logo";
 import { FormContact } from "../components/formContact";
 
-import _subjects from "/content/subjects.json"
+import _subjects from "/content/subjects.json";
 const subjects = structuredClone(_subjects); //deep copy
 
 
 /**
  * Main page
+ * @param {{
+ *   data: GraphqlQuery
+ * }}  
  */
 export default function IndexPage({
   data
 }) {
 
   /** Subjects that are in the `/content/acads` folder 
-   * @type {string[]}
   */
   const subjectsThatExist = data.allDirectory.nodes.map((value) => value.name);
 
@@ -51,7 +53,7 @@ export default function IndexPage({
                 height="200"
               />
 
-              <h1 className="mb-5 text-6xl font-bold  font-['Futura_Std',ui-sans-serif,sans-serif] text-base-content">Learn With SME</h1>
+              <h1 className="mb-5 text-6xl font-bold font-['Futura_Std',ui-sans-serif,sans-serif] text-base-content">Learn With SME</h1>
               <p className="mb-5 text-base-content ">Learn more and explore a world full of knowledge and ideas!</p>
 
             </div>
@@ -101,14 +103,20 @@ export default function IndexPage({
 }
 
 export const Head = () => <>
-  <title>SME DLSU Academic Hub</title>
+  <title>Learn With SME</title>
 
-  <meta name='og:title' content='SME DLSU Academic Hub' />
+  <meta name='og:title' content='Learn With SME' />
   <meta name='og:type' content='website' />
 
 </>
 
-
+/**
+ *  The subjects list
+ * @param {{
+ *  subjectsThatExist: string[]
+ * }}
+ * @returns 
+ */
 function ListView({
   subjectsThatExist
 }) {
@@ -116,14 +124,6 @@ function ListView({
   return (
 
     <Content>
-      {/*
-      <div className="my-7 w-fit m-auto">
-        <label className="label cursor-pointer">
-          <span className="label-text pr-1">Show all</span>
-          <input type="checkbox" className="toggle" />
-        </label>
-      </div>
-  */}
       <div className="flex flex-row flex-wrap my-7 gap-7 place-content-center ">
 
         {
@@ -138,26 +138,39 @@ function ListView({
   )
 }
 
+/**
+ * Each individual button/card on the subjects list
+ * @param {*} param0 
+ */
+function ListCard({
+  node
+}) {
+  return <Link to={`/${node.id}`}><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0 ${node.status != null ? "ring-4  ring-yellow-400" : ""}`}>
+    <div className="card-body">
+      <h2 className="card-title font-[Poppins,ui-sans-serif,sans-serif]">
 
-const ListCard = ({ node }) => <Link to={`/${node.id}`} ><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0 ${node.status != null ? "ring-4  ring-yellow-400" : ""}`}>
-  <div className="card-body">
-    <h2 className="card-title">
-
-      {node.status != null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
+        {node.status != null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
 
 
-      <span className="text-2xl font-semibold font-[Poppins]">{node.id}</span>
-      <span className="text-sm font-[Poppins]">{node.name}</span></h2>
+        <span className="text-2xl font-semibold ">{node.id}</span>
+        <span className="text-sm">{node.name}</span></h2>
 
-    <div className="card-actions justify-end">
-      {
-        node.tags?.map((value, index, array) => <div className="badge badge-outline badge-sm">{value}</div>)
-      }
+      <div className="card-actions justify-end">
+        {node.tags?.map((value, index, array) => <div className="badge badge-outline badge-sm">{value}</div>)}
+      </div>
     </div>
   </div>
-</div></Link>
+  </Link>;
+}
 
 
+/**
+ *  The flowchart dialog
+ * @param {{
+*  subjectsThatExist: string[]
+* }}
+* @returns 
+*/
 function FlowchartDialog({
   subjectsThatExist
 }) {
@@ -391,7 +404,20 @@ function FlowchartView({
 }
 
 
+/**
+ * The GraphQL query
+ * @typedef {{
+ *  allDirectory: {
+ *    nodes: {
+ *      name: string
+ *    }[]
+ *  }
+ * }} GraphqlQuery
+ */
 
+/**
+ * @type {GraphqlQuery}
+ */
 export const query = graphql`
 query {
   # get the folder names in /content

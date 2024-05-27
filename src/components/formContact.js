@@ -6,11 +6,15 @@ export function FormContact({
     onSubmit
 }) {
 
-    
+
 
     return <form id={id} action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSc_0Pvca7SBptGGOPC7HGWY2_OAZ-DoMT0ga640_2RuwrjPyw/formResponse" method="POST" target="_blank" onSubmit={onSubmit}>
         {/* USERNAME */}
-        <input type="hidden" name="entry.1885116794" value={window.atob(window.sessionStorage.getItem("id"))} />
+        <input type="hidden" name="entry.1885116794" value={
+            typeof window !== 'undefined'
+                ? window.atob(window.sessionStorage.getItem("id"))
+                : null
+        } />
 
         {/* URL */}
         <input type="hidden" name="entry.2083018028" value={useLocation().pathname} />

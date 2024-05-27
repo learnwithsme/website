@@ -9,7 +9,7 @@ import { FormContact } from "../components/formContact";
 
 import * as utils from "../utils"
 
-import _subjects from "/content/subjects.json"
+import _subjects from "/content/subjects.json";
 const subjects = structuredClone(_subjects); //deep copy
 
 export default function Layout({
@@ -77,15 +77,15 @@ export default function Layout({
               onSubmit={(a) => {
                 a.preventDefault();
 
+                // get contact form by id
                 const form = document.getElementById("formContact");
 
                 //submit then reset
                 form.submit();
                 form.reset();
 
+                // close the dialog
                 document.getElementById("formContactDialog").close();
-
-
               }}
             />
           </div>
@@ -256,15 +256,20 @@ export function SubjectChip({
   hasLink,
 }) {
   let badgeState = "";
+  let tooltip = "";
+
   switch (type) {
     case "hard":
       badgeState = "badge-warning";
+      tooltip = "hard pre-requisite"
       break;
     case "soft":
       badgeState = "badge-success";
+      tooltip = "soft pre-requesite"
       break;
     case "co":
       badgeState = "badge-info";
+      tooltip = "co-requisite"
       break;
   }
 
@@ -272,8 +277,8 @@ export function SubjectChip({
     condition={hasLink}
     wrapper={(children) => <Link to={`/${id}`} >{children}</Link>}
   >
-    <div className={`tooltip tooltip-bottom font-sans pl-1 ${hasLink ? "cursor-pointer" : "cursor-default"}`} data-tip={`${title}\n(${type})`}>
-      <div className={`badge badge-outline font-mono ${badgeState}`}>{id}</div>
+    <div className={`tooltip tooltip-bottom font-sans pl-1 ${hasLink ? "cursor-pointer" : "cursor-default"}`} data-tip={`${title}\n(${tooltip})`}>
+      <div className={`badge badge-outline font-mono ${badgeState}`}>{id} ({type.substring(0,1).toUpperCase()})</div>
     </div>
 
   </utils.ConditionalWrapper>
