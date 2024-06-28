@@ -68,7 +68,7 @@ export default function IndexPage({
         </Content>
 
         <div className="flex justify-center">
-          <button className="btn btn-primary" onClick={() => document.getElementById('flowchartView').showModal()}>Open flowchart view</button>
+          <button className="btn btn-primary" onClick={() => document.getElementById('flowchartView').showModal()}>Open flowchart view (beta)</button>
         </div>
         <FlowchartDialog
           subjectsThatExist={subjectsThatExist} />
