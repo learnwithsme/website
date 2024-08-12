@@ -1,5 +1,5 @@
-import { ForceGraph2D, ForceGraph3D } from "react-force-graph"
+import ForceGraph2D from "react-force-graph-2d"
 
 
 //https://github.com/vasturiano/react-force-graph/issues/155
-export {ForceGraph2D, ForceGraph3D};
+export {ForceGraph2D};
