@@ -14,6 +14,7 @@ function Navbar({
     enableDivider = true, 
     className = '', 
     enableNavbar = true,
+    enableFooter = true,
 }) {
 
     // ID validator
@@ -110,7 +111,7 @@ function Navbar({
 
 
                 {/* FOOTER */}
-                <Footer />
+                {enableFooter ? <Footer /> : <></>}
 
 
 

@@ -64,36 +64,36 @@ export default function Layout({
 
   return (
     <MDXProvider components={shortcodes}>
-      
+
       <dialog id="formContactDialog" className="modal">
-          <div className="modal-box">
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 material-symbols-outlined">close</button>
-            </form>
-            <h3 className="font-bold text-lg">Contact us about "{subjectId}"</h3>
-
-            <FormContact
-              id="formContact"
-              onSubmit={(a) => {
-                a.preventDefault();
-
-                // get contact form by id
-                const form = document.getElementById("formContact");
-
-                //submit then reset
-                form.submit();
-                form.reset();
-
-                // close the dialog
-                document.getElementById("formContactDialog").close();
-              }}
-            />
-          </div>
-
-          <form method="dialog" className="modal-backdrop">
-            <button>close</button>
+        <div className="modal-box">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 material-symbols-outlined">close</button>
           </form>
-        </dialog>
+          <h3 className="font-bold text-lg">Contact us about "{subjectId}"</h3>
+
+          <FormContact
+            id="formContact"
+            onSubmit={(a) => {
+              a.preventDefault();
+
+              // get contact form by id
+              const form = document.getElementById("formContact");
+
+              //submit then reset
+              form.submit();
+              form.reset();
+
+              // close the dialog
+              document.getElementById("formContactDialog").close();
+            }}
+          />
+        </div>
+
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
 
       <Navbar
         leading={
@@ -113,17 +113,17 @@ export default function Layout({
                 <div className="md:pl-7 text-2xl  md:self-center justify-self-start">{subjectNode.name}</div>
               </h1>
 
-              
+
               <div className="dropdown dropdown-end">
-                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-sm">
-                    <span className="material-symbols-outlined">more_vert</span>
-                  </div>
-                  <ul tabIndex={0} className="dropdown-content z-[1] menu p-1 menu-sm shadow bg-base-200 rounded-box w-52">
-                    <li><a onClick={() => {
-                      document.getElementById('formContactDialog').showModal()
-                    }}>Contact us about this page...</a></li>
-                  </ul>
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-sm">
+                  <span className="material-symbols-outlined">more_vert</span>
                 </div>
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-1 menu-sm shadow bg-base-200 rounded-box w-52">
+                  <li><a onClick={() => {
+                    document.getElementById('formContactDialog').showModal()
+                  }}>Contact us about this page...</a></li>
+                </ul>
+              </div>
 
             </div>
 
@@ -254,9 +254,12 @@ export function SubjectChip({
   type,
   title,
   hasLink,
+  onClick
 }) {
   let badgeState = "";
   let tooltip = "";
+
+  title ??= id; //default title is the id
 
   switch (type) {
     case "hard":
@@ -277,8 +280,12 @@ export function SubjectChip({
     condition={hasLink}
     wrapper={(children) => <Link to={`/${id}`} >{children}</Link>}
   >
-    <div className={`tooltip tooltip-bottom font-sans pl-1 ${hasLink ? "cursor-pointer" : "cursor-default"}`} data-tip={`${title}\n(${tooltip})`}>
-      <div className={`badge badge-outline font-mono ${badgeState}`}>{id} ({type.substring(0,1).toUpperCase()})</div>
+    <div
+      className={`tooltip tooltip-bottom font-sans pl-1 ${hasLink ? "cursor-pointer" : "cursor-default"}`}
+      data-tip={`${title}\n(${tooltip})`}
+      onClick={onClick}
+    >
+      <div className={`badge badge-outline font-mono ${badgeState}`}>{id} ({type.substring(0, 1).toUpperCase()})</div>
     </div>
 
   </utils.ConditionalWrapper>
