@@ -12,7 +12,7 @@ const subjects = structuredClone(_subjects); //deep copy
 const layerSpacing = 100;
 const nodeSpacing = 10;
 const nodeWidth = 75;
-
+const defaultIdNumber = "122";
 
 /**
  * 
@@ -36,6 +36,8 @@ export default function IndexPage({
 
     const [selectedNode, setSelectedNode] = React.useState(null);
 
+    const [selectedIdNumber, setSelectedIdNumber] = React.useState(defaultIdNumber);
+
 
     for (var i of subjects.links) {
 
@@ -49,30 +51,38 @@ export default function IndexPage({
         index++;
     }
 
-    var currentTerm = 0, index = 0;
+    var index = 0;
+
+    var terms = new Map(), 
+    // keep track the id numbers registered on the JSON file in this set
+    idNumbers = new Set();
 
     for (var i of subjects.nodes) {
 
-        if ((i.term?.["122"] ?? 0) != currentTerm) {
-            currentTerm = (i.term?.["122"] ?? 0)
-            index = 0
-        } else {
-            index++;
+        if (!terms.has(i.term?.[selectedIdNumber] ?? 0)) {
+            terms.set(i.term?.[selectedIdNumber] ?? 0, []);
         }
+        index = terms.get(i.term?.[selectedIdNumber] ?? 0).length;
 
         i.width = nodeWidth
 
         i.position = {
             x: index * (nodeSpacing + nodeWidth),
-            y: (i.term?.["122"] ?? 0) * layerSpacing,
+            y: (i.term?.[selectedIdNumber] ?? 0) * layerSpacing,
         }
 
         i.data = {
             label: i.id
         }
 
+
+        terms.get(i.term?.[selectedIdNumber] ?? 0).push(i)
+        // add the ID number to the set of ID numbers
+        if (i.term != null) Object.keys(i.term).forEach((id)=> idNumbers.add(id))
+
     }
 
+    console.log(idNumbers)
 
     var connectedEdges = null, connectedNodes = null;
 
@@ -208,7 +218,7 @@ export default function IndexPage({
 
 
 
-    }, [selectedNode, setSelectedNode])
+    }, [setSelectedIdNumber, selectedIdNumber, selectedNode, setSelectedNode, ])
 
 
     return <Navbar
@@ -245,19 +255,30 @@ export default function IndexPage({
                 <Background />
                 <Controls />
                 <Panel position="top-left">
+                    <div className="z-10">
+                        
                     <Link to="/">
                         <button className="btn btn-primary">
                             <span className="material-symbols-outlined">
                                 arrow_back
                             </span><span className="hidden md:inline">Back to courses</span>
                         </button>
-                    </Link>
+                    </Link><br/>
+                    <select className="select select-bordered  text-white bg-base-300 m-0 mt-4" onChange={(e) => {
+                        setSelectedNode((_)=>null) //deselect currently selected
+                        setSelectedIdNumber((_) => e.target.value);
+                    }}> {
+                        /* programmatically add the options from the idNumbers set */
+                        [...idNumbers].map((val, index, set)=><option value={`${val}`} selected={val === selectedIdNumber}>ID {val}</option>)
+                    }
+                    </select>
+                    </div>
                 </Panel>
                 <Panel position="top-right" style={{
                     color: "white"
                 }}>
 
-                    <div className="z-10 absolute top-0 right-0 card max-sm:card-compact w-96 bg-base-200 shadow-xl opacity-95">
+                    <div className="z-0 absolute top-32 sm:top-0 right-0 card max-sm:card-compact w-96 bg-base-200 shadow-xl opacity-95">
                         <div className="card-body">
 
                             {selectedNode === null ? <span>Select a subject to learn more.</span> : <>
@@ -308,10 +329,13 @@ export default function IndexPage({
                     </div>
 
 
-
-
+                </Panel>
+                
+                <Panel position="bottom-center" className="text-center text-slate-400 text-xs">
+                        Created by SME-DLSU Academics Committee.<br/>Content may not be accurate and should only be used as a visualization.
 
                 </Panel>
+
             </ReactFlow>
 
 

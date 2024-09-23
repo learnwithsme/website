@@ -463,7 +463,7 @@
                 "118":6,
                 "119":6,
                 "120":6,
-                "121":5,
+                "121":6,
                 "122":6,
                 "123":6
             },
@@ -1354,9 +1354,9 @@
 
 
         {
-            "source":"ENGMEC2",
+            "source":"ENGMEC1",
             "target":"ENGMEC3",
-            "type":"soft"
+            "type":"hard"
         },
         {
             "source":"MFANLOG",
