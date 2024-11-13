@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, StaticQueryDocument, graphql } from "gatsby";
-import loadable from '@loadable/component'
+import { AnimatedBackground } from 'animated-backgrounds';
 
 import Navbar from "../components/navbar";
 import { Content } from "../components/content";
@@ -27,22 +27,73 @@ export default function IndexPage({
   */
   const subjectsThatExist = data.allDirectory.nodes.map((value) => value.name);
 
+
+  const [navbarOpacity, setNavbarOpacity] = React.useState(0);
+  const navbarRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+
+      if (navbarRef.current == null) return;
+
+      const scrollTop = window.scrollY;
+      const navbarHeight = navbarRef.current.offsetHeight;
+      const threshold = navbarHeight; // Adjust threshold as needed
+
+      const opacity = Math.min(1, scrollTop / threshold);
+      setNavbarOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
+
+
 
       <Navbar leading={
-        <></>
+        <>
+
+
+
+        </>
 
       }
-        trailing={<></>/*
+        trailing={<>
+
+          <a className="btn btn-ghost " href="#updates">
+            <span class="material-symbols-outlined">
+              event
+            </span>
+            <span className="hidden md:inline">Updates & events</span>
+          </a>
+          <a className="btn btn-ghost " href="#list">
+            <span class="material-symbols-outlined">
+              school
+            </span>
+            <span className="hidden md:inline">Academic database</span>
+          </a>
+          <a className="btn btn-ghost " href="#contact"><span class="material-symbols-outlined">
+            mail
+          </span>
+            <span className="hidden md:inline">Contact us</span>
+          </a>
+        </>/*
           <input type="text"
             placeholder="Search course"
             className="input input-bordered w-full max-w-xs" />
     */ }
-        enableNavbar={false}>
+        styleNavbarBgOpacity={navbarOpacity}
+        isFixed={true}>
 
-        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}>
-          <div className="hero-overlay bg-gradient-to-b from-transparent to-base-100"></div>
+        <div className="hero min-h-screen"
+          //style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}
+          ref={navbarRef}>
+
+          <AnimatedBackground animationName="particleNetwork" />
+          <div className=" bg-gradient-to-b from-transparent to-base-100"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
 
@@ -53,45 +104,67 @@ export default function IndexPage({
                 height="200"
               />
 
-              <h1 className="mb-5 text-6xl font-bold font-['Futura_Std',ui-sans-serif,sans-serif] text-base-content">Learn With SME</h1>
+              <h1 className="mb-5 text-6xl font-bold font-['Futura_Std',ui-sans-serif,sans-serif] text-base-content">Learn With <span className="text-[#d6d869]">SME</span></h1>
               <p className="mb-5 text-base-content ">Learn more and explore a world full of knowledge and ideas!</p>
 
             </div>
           </div>
         </div>
 
-        <h2 className="text-3xl font-[Poppins] font-medium  bg-gradient-to-b from-base-100 to-transparent text-center pt-10" id="list">Explore our Academic Database</h2>
 
-        <Content className="p-4 xl:p-0">
+        <div className="bg-gradient-to-b from-transparent to-base-100 h-[15rem]"></div>
+        <div className="bg-gradient-to-tr from-[#244875] via-[#192d47] to-[#244875]">
 
-          The SME Academic Database is streamlined for ease and convenience and is aligned with the syllabus for different subjects. The database also contains a repository of review materials for your own benefit and supplementary lessons to aid your understanding in some concepts in class.
-        </Content>
+          <div className="bg-gradient-to-b from-base-100 to-transparent h-32"></div>
 
-        <div className="flex justify-center">
-          <Link to="/flowchart">
-            <button className="btn btn-primary">Open flowchart view</button>
-          </Link>
+          <h2 className="text-3xl font-[Poppins] font-medium  text-center pt-10" id="updates">Updates and Events</h2>
+
+          <Content className="p-4 xl:p-0 text-center">
+
+            See our official Facebook page for news about the organization and our events!
+          </Content>
+
+          <div className="flex justify-center py-4">
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSmeDlsuChapter&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="500" height="500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div>
+
+
+          <h2 className="text-3xl font-[Poppins] font-medium   text-center pt-10" id="list">Explore our Academic Database</h2>
+
+          <Content className="p-4 xl:p-0 text-center">
+
+            See our in-house resources and review materials for the various different subjects under the Manufacturing Engineering program!
+          </Content>
+
+          <div className="flex justify-center">
+            <Link to="/flowchart">
+              <button className="btn btn-primary">Open flowchart view</button>
+            </Link>
+          </div>
+
+          <div className="pb-28" style={{ /*backgroundImage: "linear-gradient(45deg, rgba(12,22,34,1) 0%, rgba(35,78,132,1) 100%)" */ }}>
+
+
+
+            <ListView
+              subjectsThatExist={subjectsThatExist} />
+          </div>
+
+
+
+          <h2 className="text-3xl font-[Poppins] font-medium text-center" id="contact">Contact us</h2>
+
+          <Content className="p-4 xl:p-0">
+            The communications form below is where you can give feedback about this site. Additionally, you can also request additional resources (books, review materials, PowerPoints).
+
+            <FormContact />
+
+          </Content>
+
+          <div className="bg-gradient-to-t from-base-100 to-transparent h-32"></div>
+
         </div>
-
-        <div className="pb-28" style={{ /*backgroundImage: "linear-gradient(45deg, rgba(12,22,34,1) 0%, rgba(35,78,132,1) 100%)" */ }}>
-
-
-
-          <ListView
-            subjectsThatExist={subjectsThatExist} />
-        </div>
-
-
-
-        <h2 className="text-3xl font-[Poppins] font-medium text-center">Contact us</h2>
-
-        <Content className="p-4 xl:p-0">
-          The communications form below is where you can give feedback about this site. Additionally, you can also request additional resources (books, review materials, PowerPoints).
-
-          <FormContact />
-
-        </Content>
-
+        <div className="bg-gradient-to-t from-transparent to-base-100 h-[15rem]"></div>
 
       </Navbar>
 
@@ -145,7 +218,7 @@ function ListView({
 function ListCard({
   node
 }) {
-  return <Link to={`/${node.id}`}><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0 ${node.status != null ? "ring-4  ring-yellow-400" : ""}`}>
+  return <Link to={`/${node.id}`}><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0`}>
     <div className="card-body">
       <h2 className="card-title font-[Poppins,ui-sans-serif,sans-serif]">
 

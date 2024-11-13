@@ -1,6 +1,8 @@
 import * as React from "react"
 import logoWords from "/src/images/logo-words.png"
+import logoCso from "/src/images/cso-logo.png"
 
+import LoggedOut from "./loggedOut";
 import { Link } from 'gatsby'
 import { LogoSmall } from "./logo";
 
@@ -8,13 +10,16 @@ import _ids from "/content/ids.json"
 const ids = structuredClone(_ids); //deep copy
 
 function Navbar({
-    children, 
-    leading, 
-    trailing, 
-    enableDivider = true, 
-    className = '', 
+    children,
+    leading,
+    trailing,
+    enableDivider = true,
+    className = '',
     enableNavbar = true,
     enableFooter = true,
+    styleNavbar,
+    styleNavbarBgOpacity = 1,
+    isFixed = false,
 }) {
 
     // ID validator
@@ -33,12 +38,19 @@ function Navbar({
         || typeof submittedId !== 'string'
         || !ids.includes(submittedId)) {
 
-        return <FormId
+        /*return <FormId
             setSubmittedId={setSubmittedId}
         />
+        */
+        return <LoggedOut
+            ids={ids}
+            setSubmittedId={setSubmittedId}
+        >
+
+        </LoggedOut>
     }
 
-    return <div className={`bg-gradient-to-tr from-[#244875] via-[#192d47] to-[#244875] ${className}`}>
+    return <div className={` ${className}`}>
 
         <div className="drawer">
 
@@ -49,7 +61,11 @@ function Navbar({
                 {/* Page content here */}
 
                 {enableNavbar ?
-                    <nav className="navbar bg-base-300 drop-shadow-xl sticky top-0 z-[1] ">
+                    <nav className={`navbar drop-shadow-xl ${isFixed ? 'fixed' : 'sticky'} top-0 z-10`}
+                        style={{
+                            backgroundColor: `rgba(10, 24, 41, ${styleNavbarBgOpacity})`
+                        }}
+                    >
                         <div className="flex-none">
 
 
@@ -137,13 +153,14 @@ export default Navbar
  * 
  * The site footer
  */
-function Footer() {
+export function Footer() {
 
     const iconSize = "20px";
 
     return <footer className="bg-gradient-to-b from-transparent via-slate-700 via-30% to-slate-700 mt-10 pt-[12rem] px-5 md:px-10 pb-10 xl:p-20 text-slate-50 flex flex-wrap flex-row items-center font-['Futura_Std',ui-sans-serif,sans-serif]">
         <div className="grow">
             <div className="flex flex-row py-2 items-center">
+                <img src={logoCso} className="max-w-32 mr-2" alt="CSO logo" />
                 <img src={logoWords} className="max-w-32 mr-2" alt="SME logo" />
                 <span className="align-middle inline">Society of Manufacturing Engineers<br />De La Salle University<br />Student Chapter 200</span>
             </div>
@@ -198,7 +215,7 @@ function FormId({
                     <div className="card-body">
 
                         <h3 className="font-bold text-lg">Enter your username to access Learn With SME!</h3>
-                        
+
                         {/*
                         <p className="text-xs py-2">
                             Privacy policy

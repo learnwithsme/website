@@ -257,7 +257,7 @@ export default function IndexPage({
                 <Panel position="top-left">
                     <div className="z-10">
                         
-                    <Link to="/">
+                    <Link to="/#list">
                         <button className="btn btn-primary">
                             <span className="material-symbols-outlined">
                                 arrow_back
