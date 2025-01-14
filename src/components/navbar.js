@@ -38,10 +38,6 @@ function Navbar({
         || typeof submittedId !== 'string'
         || !ids.includes(submittedId)) {
 
-        /*return <FormId
-            setSubmittedId={setSubmittedId}
-        />
-        */
         return <LoggedOut
             ids={ids}
             setSubmittedId={setSubmittedId}
@@ -197,71 +193,4 @@ export function Footer() {
 
 
     </footer>;
-}
-
-function FormId({
-    setSubmittedId
-}) {
-
-    return <div>
-
-        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}>
-            <div className="hero-overlay  bg-gradient-to-b from-transparent to-base-100"></div>
-
-            <div className="hero-content flex-col">
-
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-
-                    <div className="card-body">
-
-                        <h3 className="font-bold text-lg">Enter your username to access Learn With SME!</h3>
-
-                        {/*
-                        <p className="text-xs py-2">
-                            Privacy policy
-                        </p> */}
-
-
-                        <form id="formId" action="https://docs.google.com/forms/d/e/1FAIpQLScEHz7mib-hTKiJv5SGyxoIzDq1Zm6YFNMeUUsqGfYr8FYtIQ/formResponse" method="post" target="_blank" onSubmit={(e) => {
-                            e.preventDefault();
-
-                            let idInput = document.getElementById("formIdInput");
-
-                            if (!ids.includes(window.btoa(idInput.value))) {
-                                return false;
-                            }
-
-                            document.getElementById("formId").submit();
-
-                            setSubmittedId(window.btoa(idInput.value));
-
-                            return true;
-
-
-                        }} className="flex flex-col gap-y-2">
-                            {/*                             
-                            <input id="formIdEmail" type="email" placeholder="Input your email address" className="input input-bordered grow" name="emailAddress" /> 
-                            */}
-
-                            <input id="formIdInput" type="text" placeholder="Input your username" className="input input-bordered grow" name="entry.1269739242" />
-
-                            <input type="submit" className="btn grow-0" value="Submit" />
-                        </form>
-
-                        <div className="flex flex-row justify-center pt-6 text-xs opacity-55">
-                            Powered by&nbsp;
-                            <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_light_clr_74x24px.svg" alt="Google" height="16px" width="49px" className=" text-white" />&nbsp;
-                            <span className="">Forms</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <Footer />
-
-    </div>;
-
 }

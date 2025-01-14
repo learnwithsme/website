@@ -5,7 +5,6 @@ import { AnimatedBackground } from 'animated-backgrounds';
 import Navbar from "../components/navbar";
 import { Content } from "../components/content";
 import * as utils from "../utils"
-import { SubjectChip } from "../templates/acads_subject"
 import { LogoSmall } from "../components/logo";
 import { FormContact } from "../components/formContact";
 
@@ -14,7 +13,9 @@ const subjects = structuredClone(_subjects); //deep copy
 
 
 /**
- * Main page
+ * The main page of the site (once logged in)
+
+ * 
  * @param {{
  *   data: GraphqlQuery
  * }}  
@@ -89,7 +90,6 @@ export default function IndexPage({
         isFixed={true}>
 
         <div className="hero min-h-screen"
-          //style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}
           ref={navbarRef}>
 
           <AnimatedBackground animationName="particleNetwork" />
@@ -143,8 +143,6 @@ export default function IndexPage({
           </div>
 
           <div className="pb-28" style={{ /*backgroundImage: "linear-gradient(45deg, rgba(12,22,34,1) 0%, rgba(35,78,132,1) 100%)" */ }}>
-
-
 
             <ListView
               subjectsThatExist={subjectsThatExist} />

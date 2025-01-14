@@ -13,9 +13,7 @@ export default function ({
 
     return <>
 
-        <div className="hero min-h-screen"
-        //style={{ backgroundImage: 'url(https://unsplash.com/photos/W8WIwErOPlI/download?w=640)', }}
-        >
+        <div className="hero min-h-screen">
 
             <AnimatedBackground animationName="particleNetwork" />
             <div className=" bg-gradient-to-b from-transparent to-base-100"></div>
