@@ -131,15 +131,28 @@ export default function IndexPage({
 
           <h2 className="text-3xl font-[Poppins] font-medium   text-center pt-10" id="list">Explore our Academic Database</h2>
 
-          <Content className="p-4 xl:p-0 text-center">
+          <Content className="p-4 xl:p-0 text-center mb-10">
 
             See our in-house resources and review materials for the various different subjects under the Manufacturing Engineering program!
           </Content>
 
-          <div className="flex justify-center">
-            <Link to="/flowchart">
-              <button className="btn btn-primary">Open flowchart view</button>
-            </Link>
+          <div className="flex justify-center mb-16">
+            <div className="card bg-base-100 image-full w-96 shadow-xl">
+              <figure>
+                <img
+                  src="https://unsplash.com/photos/HsTnjCVQ798/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8Zmxvd2NoYXJ0fGVufDB8fHx8MTczODI1NTE3M3ww&force=true&w=640"
+                  alt="flowchart" />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">Flowchart</h2>
+                <p>View and track your progress under MEM!</p>
+                <div className="card-actions justify-end">
+                  <Link to="/flowchart">
+                    <button className="btn btn-primary">Open flowchart view</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="pb-28" style={{ /*backgroundImage: "linear-gradient(45deg, rgba(12,22,34,1) 0%, rgba(35,78,132,1) 100%)" */ }}>
@@ -192,18 +205,36 @@ function ListView({
   subjectsThatExist
 }) {
 
+  const [isShowMore, setIsShowMore] = React.useState(false);
+
+  // the array containing the subjects to list out
+  var subjectsToDisplay = subjects.nodes
+    .filter((value, index, array) => {
+
+      // if "show more", filter out the folders that doesn't exist
+      if (isShowMore) {
+        return subjectsThatExist.includes(value.id)
+      } else {
+        // if not show more, filter out folders that doesn't exist AND the subjects with type "engg"
+        return subjectsThatExist.includes(value.id) && value.type != "engg"
+      }
+
+    })
+
   return (
 
     <Content>
       <div className="flex flex-row flex-wrap my-7 gap-7 place-content-center ">
 
         {
-          subjects.nodes
-            .filter((value, index, array) => subjectsThatExist.includes(value.id))
-            .map((value, index, array) => <ListCard
-              node={value}
-            />)
+          // map out the subjects array to the React component
+          subjectsToDisplay.map((value, index, array) => <ListCard
+            node={value}
+          />)
         }
+      </div>
+      <div className="flex place-content-center">
+        <button className="btn btn-link" onClick={() => { setIsShowMore(!isShowMore) }}>{isShowMore ? "Show less" : "Show more"}</button>
       </div>
     </Content>
   )
