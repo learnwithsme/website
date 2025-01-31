@@ -104,7 +104,7 @@ export default function IndexPage({
                 height="200"
               />
 
-              <h1 className="mb-5 text-6xl font-bold font-['Futura_Std',ui-sans-serif,sans-serif] text-base-content">Learn With <span className="text-[#d6d869]">SME</span></h1>
+              <h1 className="mb-5 text-6xl font-bold font-['Futura_Std',sans-serif] text-base-content">Learn With <span className="text-[#d6d869]">SME</span></h1>
               <p className="mb-5 text-base-content ">Learn more and explore a world full of knowledge and ideas!</p>
 
             </div>
@@ -122,10 +122,16 @@ export default function IndexPage({
           <Content className="p-4 xl:p-0 text-center">
 
             See our official Facebook page for news about the organization and our events!
+            <br />
           </Content>
 
+
+
           <div className="flex justify-center py-4">
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSmeDlsuChapter&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="500" height="500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <a href="https://www.facebook.com/SmeDlsuChapter" target="_blank">
+              <button className="btn btn-primary">Open SME DLSU Facebook Page ↗</button>
+
+            </a>
           </div>
 
 
@@ -166,7 +172,7 @@ export default function IndexPage({
           <h2 className="text-3xl font-[Poppins] font-medium text-center" id="contact">Contact us</h2>
 
           <Content className="p-4 xl:p-0">
-            The communications form below is where you can give feedback about this site. Additionally, you can also request additional resources (books, review materials, PowerPoints).
+            The communications form below is where you can give feedback about this site. Additionally, you can also request additional resources (like review materials and PowerPoints).
 
             <FormContact />
 
@@ -215,8 +221,8 @@ function ListView({
       if (isShowMore) {
         return subjectsThatExist.includes(value.id)
       } else {
-        // if not show more, filter out folders that doesn't exist AND the subjects with type "engg"
-        return subjectsThatExist.includes(value.id) && value.type != "engg"
+        // if not show more, filter out folders that doesn't exist AND the subjects with category "engg"
+        return subjectsThatExist.includes(value.id) && value.category != "engg"
       }
 
     })
@@ -249,7 +255,7 @@ function ListCard({
 }) {
   return <Link to={`/${node.id}`}><div className={`btn btn-neutral card-compact w-96 shadow-xl rounded-lg h-fit p-0`}>
     <div className="card-body">
-      <h2 className="card-title font-[Poppins,ui-sans-serif,sans-serif]">
+      <h2 className="card-title font-['Poppins',sans-serif]">
 
         {node.status != null ? <div className="badge">{node.status.toUpperCase()}</div> : <></>}
 

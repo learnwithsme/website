@@ -18,7 +18,7 @@
                 "122":1,
                 "123":1
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"BASCHEM",
@@ -34,7 +34,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"BASPHYS",
@@ -47,7 +47,7 @@
                 "122":1,
                 "123":1
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"FNDSTAT",
@@ -63,7 +63,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"LBYMF1A",
@@ -111,7 +111,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"LBYME1B",
@@ -165,7 +165,7 @@
                 "122":3,
                 "123":3
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"ENGCHEM",
@@ -178,7 +178,7 @@
                 "122":3,
                 "123":3
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"LBYCH1A",
@@ -191,7 +191,7 @@
                 "122":3,
                 "123":3
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFMCPR1",
@@ -269,7 +269,7 @@
                 "122":4,
                 "123":4
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFMNGMT",
@@ -297,7 +297,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"ENGPHYS",
@@ -313,7 +313,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"LBYPH1A",
@@ -326,7 +326,7 @@
                 "122":4,
                 "123":4
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFMCPR2",
@@ -368,7 +368,7 @@
                 "122":5,
                 "123":5
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"BASELCI",
@@ -384,7 +384,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"LBYEC2L",
@@ -483,7 +483,7 @@
             "tags":[
                 "with old resources"
             ],
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"ENGMEC2",
@@ -496,7 +496,7 @@
                 "122":6,
                 "123":6
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFANLOG",
@@ -521,7 +521,7 @@
                 "122":6,
                 "123":6
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFAIMFG",
@@ -599,7 +599,7 @@
                 "122":7,
                 "123":7
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFDIGTL",
@@ -701,7 +701,7 @@
                 "122":8,
                 "123":8
             },
-            "type":"engg"
+            "category":"engg"
         },
         {
             "id":"MFBAOHS",
