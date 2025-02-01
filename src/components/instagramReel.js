@@ -7,7 +7,7 @@ export function InstagramReel({
     return <div>
     <blockquote
       className="instagram-media"
-      data-instgrm-permalink="https://www.instagram.com/reel/DFae5sMqWQY/?utm_source=ig_embed&utm_campaign=loading"
+      data-instgrm-permalink={`https://www.instagram.com/reel/${reelId}/?utm_source=ig_embed&utm_campaign=loading`}
       data-instgrm-version="14"
       style={{
         background: "#FFF",
@@ -26,7 +26,7 @@ export function InstagramReel({
         }}>
         {" "}
         <a
-          href="https://www.instagram.com/reel/DFae5sMqWQY/?utm_source=ig_embed&utm_campaign=loading"
+          href={`https://www.instagram.com/reel/${reelId}/?utm_source=ig_embed&utm_campaign=loading`}
           style={{
             background: "#FFFFFF",
             lineHeight: "0",
@@ -260,35 +260,6 @@ export function InstagramReel({
             />
           </div>
         </a>
-        <p
-          style={{
-            color: "#c9c8cd",
-            fontFamily: "Arial,sans-serif",
-            fontSize: "14px",
-            lineHeight: "17px",
-            marginBottom: "0",
-            marginTop: "8px",
-            overflow: "hidden",
-            padding: "8px 0 7px",
-            textAlign: "center",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}>
-          <a
-            href="https://www.instagram.com/reel/DFae5sMqWQY/?utm_source=ig_embed&utm_campaign=loading"
-            style={{
-              color: "#c9c8cd",
-              fontFamily: "Arial,sans-serif",
-              fontSize: "14px",
-              fontStyle: "normal",
-              fontWeight: "normal",
-              lineHeight: "17px",
-              textDecoration: "none",
-            }}
-            target="_blank">
-            A post shared by Smart Solution BD (@smartsolution.agency.bd)
-          </a>
-        </p>
       </div>
     </blockquote>
     <Script async src="//www.instagram.com/embed.js" />
