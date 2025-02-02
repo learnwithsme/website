@@ -349,6 +349,13 @@ export default function IndexPage({
 }
 
 
+export const Head = () => <>
+  <title>Flowchart | Learn With SME</title>
+
+  <meta name='og:title' content='Flowchart | Learn With SME' />
+  <meta name='og:type' content='website' />
+
+</>
 
 
 /**

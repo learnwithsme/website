@@ -1,6 +1,6 @@
 
 
-
+/* So that math doesn't take up a huge amount of space */
 .katex-display {
     margin: 0 !important
 }

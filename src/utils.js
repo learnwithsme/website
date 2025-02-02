@@ -46,6 +46,9 @@ export const waitForElm = (selector) => {
 };
 
 
+// This code is so that Javascript (and stuff like setState) can work in mdx files
+// Useful for interactivity
+//
 // =======================================
 // Copied from https://github.com/alexkrolick/mdx-observable/blob/master/src/index.js
 

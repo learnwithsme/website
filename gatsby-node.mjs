@@ -1,6 +1,5 @@
 import readingTime from "reading-time";
 import path from "path";
-import slugify from "@sindresorhus/slugify";
 import { createFilePath } from "gatsby-source-filesystem";
 import TerserPlugin from "terser-webpack-plugin"
 
