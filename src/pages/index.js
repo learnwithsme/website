@@ -180,8 +180,31 @@ export default function IndexPage({
 
           <div className="bg-gradient-to-t from-base-100 to-transparent h-32"></div>
 
+
         </div>
+
         <div className="bg-gradient-to-t from-transparent to-base-100 h-[15rem]"></div>
+
+        
+
+        <h2 className="text-3xl font-[Poppins] font-medium text-center" id="contact">
+        <LogoSmall
+                className="block m-auto"
+                width="100"
+                height="100"
+        /></h2>
+
+        <Content className="p-4 xl:p-0 text-center">
+            SME DLSU is a student chapter of SME, with headquarters in Michigan, United States.
+
+        </Content>
+
+        <div className="flex justify-center py-4">
+            <a href="https://www.sme.org/" target="_blank">
+              <button className="btn btn-primary">The official SME website ↗</button>
+
+            </a>
+          </div>
 
       </Navbar>
 

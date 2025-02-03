@@ -19,11 +19,6 @@ interactive: true
 
 <State initialState={{ mode: "regular" }}>
 
-
-
-
-
-
 <Observe>
   {({ setState, ...state }) => 
 <div role="tablist" className="tabs tabs-boxed my-5 ">
@@ -47,29 +42,29 @@ interactive: true
       case 'regular':
         return <BlockMath math="\begin{align*}
         &\int 0 \space dx=C \\
-&\int dx=x+C \\
-&\int n f \space dx=n\int f \space dx \\
-&\int (f\pm g) \space dx=\int f \space dx\pm\int g \space dx\\
-&\int x^n\space dx=\begin{cases}
-\frac{x^{n+1}}{n+1}+C &n\neq-1 \\
-\ln|x|+C&n=-1
-\end{cases} \\
-&\int f'(u)\space du=\int f'(g)g'\space dx=f(g) &\text{where }du=g'\space dx
-\end{align*}" 
+        &\int dx=x+C \\
+        &\int n f \space dx=n\int f \space dx \\
+        &\int (f\pm g) \space dx=\int f \space dx\pm\int g \space dx\\
+        &\int x^n\space dx=\begin{cases}
+          \frac{x^{n+1}}{n+1}+C &n\neq-1 \\
+          \ln|x|+C&n=-1
+        \end{cases} \\
+        &\int f'(g)g'\space dx=f(g) 
+        \end{align*}" 
     />;
     
       case 'color':
         return  <BlockMath math="\begin{align*}
-&\int 0 \space dx=C \\
-&\int dx=x+C \\
-&\int {\color{fuchsia}{n}} {\color{orange}{f}} \space dx={\color{fuchsia}{n}}\int {\color{orange}{f}} \space dx \\
-&\int ({\color{orange}{f}}\pm {\color{orange}{g}}) \space dx=\int {\color{orange}{f}} \space dx\pm\int {\color{orange}{g}} \space dx\\
-&\int {\color{aqua}{x}}^{\color{fuchsia}{n}}\space dx=\begin{cases}
-\frac{{\color{aqua}{x}}^{{\color{fuchsia}{n}}+1}}{{\color{fuchsia}{n}}+1}+C &{\color{fuchsia}{n}}\neq-1 \\
-\ln|{\color{aqua}{x}}|+C&{\color{fuchsia}{n}}=-1
-\end{cases} \\
-&\int f'(u)\space du=\int f'(g)g'\space dx=f(g) &\text{where }du=g'\space dx
-\end{align*}" 
+        &\int 0 \space dx=C \\
+        &\int dx=x+C \\
+        &\int {\color{fuchsia}{n}} {\color{orange}{f}} \space dx={\color{fuchsia}{n}}\int {\color{orange}{f}} \space dx \\
+        &\int ({\color{orange}{f}}\pm {\color{orange}{g}}) \space dx=\int {\color{orange}{f}} \space dx\pm\int {\color{orange}{g}} \space dx\\
+        &\int {\color{aqua}{x}}^{\color{fuchsia}{n}}\space dx=\begin{cases}
+        \frac{{\color{aqua}{x}}^{{\color{fuchsia}{n}}+1}}{{\color{fuchsia}{n}}+1}+C &{\color{fuchsia}{n}}\neq-1 \\
+        \ln|{\color{aqua}{x}}|+C&{\color{fuchsia}{n}}=-1
+        \end{cases} \\
+        &\int {\color{orange}{f'(}}g{\color{orange}{)}}g'\space dx={\color{orange}{f(}}g{\color{orange}{)}} 
+        \end{align*}" 
     />
     }
 
@@ -82,90 +77,170 @@ interactive: true
 
 ### Trigonometry
 
-<div className="flex flex-col md:flex-row ">
+<div className="flex flex-col md:flex-row place-content-center gap-10">
 
-<div>
-<BlockMath math="\int \sin u \space du=-\cos u+C " />
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular':
+        return <>
+        <BlockMath math="\begin{align*}
+        &\int \sin u \space du=-\cos u+C \\
+        &\int \cos u \space du=\sin u+C \\
+        &\int \tan u \space du=\begin{cases}-\ln{|\cos u|}+C\\\ln{|\sec u|}+C\end{cases}\\
+        \\
+        &\int \cos u \space du=\sin u+C \\
+        &\int -\sin u \space du=\cos u+C \\
+        &\int \sec^{2} u \space du=\tan u+C \\
+        \end{align*}" 
+        />
+        <BlockMath math="\begin{align*}
+         &\int \csc u \space du=\ln{|\csc u-\cot u|}+C\\
+         &\int \sec u \space du=\ln{|\sec u+\tan u|}+C\\
+         &\int \cot u \space du=\begin{cases}-\ln{|\csc u|}+C\\\ln{|\sin u|}+C\end{cases}\\
+         \\
+        &\int -\csc u \cot u \space du=\csc u+C \\
+        &\int \sec u \tan u \space du=\sec u+C \\
+        &\int -\csc^{2} u \space du=\cot u+C \\
+        \end{align*}" />
+    </>;
+    
+      case 'color':
+        return <>
+        <BlockMath math="\begin{align*}
+        &\int \sin {\color{aqua}{u}} \space du=-\cos {\color{aqua}{u}}+C \\
+        &\int \cos {\color{aqua}{u}} \space du=\sin {\color{aqua}{u}}+C \\
+        &\int \tan {\color{aqua}{u}} \space du=\begin{cases}-\ln{|\cos {\color{aqua}{u}}|}+C\\\ln{|\sec {\color{aqua}{u}}|}+C\end{cases}\\
+        \\
+        &\int \cos {\color{aqua}{u}} \space du=\sin {\color{aqua}{u}}+C \\
+        &\int -\sin {\color{aqua}{u}} \space du=\cos {\color{aqua}{u}}+C \\
+        &\int \sec^{2} {\color{aqua}{u}} \space du=\tan {\color{aqua}{u}}+C \\
+        \end{align*}" 
+        />
+        <BlockMath math="\begin{align*}
+         &\int \csc {\color{aqua}{u}} \space du=\ln{|\csc {\color{aqua}{u}}-\cot {\color{aqua}{u}}|}+C\\
+         &\int \sec {\color{aqua}{u}} \space du=\ln{|\sec {\color{aqua}{u}}+\tan {\color{aqua}{u}}|}+C\\
+         &\int \cot {\color{aqua}{u}} \space du=\begin{cases}-\ln{|\csc {\color{aqua}{u}}|}+C\\\ln{|\sin {\color{aqua}{u}}|}+C\end{cases}\\
+         \\
+        &\int -\csc {\color{aqua}{u}} \cot {\color{aqua}{u}} \space du=\csc {\color{aqua}{u}}+C \\
+        &\int \sec {\color{aqua}{u}} \tan {\color{aqua}{u}} \space du=\sec {\color{aqua}{u}}+C \\
+        &\int -\csc^{2} {\color{aqua}{u}} \space du=\cot {\color{aqua}{u}}+C \\
+        \end{align*}" />
+    </>;
+    }
+
+  }
+
+  }
+</Observe>
+
 </div>
-
-<div>
-
-<BlockMath math="\int \csc u \space du=\ln{|\csc u-\cot u|}+C" />
-</div>
-
-</div>
-
-$$
-\begin{align*}
-&\int \sin u \space du=-\cos u+C &\int& \csc u \space du=\ln{|\csc u-\cot u|}+C\\
-&\int \cos u \space du=\sin u+C &\int& \sec u \space du=\ln{|\sec u+\tan u|}+C\\
-&\int \tan u \space du=\begin{cases}-\ln{|\cos u|}+C\\\ln{|\sec u|}+C\end{cases} &\int& \cot u \space du=\begin{cases}-\ln{|\csc u|}+C\\\ln{|\sin u|}+C\end{cases}\\
-\\
-&\int \cos u \space du=\sin u+C &\int& -\csc u \cot u \space du=\csc u+C\\
-&\int -\sin u \space du=\cos u+C&\int& \sec u \tan u \space du=\sec u+C\\
-&\int \sec^{2} u \space du=\tan u+C&\int &-\csc^{2} u \space du=\cot u+C
-\end{align*}
-$$
 
 ### Inverse trigonometry
-$$
-\begin{align*}
-&\int \frac{du}{\sqrt{n^{2}-u^{2}}}=\sin^{-1}\frac{u}{n}+C&-\\
-&-&\int& \frac{du}{u\sqrt{u^{2}-n^{2}}}=\frac{1}{n}\sec^{-1}\frac{u}{n}+C\\
-&\int \frac{du}{n^{2}+u^{2}}=\frac{1}{n}\tan^{-1}\frac{u}{n}+C&-
-\end{align*}
-$$
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular':
+        return <BlockMath math="\begin{align*}
+        &\int \frac{du}{\sqrt{n^{2}-u^{2}}}=\sin^{-1}\frac{u}{n}+C&-\\
+        &-&\int& \frac{du}{u\sqrt{u^{2}-n^{2}}}=\frac{1}{n}\sec^{-1}\frac{u}{n}+C\\
+        &\int \frac{du}{n^{2}+u^{2}}=\frac{1}{n}\tan^{-1}\frac{u}{n}+C&-
+        \end{align*}" 
+    />;
+    
+      case 'color':
+        return  <BlockMath math="\begin{align*}
+        &\int \frac{du}{\sqrt{{\color{fuchsia}{n}}^{2}-{\color{aqua}{u}}^{2}}}=\sin^{-1}\frac{\color{aqua}{u}}{\color{fuchsia}{n}}+C&-\\
+        &-&\int& \frac{du}{{\color{aqua}{u}}\sqrt{{\color{aqua}{u}}^{2}-{\color{fuchsia}{n}}^{2}}}=\frac{1}{\color{fuchsia}{n}}\sec^{-1}\frac{\color{aqua}{u}}{\color{fuchsia}{n}}+C\\
+        &\int \frac{du}{{\color{fuchsia}{n}}^{2}+{\color{aqua}{u}}^{2}}=\frac{1}{\color{fuchsia}{n}}\tan^{-1}\frac{\color{aqua}{u}}{\color{fuchsia}{n}}+C&-
+        \end{align*}" 
+    />
+      }
+    }
+  }
+</Observe>
 
 ### Hyperbolic
-$$
-\begin{align*}
-&\int \sinh u \space du= \cosh u+C\\
-&\int \cosh u \space du=\sinh u+C
-\end{align*}
-$$
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular':
+        return <BlockMath math="\begin{align*}
+        &\int \sinh u \space du= \cosh u+C\\
+        &\int \cosh u \space du=\sinh u+C
+        \end{align*}" 
+    />;
+    
+      case 'color':
+        return  <BlockMath math="\begin{align*}
+        &\int \sinh {\color{aqua}{u}} \space du= \cosh {\color{aqua}{u}}+C\\
+        &\int \cosh {\color{aqua}{u}} \space du=\sinh {\color{aqua}{u}}+C
+        \end{align*}" 
+    />
+    }
+
+  }
+
+
+  }
+</Observe>
 
 ### Exponential
-$$
-\begin{align*}
-&\int n^u\space du=\frac{n^u}{\ln n}+C\\
-&\int e^u\space du=e^u+C
-\end{align*}
-$$
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular':
+        return <BlockMath math="\begin{align*}
+        &\int n^u\space du=\frac{n^u}{\ln n}+C\\
+        &\int e^u\space du=e^u+C
+        \end{align*}" 
+    />;
+    
+      case 'color':
+        return  <BlockMath math="\begin{align*}
+        &\int {\color{fuchsia}{n}}^{\color{aqua}{u}}\space du=\frac{{\color{fuchsia}{n}}^{\color{aqua}{u}}}{\ln {\color{fuchsia}{n}}}+C\\
+        &\int e^{\color{aqua}{u}}\space du=e^{\color{aqua}{u}}+C
+        \end{align*}" 
+    />
+      }
+    }
+  }
+</Observe>
 
 ## Definite integrals
 $a$ and $b$ are the lower and upper bounds, respectively.
-$$
-\begin{align*}
-&\int_a^bf\ dx=F\bigg|_a^b=F(b)-F(a)\\
-&\int_a^bf\ dx=-\int_b^af\ dx\\
-&\int_a^af\ dx=0\\
-&\int_a^b nf\ dx=n\int_a^b f\ dx\\
-&\int_a^b(f\pm g)\ dx=\int_a^bf\ dx \pm \int_a^b g\ dx\\
-&\int_a^b f\ dx=\int_a^d f\ dx+\int_d^b f\ dx\\
-\end{align*}
-$$
+
+<Observe>
+  {({ setState, ...state }) => {
+    switch (state.mode) {
+      case 'regular':
+        return <BlockMath math="\begin{align*}
+        &\int_a^bf\ dx=F\bigg|_a^b=F(b)-F(a)\\
+        &\int_a^bf\ dx=-\int_b^af\ dx\\
+        &\int_a^af\ dx=0\\
+        &\int_a^b nf\ dx=n\int_a^b f\ dx\\
+        &\int_a^b(f\pm g)\ dx=\int_a^bf\ dx \pm \int_a^b g\ dx\\
+        &\int_a^b f\ dx=\int_a^d f\ dx+\int_d^b f\ dx\\
+        \end{align*}" 
+    />;
+    
+      case 'color':
+        return <BlockMath math="\begin{align*}
+        &\int_a^b{\color{orange}{f}}\ dx={\color{orange}{F}}\bigg|_a^b={\color{orange}{F(}}b{\color{orange}{)}}-{\color{orange}{F(}}a{\color{orange}{)}}\\
+        &\int_a^b{\color{orange}{f}}\ dx=-\int_b^a{\color{orange}{f}}\ dx\\
+        &\int_a^a{\color{orange}{f}}\ dx=0\\
+        &\int_a^b {\color{fuchsia}{n}}{\color{orange}{f}}\ dx={\color{fuchsia}{n}}\int_a^b {\color{orange}{f}}\ dx\\
+        &\int_a^b({\color{orange}{f}}\pm {\color{orange}{g}})\ dx=\int_a^b{\color{orange}{f}}\ dx \pm \int_a^b {\color{orange}{g}}\ dx\\
+        &\int_a^b {\color{orange}{f}}\ dx=\int_a^d {\color{orange}{f}}\ dx+\int_d^b {\color{orange}{f}}\ dx\\
+        \end{align*}" 
+    />
+      }
+    }
+  }
+</Observe>
 
 
-## Algebraic techniques
-$$
-\begin{align*}
-&\text{Substitution}\\
-&\int\frac{2x-9}{\sqrt{x^{2}-9x+1}}\space dx\\
-=&\int\frac{du}{u^{-\frac{1}{2}}}&&\begin{array}{}\text{let }u=x^{2}-9x+1\\du=2x-9\space dx\end{array}\\
-=&\frac{u^{\frac{1}{2}}}{\frac{1}{2}}+C\\
-=&2\sqrt{u}+C\\
-=&2\sqrt{x^{2}-9x+1}+C\\
-\\
-&\text{Completing the square} && \text{for radicals only}\\
-&\int\frac{dx}{\sqrt{8x-x^{2}}}\\
-=&\int\frac{dx}{\sqrt{-(x^{2}-8x)}}&&\text{rearranging}\\
-=&\int\frac{dx}{\sqrt{-(x^{2}-8x+16–16)}}&&\left(\frac{b}{2}\right)^2=+16\text{, then $-16$ to balance out}\\
-=&\int\frac{dx}{\sqrt{-(x^{2}-8x+16)+16}}&&\text{moving out the $-16$}\\
-=&\int\frac{dx}{\sqrt{16-(x-4)^{2}}}&&\text{simplify \& rearrange}\\
-=&\int \frac{du}{\sqrt{n^{2}-u^{2}}}&&\begin{array}{}\text{let }u=x-4\\du=dx\\n=4\end{array}\\
-=&\sin^{-1}\frac{u}{n}+C\\
-=&\sin^{-1}\frac{x-4}{4}+C
-\end{align*}
-$$
+
 
 </State>

@@ -57,7 +57,7 @@ function Navbar({
                 {/* Page content here */}
 
                 {enableNavbar ?
-                    <nav className={`navbar drop-shadow-xl ${isFixed ? 'fixed' : 'sticky'} top-0 z-10`}
+                    <nav className={`navbar drop-shadow-xl ${isFixed ? 'fixed' : 'sticky'} top-0 z-50`}
                         style={{
                             backgroundColor: `rgba(10, 24, 41, ${styleNavbarBgOpacity})`
                         }}
