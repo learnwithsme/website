@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactFlow, Controls, Background, Panel, useNodesState, useEdgesState, MarkerType } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { Link, StaticQueryDocument, graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 import _subjects from "/content/subjects.json";
 import Navbar from "../components/navbar";
@@ -29,7 +29,7 @@ export default function IndexPage({
     */
     const subjectsThatExist = data.allDirectory.nodes.map((value) => value.name);
 
-
+    // state variables
 
     const [nodes, setNodes, onNodesChange] = useNodesState(subjects.nodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(subjects.links);
@@ -53,9 +53,9 @@ export default function IndexPage({
 
     var index = 0;
 
-    var terms = new Map(), 
-    // keep track the id numbers registered on the JSON file in this set
-    idNumbers = new Set();
+    var terms = new Map(),
+        // keep track the id numbers registered on the JSON file in this set
+        idNumbers = new Set();
 
     for (var i of subjects.nodes) {
 
@@ -75,14 +75,11 @@ export default function IndexPage({
             label: i.id
         }
 
-
         terms.get(i.term?.[selectedIdNumber] ?? 0).push(i)
         // add the ID number to the set of ID numbers
-        if (i.term != null) Object.keys(i.term).forEach((id)=> idNumbers.add(id))
+        if (i.term != null) Object.keys(i.term).forEach((id) => idNumbers.add(id))
 
     }
-
-    console.log(idNumbers)
 
     var connectedEdges = null, connectedNodes = null;
 
@@ -99,7 +96,6 @@ export default function IndexPage({
     }
 
     React.useEffect(() => {
-
 
         // reset if null
         if (selectedNode == null) {
@@ -218,7 +214,7 @@ export default function IndexPage({
 
 
 
-    }, [setSelectedIdNumber, selectedIdNumber, selectedNode, setSelectedNode, ])
+    }, [setSelectedIdNumber, selectedIdNumber, selectedNode, setSelectedNode,])
 
 
     return <Navbar
@@ -256,22 +252,22 @@ export default function IndexPage({
                 <Controls />
                 <Panel position="top-left">
                     <div className="z-10">
-                        
-                    <Link to="/#list">
-                        <button className="btn btn-primary">
-                            <span className="material-symbols-outlined">
-                                arrow_back
-                            </span><span className="hidden md:inline">Back to courses</span>
-                        </button>
-                    </Link><br/>
-                    <select className="select select-bordered  text-white bg-base-300 m-0 mt-4" onChange={(e) => {
-                        setSelectedNode((_)=>null) //deselect currently selected
-                        setSelectedIdNumber((_) => e.target.value);
-                    }}> {
-                        /* programmatically add the options from the idNumbers set */
-                        [...idNumbers].map((val, index, set)=><option value={`${val}`} selected={val === selectedIdNumber}>ID {val}</option>)
-                    }
-                    </select>
+
+                        <Link to="/#list">
+                            <button className="btn btn-primary">
+                                <span className="material-symbols-outlined">
+                                    arrow_back
+                                </span><span className="hidden md:inline">Back to courses</span>
+                            </button>
+                        </Link><br />
+                        <select className="select select-bordered  text-white bg-base-300 m-0 mt-4" onChange={(e) => {
+                            setSelectedNode((_) => null) //deselect currently selected
+                            setSelectedIdNumber((_) => e.target.value);
+                        }}> {
+                                /* programmatically add the options from the idNumbers set */
+                                [...idNumbers].map((val, index, set) => <option value={`${val}`} selected={val === selectedIdNumber}>ID {val}</option>)
+                            }
+                        </select>
                     </div>
                 </Panel>
                 <Panel position="top-right" style={{
@@ -281,58 +277,21 @@ export default function IndexPage({
                     <div className="z-0 absolute top-32 sm:top-0 right-0 card max-sm:card-compact w-96 bg-base-200 shadow-xl opacity-95">
                         <div className="card-body">
 
-                            {selectedNode === null ? <span>Select a subject to learn more.</span> : <>
-
-                                <h2 className="card-title">
-                                    <span className="text-3xl font-bold">{selectedNode.id}</span>
-                                    <br />
-                                    <span className="text-sm">{selectedNode.name}</span>
-                                </h2>
-
-
-                                <div className="text-sm font-mono ">
-                                    <div>
-                                        Requires: {connectedEdges.some((edge) => selectedNode.id == edge.target) ? <span>
-                                            {connectedEdges.filter((edge) => selectedNode.id == edge.target).map((value, index, array) => <SubjectChip
-                                                id={value.source}
-                                                //title={}
-                                                hasLink={false}
-                                                type={value.requisite}
-                                            ></SubjectChip>)}</span> : <span className="italic"> none</span>
-                                        }
-
-                                    </div>
-
-                                    <div>
-                                        Unlocks: {connectedEdges.some((edge) => selectedNode.id == edge.source) ? <span>
-                                            {connectedEdges.filter((edge) => selectedNode.id == edge.source).map((value, index, array) => <SubjectChip
-                                                id={value.target}
-                                                //title={}
-                                                hasLink={false}
-                                                type={value.requisite}
-                                            ></SubjectChip>)}</span> : <span className="italic"> none</span>
-                                        }
-
-                                    </div>
-                                </div>
-
-
-
-                                <div className="">
-                                    {subjectsThatExist.includes(selectedNode.id) ?
-                                        <Link to={`/${selectedNode.id}`}><button className="btn btn-neutral">Go to subject page</button></Link> : <></>}
-                                </div>
-
-                            </>
+                            {selectedNode === null ? <span>Select a subject to learn more.</span> : <InfoPanel 
+                            selectedNode={selectedNode} 
+                            connectedEdges={connectedEdges}
+                            subjectsThatExist={subjectsThatExist}
+                            selectedIdNumber={selectedIdNumber}
+                            />
                             }
                         </div>
                     </div>
 
 
                 </Panel>
-                
+
                 <Panel position="bottom-center" className="text-center text-slate-400 text-xs">
-                        Created by SME-DLSU Academics Committee.<br/>Content may not be accurate and should only be used as a visualization.
+                    Created by SME DLSU Academics Subcommittee.<br />Content may not be accurate and should only be used as a visualization.
 
                 </Panel>
 
@@ -350,12 +309,66 @@ export default function IndexPage({
 
 
 export const Head = () => <>
-  <title>Flowchart | Learn With SME</title>
+    <title>Flowchart | Learn With SME</title>
 
-  <meta name='og:title' content='Flowchart | Learn With SME' />
-  <meta name='og:type' content='website' />
+    <meta name='og:title' content='Flowchart | Learn With SME' />
+    <meta name='og:type' content='website' />
 
 </>
+
+/**
+ * The info panel at the top-right, when a subject has been selected.
+ * 
+ */
+function InfoPanel({ selectedNode, connectedEdges, subjectsThatExist, selectedIdNumber }) {
+    return <>
+
+        <h2 className="card-title">
+            <span className="text-3xl font-bold">{selectedNode.id}</span>
+            <br />
+            <span className="text-sm">{selectedNode.name}</span>
+        </h2>
+
+
+        <div className="text-sm font-mono ">
+            <div>
+                Term {selectedNode.term?.[selectedIdNumber] ?? "N/A"}
+            </div>
+            <div>
+                Requires: {connectedEdges.some((edge) => selectedNode.id == edge.target) ? <span>
+                    {connectedEdges.filter((edge) => selectedNode.id == edge.target).map((value, index, array) => <SubjectChip
+                        id={value.source}
+                        //title={}
+                        hasLink={false}
+                        type={value.requisite}
+                    ></SubjectChip>)}</span> : <span className="italic"> none</span>
+                }
+
+            </div>
+
+            <div>
+                Unlocks: {connectedEdges.some((edge) => selectedNode.id == edge.source) ? <span>
+                    {connectedEdges.filter((edge) => selectedNode.id == edge.source).map((value, index, array) => <SubjectChip
+                        id={value.target}
+                        //title={}
+                        hasLink={false}
+                        type={value.requisite}
+                    ></SubjectChip>)}</span> : <span className="italic"> none</span>
+                }
+
+            </div>
+        </div>
+
+
+
+        <div className="">
+            {subjectsThatExist.includes(selectedNode.id) ?
+                <Link to={`/${selectedNode.id}`}><button className="btn btn-neutral">Go to subject page</button></Link> : <></>}
+        </div>
+
+    </>
+
+}
 
 
 /**

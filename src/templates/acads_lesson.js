@@ -11,6 +11,9 @@ import { InlineMath, BlockMath } from "../components/reactKatex"
 import { FormContact } from "../components/formContact";
 import { InstagramReel } from "../components/instagramReel";
 
+/**
+ * React components that are available to use in MDX lesson files
+ */
 const components = { InlineMath, BlockMath, State, Observe, InstagramReel };
 
 /** GraphQL query about this MDX file

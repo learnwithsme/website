@@ -1,20 +1,17 @@
 import * as React from "react";
-import { Link, StaticQueryDocument, graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { AnimatedBackground } from 'animated-backgrounds';
 
 import Navbar from "../components/navbar";
 import { Content } from "../components/content";
-import * as utils from "../utils"
 import { LogoSmall } from "../components/logo";
 import { FormContact } from "../components/formContact";
 
 import _subjects from "/content/subjects.json";
 const subjects = structuredClone(_subjects); //deep copy
 
-
 /**
  * The main page of the site (once logged in)
-
  * 
  * @param {{
  *   data: GraphqlQuery
@@ -54,14 +51,7 @@ export default function IndexPage({
 
 
 
-      <Navbar leading={
-        <>
-
-
-
-        </>
-
-      }
+      <Navbar 
         trailing={<>
 
           <a className="btn btn-ghost " href="#updates">
@@ -93,6 +83,7 @@ export default function IndexPage({
           ref={navbarRef}>
 
           <AnimatedBackground animationName="particleNetwork" />
+          
           <div className=" bg-gradient-to-b from-transparent to-base-100"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
@@ -117,15 +108,14 @@ export default function IndexPage({
 
           <div className="bg-gradient-to-b from-base-100 to-transparent h-32"></div>
 
+          {/* Updates */}
+
           <h2 className="text-3xl font-[Poppins] font-medium  text-center pt-10" id="updates">Updates and Events</h2>
 
           <Content className="p-4 xl:p-0 text-center">
-
             See our official Facebook page for news about the organization and our events!
             <br />
           </Content>
-
-
 
           <div className="flex justify-center py-4">
             <a href="https://www.facebook.com/SmeDlsuChapter" target="_blank">
@@ -134,6 +124,7 @@ export default function IndexPage({
             </a>
           </div>
 
+          {/* Subject list */}
 
           <h2 className="text-3xl font-[Poppins] font-medium   text-center pt-10" id="list">Explore our Academic Database</h2>
 
@@ -161,13 +152,13 @@ export default function IndexPage({
             </div>
           </div>
 
-          <div className="pb-28" style={{ /*backgroundImage: "linear-gradient(45deg, rgba(12,22,34,1) 0%, rgba(35,78,132,1) 100%)" */ }}>
-
+          <div className="pb-28">
             <ListView
               subjectsThatExist={subjectsThatExist} />
           </div>
 
 
+          {/* Contact us */}
 
           <h2 className="text-3xl font-[Poppins] font-medium text-center" id="contact">Contact us</h2>
 
@@ -185,26 +176,26 @@ export default function IndexPage({
 
         <div className="bg-gradient-to-t from-transparent to-base-100 h-[15rem]"></div>
 
-        
-
-        <h2 className="text-3xl font-[Poppins] font-medium text-center" id="contact">
-        <LogoSmall
-                className="block m-auto"
-                width="100"
-                height="100"
-        /></h2>
+        {/* SME global */}
+        <h2 className="text-3xl font-[Poppins] font-medium text-center">
+          <LogoSmall
+            className="block m-auto"
+            width="100"
+            height="100"
+          />
+        </h2>
 
         <Content className="p-4 xl:p-0 text-center">
-            SME DLSU is a student chapter of SME, with headquarters in Michigan, United States.
+          SME DLSU is a student chapter of SME, with headquarters in Michigan, United States.
 
         </Content>
 
         <div className="flex justify-center py-4">
-            <a href="https://www.sme.org/" target="_blank">
-              <button className="btn btn-primary">The official SME website ↗</button>
+          <a href="https://www.sme.org/" target="_blank">
+            <button className="btn btn-primary">The official SME website ↗</button>
 
-            </a>
-          </div>
+          </a>
+        </div>
 
       </Navbar>
 
@@ -250,28 +241,31 @@ function ListView({
 
     })
 
-  return (
+  return <Content>
 
-    <Content>
-      <div className="flex flex-row flex-wrap my-7 gap-7 place-content-center ">
+    <div className="flex flex-row flex-wrap my-7 gap-7 place-content-center ">
+      {
+        // map out the subjects array to the React component
+        subjectsToDisplay.map((value, index, array) => <ListCard
+          node={value}
+        />)
+      }
+    </div>
+    <div className="flex place-content-center">
+      <button
+        className="btn btn-link"
+        onClick={() => { setIsShowMore(!isShowMore) }}
+      >
+        {isShowMore ? "Show less" : "Show more"}
+      </button>
+    </div>
 
-        {
-          // map out the subjects array to the React component
-          subjectsToDisplay.map((value, index, array) => <ListCard
-            node={value}
-          />)
-        }
-      </div>
-      <div className="flex place-content-center">
-        <button className="btn btn-link" onClick={() => { setIsShowMore(!isShowMore) }}>{isShowMore ? "Show less" : "Show more"}</button>
-      </div>
-    </Content>
-  )
+  </Content>
+
 }
 
 /**
  * Each individual button/card on the subjects list
- * @param {*} param0 
  */
 function ListCard({
   node

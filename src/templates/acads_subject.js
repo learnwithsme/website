@@ -210,6 +210,7 @@ export default function Layout({
 }
 
 /**
+ * Each category card, wherein it has a title and a list of lessons
  * 
  * @param {{lessons: {title: string, link: string, status: string?, interactive: boolean?}[], title: string}} 
  * @returns 
@@ -249,6 +250,10 @@ function CategoryCard({
   </div>
 }
 
+/**
+ *  The chip that is used in the "requires" and "unlocks"
+ * 
+ */
 export function SubjectChip({
   id,
   type,
