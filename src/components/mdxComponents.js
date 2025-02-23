@@ -1,5 +1,14 @@
 import * as React from "react";
-import { Script } from "gatsby"
+import { Script } from "gatsby";
+
+export function ImageInvertedColor({
+    src, className
+}) {
+    return <img 
+    src={src} 
+    className={`invert inline ${className ?? "h-10"}  m-0`} />
+}
+
 
 export function InstagramReel({
     reelId

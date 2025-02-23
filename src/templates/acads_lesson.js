@@ -9,12 +9,21 @@ import { Content } from "../components/content";
 import Navbar from "../components/navbar";
 import { InlineMath, BlockMath } from "../components/reactKatex"
 import { FormContact } from "../components/formContact";
-import { InstagramReel } from "../components/instagramReel";
+import { InstagramReel, ImageInvertedColor } from "../components/mdxComponents";
 
 /**
  * React components that are available to use in MDX lesson files
  */
-const components = { InlineMath, BlockMath, State, Observe, InstagramReel };
+const components = {
+  InlineMath,
+  BlockMath,
+  State,
+  Observe,
+
+  // custom components from mdxComponents.js
+  InstagramReel,
+  ImageInvertedColor,
+};
 
 /** GraphQL query about this MDX file
   *
