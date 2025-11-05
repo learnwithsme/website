@@ -291,7 +291,7 @@ export default function IndexPage({
                 </Panel>
 
                 <Panel position="bottom-center" className="text-center text-slate-400 text-xs">
-                    Created by SME DLSU Academics Subcommittee.<br />Content may not be accurate and should only be used as a visualization.
+                    Created by SME-DLSU Academics Subcommittee.<br />Content may not be accurate and should only be used as a visualization.
 
                 </Panel>
 

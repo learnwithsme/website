@@ -118,7 +118,7 @@ export default function IndexPage({
           </Content>
 
           <div className="flex justify-center py-4">
-            <a href="https://www.facebook.com/SmeDlsuChapter" target="_blank">
+            <a href="https://www.facebook.com/SmeDlsuChapter" target="_blank" rel="noreferrer">
               <button className="btn btn-primary">Open SME DLSU Facebook Page ↗</button>
 
             </a>
@@ -191,7 +191,7 @@ export default function IndexPage({
         </Content>
 
         <div className="flex justify-center py-4">
-          <a href="https://www.sme.org/" target="_blank">
+          <a href="https://www.sme.org/" target="_blank" rel="noreferrer">
             <button className="btn btn-primary">The official SME website ↗</button>
 
           </a>
@@ -236,7 +236,7 @@ function ListView({
         return subjectsThatExist.includes(value.id)
       } else {
         // if not show more, filter out folders that doesn't exist AND the subjects with category "engg"
-        return subjectsThatExist.includes(value.id) && value.category != "engg"
+        return subjectsThatExist.includes(value.id) && value.category !== "engg"
       }
 
     })
